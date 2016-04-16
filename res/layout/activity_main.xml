@@ -1,0 +1,30 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.dateasy.MainActivity" >
+
+    <include
+        android:id="@+id/actionbar_favourite"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_alignParentTop="true"
+        layout="@layout/actionbar_favourite" />
+
+    <include
+        android:id="@+id/bottom_navigation_bar"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_alignParentBottom="true"
+        layout="@layout/bottom_navigation_bar" />
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_navigation_bar"
+        android:layout_below="@id/actionbar_favourite"
+        android:layout_centerInParent="true"
+        android:text="@string/hello_world" />
+
+</RelativeLayout>
