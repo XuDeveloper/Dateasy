@@ -5,6 +5,7 @@ import com.example.dateasy.fragment.ManagementFragment;
 import com.example.dateasy.fragment.MyBelongingsFragment;
 import com.example.dateasy.fragment.FavouriteFragment;
 import com.example.dateasy.fragment.ViewFragment;
+import com.example.dateasy.util.Utils;
 
 import android.app.Activity;
 import android.app.FragmentManager;
@@ -22,6 +23,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,On
 
 	private RadioGroup mRadioGroup;
 	private RadioButton mRadioButton;
+	private RadioButton mAddImageButton;
 	private ImageButton mLocationImageButton;
 	private FavouriteFragment mFavouriteFragment;
 	private ViewFragment mViewFragment;
@@ -39,6 +41,8 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,On
         mRadioButton.setChecked(true);
         mLocationImageButton = (ImageButton)findViewById(R.id.location_ib);
         mLocationImageButton.setOnClickListener(this);
+        mAddImageButton = (RadioButton) findViewById(R.id.add_rb);
+        mAddImageButton.setOnClickListener(this);
     }
 
 	@Override
@@ -111,8 +115,12 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,On
 		// TODO Auto-generated method stub
 		switch(v.getId()){
 			case R.id.location_ib:
-				Intent intent = new Intent(MainActivity.this, LocationActivity.class);
-				startActivity(intent);
+				Utils.toAnotherActivity(MainActivity.this, LocationActivity.class);
+				break;
+				
+			case R.id.add_rb:
+				Utils.toAnotherActivity(MainActivity.this, AddNewActivity.class);
+				break;
 		}
 	}
 

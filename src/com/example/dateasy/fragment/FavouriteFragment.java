@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.dateasy.R;
+import com.example.dateasy.activity.MainActivity;
 import com.example.dateasy.adapter.FavouriteAdvViewPagerAdapter;
+import com.example.dateasy.adapter.MyListViewAdapter;
 import com.example.dateasy.ui.AdvViewPagerScroller;
 
 import android.os.Handler;
@@ -16,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 
 public class FavouriteFragment extends SingleFragment {
 	private LinearLayout viewPagerContent;
@@ -26,6 +29,8 @@ public class FavouriteFragment extends SingleFragment {
 	private boolean ifContinue = true;
 	private AdvViewPagerScroller scroller;
 	private ViewGroup viewGroup;
+	private ListView mListView;
+	private MyListViewAdapter mAdapter;
 
 	@Override
 	protected int getLayoutId() {
@@ -40,6 +45,10 @@ public class FavouriteFragment extends SingleFragment {
 				.findViewById(R.id.favourite_viewpager_content);
 		viewGroup = (ViewGroup) view
 				.findViewById(R.id.favourite_circlepoint_group);
+		
+		mListView = (ListView) view.findViewById(R.id.favourite_lv);
+		mAdapter = new MyListViewAdapter(getActivity());
+		mListView.setAdapter(mAdapter);
 		initViewPager();
 	}
 
@@ -86,9 +95,7 @@ public class FavouriteFragment extends SingleFragment {
 		}
 	}
 
-	/*
-	 * 每隔固定时间切换广告栏图片
-	 */
+	
 	private final Handler viewHandler = new Handler() {
 
 		@Override
@@ -133,9 +140,7 @@ public class FavouriteFragment extends SingleFragment {
 	private void initCirclePoint() {
 
 		advImageViews = new ImageView[views.size() - 2];
-		// 广告栏的小圆点图标
 		for (int i = 0; i < views.size() - 2; i++) {
-			// 创建一个ImageView, 并设置宽高. 将该对象放入到数组中
 			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
 					30, 30);
 			params.setMargins(0, 0, 20, 0);
@@ -143,22 +148,17 @@ public class FavouriteFragment extends SingleFragment {
 			iv.setLayoutParams(params);
 			advImageViews[i] = iv;
 
-			// 初始值, 默认第0个选中
 			if (i == 0) {
 				advImageViews[i].setBackgroundResource(R.drawable.yellowdot);
 			} else {
 				advImageViews[i].setBackgroundResource(R.drawable.greendot);
 			}
-			// 将小圆点放入到布局中
 			viewGroup.addView(advImageViews[i]);
 		}
 	}
 
 	private final class AdPageChangeListener implements
 			ViewPager.OnPageChangeListener {
-		/**
-		 * 页面滚动状态发生改变的时候触发
-		 */
 		@Override
 		public void onPageScrollStateChanged(int arg0) {
 			if (arg0 == ViewPager.SCROLL_STATE_DRAGGING
@@ -170,19 +170,12 @@ public class FavouriteFragment extends SingleFragment {
 
 		}
 
-		/**
-		 * 页面滚动的时候触发
-		 */
 		@Override
 		public void onPageScrolled(int arg0, float arg1, int arg2) {
 		}
 
-		/**
-		 * 页面选中的时候触发
-		 */
 		@Override
 		public void onPageSelected(int arg0) {
-			// 获取当前显示的页面是哪个页面
 			int position = arg0;
 			if(position == 0){
 				viewPager.setCurrentItem(views.size() - 1, false);

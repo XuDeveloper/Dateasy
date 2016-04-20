@@ -24,6 +24,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.LocationActivity"></activity>
+        <activity android:name=".activity.AddNewActivity"></activity>
     </application>
 
 </manifest>
