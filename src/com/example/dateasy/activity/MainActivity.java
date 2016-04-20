@@ -9,16 +9,20 @@ import com.example.dateasy.fragment.ViewFragment;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
-public class MainActivity extends Activity implements OnCheckedChangeListener{
+public class MainActivity extends Activity implements OnCheckedChangeListener,OnClickListener{
 
 	private RadioGroup mRadioGroup;
 	private RadioButton mRadioButton;
-	
+	private ImageButton mLocationImageButton;
 	private FavouriteFragment mFavouriteFragment;
 	private ViewFragment mViewFragment;
 	private ManagementFragment mManagementFragment;
@@ -31,7 +35,10 @@ public class MainActivity extends Activity implements OnCheckedChangeListener{
         mRadioGroup = (RadioGroup) findViewById(R.id.bottom_bar_rg);
         mRadioGroup.setOnCheckedChangeListener(this);
         mRadioButton = (RadioButton) findViewById(R.id.star_rb);
+        
         mRadioButton.setChecked(true);
+        mLocationImageButton = (ImageButton)findViewById(R.id.location_ib);
+        mLocationImageButton.setOnClickListener(this);
     }
 
 	@Override
@@ -96,6 +103,16 @@ public class MainActivity extends Activity implements OnCheckedChangeListener{
 		}
 		if (mMyBelongingsFragment != null) {
 			transaction.hide(mMyBelongingsFragment);
+		}
+	}
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		switch(v.getId()){
+			case R.id.location_ib:
+				Intent intent = new Intent(MainActivity.this, LocationActivity.class);
+				startActivity(intent);
 		}
 	}
 

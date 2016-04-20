@@ -53,8 +53,7 @@ public class FavouriteFragment extends SingleFragment {
 		initPageAdapter();
 		initCirclePoint();
 		viewPager.setAdapter(viewPagerAdapter);
-		viewPager.addOnPageChangeListener(new AdPageChangeListener());
-		viewPager.setCurrentItem(Integer.MAX_VALUE / 2);
+		viewPager.setOnPageChangeListener(new AdPageChangeListener());
 		try {
 			Field mScroller = null;
 			mScroller = ViewPager.class.getDeclaredField("mScroller");
@@ -79,7 +78,6 @@ public class FavouriteFragment extends SingleFragment {
 		}).start();
 	}
 
-	// 设置3s的延迟时间
 	private void atomicOption() {
 		try {
 			Thread.sleep(3000);
@@ -95,7 +93,13 @@ public class FavouriteFragment extends SingleFragment {
 
 		@Override
 		public void handleMessage(Message msg) {
-			viewPager.setCurrentItem(msg.what);
+			int position = msg.what;
+			if(position == views.size()){
+				viewPager.setCurrentItem(1, false);
+				viewPager.setCurrentItem(2);
+			}else{
+				viewPager.setCurrentItem(msg.what);
+			}
 			super.handleMessage(msg);
 		}
 
@@ -115,20 +119,22 @@ public class FavouriteFragment extends SingleFragment {
 		img4.setBackgroundResource(R.drawable.outdoor_activities);
 		img5.setBackgroundResource(R.drawable.party);
 		img6.setBackgroundResource(R.drawable.recreational_activities);
+		views.add(img6);
 		views.add(img1);
 		views.add(img2);
 		views.add(img3);
 		views.add(img4);
 		views.add(img5);
 		views.add(img6);
+		views.add(img1);
 		viewPagerAdapter = new FavouriteAdvViewPagerAdapter(views);
 	}
 
 	private void initCirclePoint() {
 
-		advImageViews = new ImageView[views.size()];
+		advImageViews = new ImageView[views.size() - 2];
 		// 广告栏的小圆点图标
-		for (int i = 0; i < views.size(); i++) {
+		for (int i = 0; i < views.size() - 2; i++) {
 			// 创建一个ImageView, 并设置宽高. 将该对象放入到数组中
 			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
 					30, 30);
@@ -177,9 +183,15 @@ public class FavouriteFragment extends SingleFragment {
 		@Override
 		public void onPageSelected(int arg0) {
 			// 获取当前显示的页面是哪个页面
-			int position = ((arg0 - Integer.MAX_VALUE / 2) % advImageViews.length) - 1;
-			if (position < 0) {
-				position = advImageViews.length + position;
+			int position = arg0;
+			if(position == 0){
+				viewPager.setCurrentItem(views.size() - 1, false);
+				viewPager.setCurrentItem(views.size() - 2);
+				position = advImageViews.length - 1;
+			}else if(position == views.size() - 1){
+				position = 0;
+			}else{
+				position = position - 1;
 			}
 			for (int i = 0; i < advImageViews.length; i++) {
 				advImageViews[position]
