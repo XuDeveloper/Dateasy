@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/management_listview_item_bg" >
+
+        <TextView
+            android:id="@+id/management_lv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:text="假面舞会"
+            android:textColor="#666666"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/management_lv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/management_lv_title"
+            android:layout_below="@id/management_lv_title"
+            android:layout_marginTop="8dp"
+            android:text="3天前发布了该活动"
+            android:textColor="#999999"
+            android:textSize="12sp" />
+
+        <FrameLayout
+            android:id="@+id/management_lv_type1"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/management_lv_title"
+            android:layout_below="@id/management_lv_time"
+            android:background="@drawable/management_lv_item_type1_bg" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="2dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginTop="2dp"
+                android:text="组织聚会"
+                android:textColor="#00b6bc"
+                android:textSize="10sp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/frameLayout1"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/management_lv_time"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@id/management_lv_type1"
+            android:background="@drawable/management_lv_item_type2_bg" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="2dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginTop="2dp"
+                android:text="报名中"
+                android:textColor="#f37029"
+                android:textSize="10sp" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/management_lv_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="16dp"
+            android:text="23"
+            android:textColor="#f37029"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/frameLayout1"
+            android:layout_toLeftOf="@id/management_lv_number"
+            android:text="报名"
+            android:textColor="#666666"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -8,15 +8,15 @@
         android:layout_height="fill_parent"
         android:cacheColorHint="@android:color/transparent"
         android:footerDividersEnabled="false"
-        android:headerDividersEnabled="false"
-        android:background="#ffffff" />
+        android:background="#ffffff"
+        android:divider="#eeeeee"
+		android:dividerHeight="1dp" />
 
     <com.example.pinnedheaderlistviewdemo.view.BladeView
         android:id="@+id/mLetterListView"
-        android:layout_width="30dp"
+        android:layout_width="25dp"
         android:layout_height="fill_parent"
         android:layout_alignParentRight="true"
-
         android:background="#eeeeee" />
 
 </RelativeLayout>

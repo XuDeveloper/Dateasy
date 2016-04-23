@@ -4,6 +4,7 @@ import com.example.dateasy.R;
 import com.example.dateasy.fragment.ManagementFragment;
 import com.example.dateasy.fragment.MyBelongingsFragment;
 import com.example.dateasy.fragment.FavouriteFragment;
+import com.example.dateasy.fragment.SingleFragment;
 import com.example.dateasy.fragment.ViewFragment;
 import com.example.dateasy.util.Utils;
 
@@ -12,12 +13,16 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.TextView;
+
 
 public class MainActivity extends Activity implements OnCheckedChangeListener,OnClickListener{
 
@@ -29,7 +34,8 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,On
 	private ViewFragment mViewFragment;
 	private ManagementFragment mManagementFragment;
 	private MyBelongingsFragment mMyBelongingsFragment;
-	
+	private TextView mActionBar_tv;
+	private ImageButton mSearch_bt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,12 +43,14 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,On
         mRadioGroup = (RadioGroup) findViewById(R.id.bottom_bar_rg);
         mRadioGroup.setOnCheckedChangeListener(this);
         mRadioButton = (RadioButton) findViewById(R.id.star_rb);
-        
+        mActionBar_tv = (TextView) findViewById(R.id.main_actionbar_tv);
+        mSearch_bt = (ImageButton) findViewById(R.id.search_ib);
         mRadioButton.setChecked(true);
-        mLocationImageButton = (ImageButton)findViewById(R.id.location_ib);
+        mLocationImageButton = (ImageButton)findViewById(R.id.main_location_ib);
         mLocationImageButton.setOnClickListener(this);
         mAddImageButton = (RadioButton) findViewById(R.id.add_rb);
         mAddImageButton.setOnClickListener(this);
+        mSearch_bt.setOnClickListener(this);
     }
 
 	@Override
@@ -60,6 +68,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,On
 			else {
 				transaction.show(mFavouriteFragment);
 			}
+			mActionBar_tv.setText("精选");
 			break;
 
 		case R.id.view_rb:
@@ -70,6 +79,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,On
 			else {
 				transaction.show(mViewFragment);
 			}
+			mActionBar_tv.setText("发现");
 			break;
 			
 		case R.id.management_rb:
@@ -80,6 +90,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,On
 			else {
 				transaction.show(mManagementFragment);
 			}
+			mActionBar_tv.setText("管理");
 			break;
 			
 		case R.id.mybelongings_rb:
@@ -90,6 +101,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,On
 			else {
 				transaction.show(mMyBelongingsFragment);
 			}
+			mActionBar_tv.setText("我的");
 			break;
 		}
 		transaction.commit();
@@ -114,12 +126,14 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,On
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		switch(v.getId()){
-			case R.id.location_ib:
+			case R.id.main_location_ib:
 				Utils.toAnotherActivity(MainActivity.this, LocationActivity.class);
 				break;
-				
 			case R.id.add_rb:
 				Utils.toAnotherActivity(MainActivity.this, AddNewActivity.class);
+				break;
+			case R.id.search_ib:
+				Utils.toAnotherActivity(MainActivity.this, SearchActivity.class);
 				break;
 		}
 	}

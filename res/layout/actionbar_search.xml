@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="#ffffff"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        >
+        <ImageButton 
+            android:id="@+id/search_back"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/location_back"
+            android:scaleType="fitCenter"
+            android:background="#ffffff"
+            android:layout_marginLeft="16dp"
+            android:layout_centerVertical="true"/>
+        <RelativeLayout 
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="16dp"
+            android:layout_toRightOf="@id/search_back"
+            android:layout_centerVertical="true"
+            android:background="@drawable/search_bg">
+			
+            <ImageButton 
+			    android:id="@+id/search_search_ib"
+			    android:layout_width="20dp"
+			    android:layout_height="20dp"
+			    android:src="@drawable/searchicon"
+			    android:scaleType="fitCenter"
+			    android:background="#ffffff"
+			    android:layout_alignParentRight="true"
+			    android:layout_centerVertical="true"
+			    android:layout_marginRight="4dp"/>
+            <EditText
+                android:paddingLeft="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:hint="输入点什么..."
+                android:layout_centerVertical="true"
+                android:textSize="16sp" 
+                android:layout_toLeftOf="@id/search_search_ib"
+                android:background="@null">
+
+            </EditText>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

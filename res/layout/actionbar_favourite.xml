@@ -5,7 +5,7 @@
     android:background="#ffffff" >
 
     <ImageButton
-        android:id="@+id/location_ib"
+        android:id="@+id/main_location_ib"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_alignParentLeft="true"
@@ -14,16 +14,17 @@
         android:background="@drawable/location" />
 
     <TextView
-        android:id="@+id/location_tv"
+        android:id="@+id/main_location_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@id/location_ib"
+        android:layout_toRightOf="@id/main_location_ib"
         android:text="广州"
         android:textColor="#666666"
         android:textSize="16sp" />
 
     <TextView
+        android:id="@+id/main_actionbar_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"

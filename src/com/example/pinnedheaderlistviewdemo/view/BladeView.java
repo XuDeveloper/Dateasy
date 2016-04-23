@@ -18,7 +18,7 @@ import com.example.dateasy.*;;
 
 public class BladeView extends View {
 	private OnItemClickListener mOnItemClickListener;
-	String[] b = { "热点", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K",
+	String[] b = { "热门", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K",
 			"L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X",
 			"Y", "Z" };
 	int choose = -1;
@@ -52,8 +52,9 @@ public class BladeView extends View {
 		int singleHeight = height / b.length;
 		for (int i = 0; i < b.length; i++) {
 			paint.setColor(Color.parseColor("#ff2f2f2f"));
-//			paint.setTypeface(Typeface.DEFAULT_BOLD);	//加粗
-			paint.setTextSize(getResources().getDimensionPixelSize(R.dimen.bladeview_fontsize));//设置字体大小
+//			paint.setTypeface(Typeface.DEFAULT_BOLD);	//鍔犵矖
+			paint.setTextSize((float) 10.0);
+			paint.setTextSize(getResources().getDimensionPixelSize(R.dimen.bladeview_fontsize));//璁剧疆瀛椾綋澶у皬
 			paint.setFakeBoldText(true);
 			paint.setAntiAlias(true);
 			if (i == choose) {
@@ -79,7 +80,7 @@ public class BladeView extends View {
 			case MotionEvent.ACTION_DOWN:
 				showBkg = true;
 				if (oldChoose != c) {
-					if (c >= 0 && c < b.length) {	//让第一个字母响应点击事件
+					if (c >= 0 && c < b.length) {	//璁╃涓�涓瓧姣嶅搷搴旂偣鍑讳簨浠�
 						performItemClicked(c);
 						choose = c;
 						invalidate();
@@ -90,7 +91,7 @@ public class BladeView extends View {
 				break;
 			case MotionEvent.ACTION_MOVE:
 				if (oldChoose != c) {
-					if (c >= 0 && c < b.length) {	//让第一个字母响应点击事件
+					if (c >= 0 && c < b.length) {	//璁╃涓�涓瓧姣嶅搷搴旂偣鍑讳簨浠�
 						performItemClicked(c);
 						choose = c;
 						invalidate();
@@ -131,7 +132,7 @@ public class BladeView extends View {
 
 		String text = "";
 		if (item == 0) {
-			text = "热点";
+			text = "热门";
 		} else {
 			text = Character.toString((char) ('A' + item - 1));
 		}

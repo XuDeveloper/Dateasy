@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RadioGroup
+        android:id="@+id/management_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/management_release"
+            style="@style/bottom_bar_rt_style"
+            android:gravity="center"
+            android:text="我发布的"
+            android:textColor="@drawable/management_rb_tv"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/management_register"
+            style="@style/bottom_bar_rt_style"
+            android:gravity="center"
+            android:text="管理报名"
+            android:textColor="@drawable/management_rb_tv"
+            android:textSize="12sp" />
+    </RadioGroup>
+
+</LinearLayout>

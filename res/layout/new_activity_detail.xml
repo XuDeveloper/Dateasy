@@ -31,14 +31,14 @@
         <Button
             android:id="@+id/announce_bt"
             android:layout_width="40dp"
-            android:layout_height="20dp"
+            android:layout_height="24dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="16dp"
             android:background="@drawable/announce"
             android:text="发布"
             android:textColor="#ffffff"
-            android:textSize="12sp" />
+            android:textSize="14sp" />
     </RelativeLayout>
 
     <LinearLayout

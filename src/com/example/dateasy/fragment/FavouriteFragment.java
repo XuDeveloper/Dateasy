@@ -14,6 +14,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -30,6 +31,7 @@ public class FavouriteFragment extends SingleFragment {
 	private AdvViewPagerScroller scroller;
 	private ViewGroup viewGroup;
 	private ListView mListView;
+	private int mCurrentItem;
 	private MyListViewAdapter mAdapter;
 
 	@Override
@@ -45,7 +47,7 @@ public class FavouriteFragment extends SingleFragment {
 				.findViewById(R.id.favourite_viewpager_content);
 		viewGroup = (ViewGroup) view
 				.findViewById(R.id.favourite_circlepoint_group);
-		
+
 		mListView = (ListView) view.findViewById(R.id.favourite_lv);
 		mAdapter = new MyListViewAdapter(getActivity());
 		mListView.setAdapter(mAdapter);
@@ -62,7 +64,7 @@ public class FavouriteFragment extends SingleFragment {
 		initPageAdapter();
 		initCirclePoint();
 		viewPager.setAdapter(viewPagerAdapter);
-		viewPager.setOnPageChangeListener(new AdPageChangeListener());
+		viewPager.addOnPageChangeListener(new AdPageChangeListener());
 		try {
 			Field mScroller = null;
 			mScroller = ViewPager.class.getDeclaredField("mScroller");
@@ -79,7 +81,8 @@ public class FavouriteFragment extends SingleFragment {
 			public void run() {
 				while (true) {
 					if (ifContinue) {
-						viewHandler.sendEmptyMessage(viewPager.getCurrentItem() + 1);
+						int position = viewPager.getCurrentItem() + 1;
+						viewHandler.sendEmptyMessage(position);
 						atomicOption();
 					}
 				}
@@ -95,18 +98,23 @@ public class FavouriteFragment extends SingleFragment {
 		}
 	}
 
-	
 	private final Handler viewHandler = new Handler() {
 
 		@Override
 		public void handleMessage(Message msg) {
 			int position = msg.what;
-			if(position == views.size()){
+			ifContinue = false;
+			Log.i("TAG", position + "");
+			if (position == views.size()) {
+				Log.i("show", "1");
 				viewPager.setCurrentItem(1, false);
+				Log.i("show", "2");
 				viewPager.setCurrentItem(2);
-			}else{
-				viewPager.setCurrentItem(msg.what);
+				Log.i("show", "3");
+			} else {
+				viewPager.setCurrentItem(position);
 			}
+			ifContinue = true;
 			super.handleMessage(msg);
 		}
 
@@ -177,22 +185,39 @@ public class FavouriteFragment extends SingleFragment {
 		@Override
 		public void onPageSelected(int arg0) {
 			int position = arg0;
-			if(position == 0){
+			if (position == 0) {
 				viewPager.setCurrentItem(views.size() - 1, false);
 				viewPager.setCurrentItem(views.size() - 2);
 				position = advImageViews.length - 1;
-			}else if(position == views.size() - 1){
+			} else if (position == views.size() - 1) {
 				position = 0;
-			}else{
+			} else {
 				position = position - 1;
 			}
-			for (int i = 0; i < advImageViews.length; i++) {
-				advImageViews[position]
-						.setBackgroundResource(R.drawable.yellowdot);
-				if (position != i) {
-					advImageViews[i].setBackgroundResource(R.drawable.greendot);
-				}
+			advImageViews[position].setBackgroundResource(R.drawable.yellowdot);
+			if (position == 0) {
+				advImageViews[advImageViews.length - 1]
+						.setBackgroundResource(R.drawable.greendot);
+				advImageViews[position + 1]
+						.setBackgroundResource(R.drawable.greendot);
+			} else if (position == (advImageViews.length - 1)) {
+				advImageViews[position - 1]
+						.setBackgroundResource(R.drawable.greendot);
+				advImageViews[0].setBackgroundResource(R.drawable.greendot);
+			} else {
+				advImageViews[position + 1]
+						.setBackgroundResource(R.drawable.greendot);
+				advImageViews[position - 1]
+						.setBackgroundResource(R.drawable.greendot);
 			}
+
+			// for (int i = 0; i < advImageViews.length; i++) {
+			// advImageViews[position]
+			// .setBackgroundResource(R.drawable.yellowdot);
+			// if (position != i) {
+			// advImageViews[i].setBackgroundResource(R.drawable.greendot);
+			// }
+			// }
 		}
 	}
 

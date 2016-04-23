@@ -11,14 +11,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.BaseAdapter;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class LocationGridViewAdapter extends BaseAdapter {
 	private List<City> mList;
 	private Context mContext;
 	private LayoutInflater mInflater;
-
+	private float scale;
 	public LocationGridViewAdapter(Context mContext, List<City> mList, int count) {
 		this.mContext = mContext;
 		this.mList = new ArrayList<City>();
@@ -26,6 +29,7 @@ public class LocationGridViewAdapter extends BaseAdapter {
 			this.mList.add(mList.get(i));
 		}
 		mInflater = LayoutInflater.from(mContext);
+		scale = mContext.getResources().getDisplayMetrics().density;
 	}
 
 	@Override
@@ -51,11 +55,13 @@ public class LocationGridViewAdapter extends BaseAdapter {
 		// TODO Auto-generated method stub
 		View view;
 		ViewHolder holder;
+		FrameLayout fl = new FrameLayout(mContext);
 		if (convertView == null) {
 			holder = new ViewHolder();
 			view = mInflater.inflate(R.layout.location_gv_item, null);
 			holder.city_name_tv = (TextView) view
 					.findViewById(R.id.gv_city_name_tv);
+			fl = (FrameLayout)view.findViewById(R.id.location_gv_item_fl);
 			view.setTag(holder);
 		} else {
 			view = convertView;
