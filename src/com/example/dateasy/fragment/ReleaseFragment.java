@@ -13,7 +13,7 @@ public class ReleaseFragment extends SingleFragment {
 	@Override
 	protected int getLayoutId() {
 		// TODO Auto-generated method stub
-		return R.layout.release_fragment;
+		return R.layout.management_release_fragment;
 	}
 
 	@Override

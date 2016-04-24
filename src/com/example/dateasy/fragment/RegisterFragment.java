@@ -9,7 +9,7 @@ public class RegisterFragment extends SingleFragment{
 	@Override
 	protected int getLayoutId() {
 		// TODO Auto-generated method stub
-		return R.layout.register_fragment;
+		return R.layout.management_register_fragment;
 	}
 
 	@Override

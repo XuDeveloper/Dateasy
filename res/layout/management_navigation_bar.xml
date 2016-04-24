@@ -17,6 +17,7 @@
             android:gravity="center"
             android:text="我发布的"
             android:textColor="@drawable/management_rb_tv"
+            android:drawableBottom="@drawable/line_bg"
             android:textSize="12sp" />
 
         <RadioButton
@@ -25,6 +26,7 @@
             android:gravity="center"
             android:text="管理报名"
             android:textColor="@drawable/management_rb_tv"
+            android:drawableBottom="@drawable/line_bg"
             android:textSize="12sp" />
     </RadioGroup>
 
