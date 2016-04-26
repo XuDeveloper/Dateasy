@@ -15,6 +15,7 @@ import android.support.v4.view.ViewPager;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -29,7 +30,8 @@ import com.example.dateasy.adapter.MyListViewAdapter;
 import com.example.dateasy.ui.AdvViewPagerScroller;
 import com.example.dateasy.util.Utils;
 
-public class FavouriteFragment extends SingleFragment {
+public class FavouriteFragment extends SingleFragment implements
+		OnClickListener {
 	private LinearLayout viewPagerContent;
 	private ViewPager viewPager;
 	private List<ImageView> views;
@@ -68,8 +70,7 @@ public class FavouriteFragment extends SingleFragment {
 				Utils.toAnotherActivity(getActivity(), SignupActivity.class);
 			}
 		});
-		
-		
+
 		initViewPager();
 	}
 
@@ -147,6 +148,12 @@ public class FavouriteFragment extends SingleFragment {
 		ImageView img4 = new ImageView(getActivity());
 		ImageView img5 = new ImageView(getActivity());
 		ImageView img6 = new ImageView(getActivity());
+		img1.setId(R.id.img1_id);
+		img2.setId(R.id.img2_id);
+		img3.setId(R.id.img3_id);
+		img4.setId(R.id.img4_id);
+		img5.setId(R.id.img5_id);
+		img6.setId(R.id.img6_id);
 		img1.setBackgroundResource(R.drawable.custom);
 		img2.setBackgroundResource(R.drawable.activities_enrollment);
 		img3.setBackgroundResource(R.drawable.meeting);
@@ -237,6 +244,34 @@ public class FavouriteFragment extends SingleFragment {
 			// advImageViews[i].setBackgroundResource(R.drawable.greendot);
 			// }
 			// }
+		}
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.img1_id:
+
+			break;
+
+		case R.id.img2_id:
+
+			break;
+
+		case R.id.img3_id:
+
+			break;
+
+		case R.id.img4_id:
+
+			break;
+
+		case R.id.img5_id:
+
+			break;
+		case R.id.img6_id:
+
+			break;
 		}
 	}
 

@@ -110,7 +110,7 @@
             android:orientation="vertical" >
 
             <ImageView
-                android:id="@+id/activities"
+                android:id="@+id/activities_signup"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:paddingTop="16dp"
@@ -127,14 +127,14 @@
         </LinearLayout>
     </LinearLayout>
 
-    <ImageView
+    <ImageButton
         android:id="@+id/surroundings_iv"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/surroundings" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/weekend_iv"
         android:layout_width="match_parent"
         android:layout_height="80dp"
@@ -144,9 +144,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingBottom="8dp"
         android:paddingLeft="16dp"
         android:paddingTop="8dp"
-        android:paddingBottom="8dp"
         android:text="猜你喜欢"
         android:textColor="#666666"
         android:textSize="16sp" />

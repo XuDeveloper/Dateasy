@@ -49,5 +49,7 @@ public class FavouriteAdvViewPagerAdapter extends PagerAdapter {
 		container.addView(view);
 		return views.get(position);
 	}
+	
+	
 
 }
