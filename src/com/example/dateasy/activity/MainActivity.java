@@ -21,15 +21,17 @@ import android.widget.TextView;
 
 /**
  * 主Activity，生成主界面
+ * 
  * @author Administrator
- *
+ * 
  */
 public class MainActivity extends Activity implements OnCheckedChangeListener,
 		OnClickListener {
 
 	private RadioGroup mRadioGroup;
-	private RadioButton mRadioButton;
+	private RadioButton mStarRadioButton;
 	private RadioButton mAddImageButton;
+	private RadioButton mManagementRadioButton;
 	private ImageButton mLocationImageButton;
 	private FavouriteFragment mFavouriteFragment;
 	private ViewFragment mViewFragment;
@@ -43,18 +45,27 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		initViews();
+
+		// 判断当前显示哪一个framgent
+		if (getIntent().getExtras() != null) {
+			if (getIntent().getExtras().getBoolean("RETURN_TO_MANAGEMENT")) {
+				mManagementRadioButton.setChecked(true);
+			}
+		} else {
+			mStarRadioButton.setChecked(true);
+		}
 	}
 
 	private void initViews() {
 		mRadioGroup = (RadioGroup) findViewById(R.id.bottom_bar_rg);
-		mRadioGroup.setOnCheckedChangeListener(this);
-		mRadioButton = (RadioButton) findViewById(R.id.star_rb);
+		mStarRadioButton = (RadioButton) findViewById(R.id.star_rb);
+		mManagementRadioButton = (RadioButton) findViewById(R.id.management_rb);
 		mActionBar_tv = (TextView) findViewById(R.id.main_actionbar_tv);
 		mSearch_bt = (ImageButton) findViewById(R.id.search_ib);
-		mRadioButton.setChecked(true);
 		mLocationImageButton = (ImageButton) findViewById(R.id.main_location_ib);
-		mLocationImageButton.setOnClickListener(this);
 		mAddImageButton = (RadioButton) findViewById(R.id.add_rb);
+		mRadioGroup.setOnCheckedChangeListener(this);
+		mLocationImageButton.setOnClickListener(this);
 		mAddImageButton.setOnClickListener(this);
 		mSearch_bt.setOnClickListener(this);
 	}
@@ -114,6 +125,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
 
 	/**
 	 * 隐藏所有Fragment
+	 * 
 	 * @param transaction
 	 */
 	private void hideAllFragment(FragmentTransaction transaction) {

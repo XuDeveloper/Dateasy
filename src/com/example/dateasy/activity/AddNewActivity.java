@@ -54,6 +54,7 @@ public class AddNewActivity extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
+		Bundle bundle = new Bundle();
 		switch (v.getId()) {
 		case R.id.location_back_ib:
 			finish();
@@ -62,33 +63,39 @@ public class AddNewActivity extends Activity implements OnClickListener {
 			break;
 
 		case R.id.outdooractivities_new_ib:
+			bundle.putString("TITLE", Const.OUTDOOR_ACTIVITIES);
 			Utils.toAnotherActivity(AddNewActivity.this, DetailActivity.class,
-					"TITLE", Const.OUTDOOR_ACTIVITIES);
+					bundle);
 			break;
 
 		case R.id.gathering_new_ib:
+			bundle.putString("TITLE", Const.GATHERING);
 			Utils.toAnotherActivity(AddNewActivity.this, DetailActivity.class,
-					"TITLE", Const.GATHERING);
+					bundle);
 			break;
 
 		case R.id.meeting_new_ib:
+			bundle.putString("TITLE", Const.MEETING);
 			Utils.toAnotherActivity(AddNewActivity.this, DetailActivity.class,
-					"TITLE", Const.MEETING);
+					bundle);
 			break;
 
 		case R.id.entertainment_new_ib:
+			bundle.putString("TITLE", Const.ENTERTAINMENT);
 			Utils.toAnotherActivity(AddNewActivity.this, DetailActivity.class,
-					"TITLE", Const.ENTERTAINMENT);
+					bundle);
 			break;
 
 		case R.id.activities_signup_new_ib:
+			bundle.putString("TITLE", Const.ACTIVITY_SIGNUP);
 			Utils.toAnotherActivity(AddNewActivity.this, DetailActivity.class,
-					"TITLE", Const.ACTIVITY_SIGNUP);
+					bundle);
 			break;
 
 		case R.id.others_ib:
+			bundle.putString("TITLE", Const.OTHERS);
 			Utils.toAnotherActivity(AddNewActivity.this, DetailActivity.class,
-					"TITLE", Const.OTHERS);
+					bundle);
 			break;
 		}
 	}

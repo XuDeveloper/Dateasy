@@ -9,12 +9,6 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.dateasy.R;
-import com.example.dateasy.activity.MainActivity;
-import com.example.dateasy.adapter.FavouriteAdvViewPagerAdapter;
-import com.example.dateasy.adapter.MyListViewAdapter;
-import com.example.dateasy.ui.AdvViewPagerScroller;
-
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
@@ -22,9 +16,18 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+
+import com.example.dateasy.R;
+import com.example.dateasy.activity.SignupActivity;
+import com.example.dateasy.adapter.FavouriteAdvViewPagerAdapter;
+import com.example.dateasy.adapter.MyListViewAdapter;
+import com.example.dateasy.ui.AdvViewPagerScroller;
+import com.example.dateasy.util.Utils;
 
 public class FavouriteFragment extends SingleFragment {
 	private LinearLayout viewPagerContent;
@@ -56,6 +59,17 @@ public class FavouriteFragment extends SingleFragment {
 		mListView = (ListView) view.findViewById(R.id.favourite_lv);
 		mAdapter = new MyListViewAdapter(getActivity());
 		mListView.setAdapter(mAdapter);
+		mListView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				// TODO Auto-generated method stub
+				Utils.toAnotherActivity(getActivity(), SignupActivity.class);
+			}
+		});
+		
+		
 		initViewPager();
 	}
 

@@ -27,6 +27,8 @@
         <activity android:name=".activity.AddNewActivity"></activity>
         <activity android:name=".activity.SearchActivity"></activity>
         <activity android:name=".activity.DetailActivity"></activity>
+        <activity android:name=".activity.AnnounceSuccessActivity"></activity>
+        <activity android:name=".activity.SignupActivity"></activity>
     </application>
 
 </manifest>

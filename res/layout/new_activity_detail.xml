@@ -58,6 +58,7 @@
             android:textSize="12sp" />
 
         <EditText
+            android:id="@+id/new_activity_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
@@ -79,6 +80,7 @@
             android:textSize="12sp" />
 
         <EditText
+            android:id="@+id/new_activity_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
@@ -100,6 +102,7 @@
             android:textSize="12sp" />
 
         <EditText
+            android:id="@+id/new_activity_end_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
@@ -121,6 +124,7 @@
             android:textSize="12sp" />
 
         <EditText
+            android:id="@+id/new_activity_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
@@ -130,7 +134,8 @@
         android:layout_height="160dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="8dp"
-        android:background="@drawable/blank2" >
+        android:background="@drawable/blank2"
+        android:orientation="vertical" >
 
         <TextView
             android:layout_width="65dp"
@@ -143,8 +148,10 @@
             android:textSize="12sp" />
 
         <EditText
+            android:id="@+id/new_activity_description"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp" />
     </LinearLayout>
 
     <LinearLayout
