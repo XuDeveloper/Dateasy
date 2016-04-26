@@ -9,5 +9,12 @@ public class Utils {
 		Intent intent = new Intent(from, to);
 		from.startActivity(intent);
 	}
-	
+
+	public static void toAnotherActivity(Context from, Class to, String name,
+			String data) {
+		Intent intent = new Intent(from, to);
+		intent.putExtra(name, data);
+		from.startActivity(intent);
+	}
+
 }

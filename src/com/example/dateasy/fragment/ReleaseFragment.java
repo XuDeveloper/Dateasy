@@ -5,9 +5,11 @@ import com.example.dateasy.adapter.ManagementListViewAdapter;
 
 import android.view.View;
 import android.widget.ListView;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-
+/**
+ * 管理界面的我发布的Fragment
+ * @author Xu
+ *
+ */
 public class ReleaseFragment extends SingleFragment {
 	private ListView mListView;
 	@Override

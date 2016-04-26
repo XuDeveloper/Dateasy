@@ -11,7 +11,11 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
-
+/**
+ * 管理界面Fragment
+ * @author Xu
+ *
+ */
 public class ManagementFragment extends SingleFragment implements OnCheckedChangeListener{
 	private ListView mListView;
 	private RadioGroup mRadioGroup;

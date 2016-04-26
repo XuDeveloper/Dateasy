@@ -3,7 +3,11 @@ package com.example.dateasy.fragment;
 import com.example.dateasy.R;
 
 import android.view.View;
-
+/**
+ * 我的界面Fragment
+ * @author Xu
+ *
+ */
 public class MyBelongingsFragment extends SingleFragment {
 
 	@Override

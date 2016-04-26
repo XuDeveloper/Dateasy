@@ -7,6 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 
+/**
+ * 首页轮转的图片Adapter
+ * @author Xu
+ *
+ */
 public class FavouriteAdvViewPagerAdapter extends PagerAdapter {
 	private List views;
 

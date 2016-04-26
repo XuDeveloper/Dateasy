@@ -16,7 +16,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.dateasy.R;
 import com.example.pinnedheaderlistviewdemo.City;
@@ -31,20 +33,40 @@ import com.example.pinnedheaderlistviewdemo.view.BladeView.OnItemClickListener;
 import com.example.pinnedheaderlistviewdemo.view.NoScrollGridView;
 import com.example.pinnedheaderlistviewdemo.view.PinnedHeaderListView;
 
-public class LocationActivity extends Activity implements OnClickListener,OnItemClickListener{
-	
+/**
+ * LocationActivity，选择城市界面
+ * 
+ * @author Administrator
+ * 
+ */
+public class LocationActivity extends Activity implements OnClickListener,
+		OnItemClickListener {
+
 	private static final int COPY_DB_SUCCESS = 10;
 	private static final int COPY_DB_FAILED = 11;
 	protected static final int QUERY_CITY_FINISH = 12;
-	
+	// 获取存储地址
+	public static String APP_DIR = Environment.getExternalStorageDirectory()
+			.getAbsolutePath() + "/test/";
+	private static final String ALL_CHARACTER = "#ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	protected static final String TAG = null;
+	private String[] sections = { "热门", "A", "B", "C", "D", "E", "F", "G", "H",
+			"I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U",
+			"V", "W", "X", "Y", "Z" };
+
 	private MySectionIndexer mIndexer;
 	private NoScrollGridView mGridView;
 	private LocationGridViewAdapter mGridViewAdapter;
 	private float scale;
 	private List<City> cityList = new ArrayList<City>();
 	private List<City> allCityList = new ArrayList<City>();
-	public static String APP_DIR = Environment.getExternalStorageDirectory()
-			.getAbsolutePath() + "/test/";
+	private DBHelper helper;
+	private ImageButton mBack_ib;
+	private CityListAdapter mCityListAdapter;
+
+	private int[] counts;
+	private int[] countsAll;
+	private PinnedHeaderListView mListView;
 	private Handler handler = new Handler() {
 
 		public void handleMessage(Message msg) {
@@ -62,7 +84,7 @@ public class LocationActivity extends Activity implements OnClickListener,OnItem
 					Log.i("TAG", cityList.size() + "");
 					mListView.addHeaderView(mGridView);
 					mGridView.setAdapter(mGridViewAdapter);
-					mGridView.setPadding(0, (int)(40 * scale + 0.5f), 25, 0);
+					mGridView.setPadding(0, (int) (40 * scale + 0.5f), 25, 0);
 					mListView.setAdapter(mCityListAdapter);
 
 					mListView.setOnScrollListener(mCityListAdapter);
@@ -85,18 +107,6 @@ public class LocationActivity extends Activity implements OnClickListener,OnItem
 			}
 		};
 	};
-	private DBHelper helper;
-	private ImageButton mBack_ib;
-	private CityListAdapter mCityListAdapter;
-	private static final String ALL_CHARACTER = "#ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	protected static final String TAG = null;
-
-	private String[] sections = { "热门", "A", "B", "C", "D", "E", "F", "G", "H",
-			"I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U",
-			"V", "W", "X", "Y", "Z" };
-	private int[] counts;
-	private int[] countsAll;
-	private PinnedHeaderListView mListView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -109,12 +119,15 @@ public class LocationActivity extends Activity implements OnClickListener,OnItem
 		findView();
 	}
 
+	/**
+	 * 复制数据库文件到手机内存卡
+	 */
 	private void copyDBFile() {
 		File file = new File(APP_DIR + "/city.db");
 		if (file.exists()) {
 			requestData();
 
-		} else { 
+		} else {
 			Runnable task = new Runnable() {
 
 				@Override
@@ -126,7 +139,9 @@ public class LocationActivity extends Activity implements OnClickListener,OnItem
 		}
 	}
 
-	
+	/**
+	 * 将Assets的数据库文件复制到手机内存卡
+	 */
 	private void copyAssetsFile2SDCard(String fileName) {
 
 		File desDir = new File(APP_DIR);
@@ -134,7 +149,6 @@ public class LocationActivity extends Activity implements OnClickListener,OnItem
 			desDir.mkdirs();
 		}
 
-		
 		File file = new File(APP_DIR + fileName);
 		if (file.exists()) {
 			file.delete();
@@ -168,24 +182,23 @@ public class LocationActivity extends Activity implements OnClickListener,OnItem
 			public void run() {
 				CityDao dao = new CityDao(helper);
 
-				List<City> hot = dao.getHotCities(); 
-				List<City> all = dao.getAllCities(); 
+				List<City> hot = dao.getHotCities();
+				List<City> all = dao.getAllCities();
 
 				if (all != null) {
 
-					Collections.sort(all, new MyComparator()); 
+					Collections.sort(all, new MyComparator());
 
 					cityList.addAll(hot);
 					cityList.addAll(all);
 					allCityList.addAll(all);
 
-					
 					counts = new int[sections.length];
 					countsAll = new int[sections.length];
 					countsAll[0] = 0;
-					counts[0] = hot.size(); 
+					counts[0] = hot.size();
 
-					for (City city : all) { 
+					for (City city : all) {
 
 						String firstCharacter = city.getSortKey();
 						int index = ALL_CHARACTER.indexOf(firstCharacter);
@@ -216,9 +229,9 @@ public class LocationActivity extends Activity implements OnClickListener,OnItem
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		switch(v.getId()){
-			case R.id.location_back_ib:
-				finish();
+		switch (v.getId()) {
+		case R.id.location_back_ib:
+			finish();
 		}
 	}
 
@@ -238,7 +251,7 @@ public class LocationActivity extends Activity implements OnClickListener,OnItem
 
 			if (position != -1) {
 				mListView.setSelection(position);
-			} 
+			}
 		}
 	}
 

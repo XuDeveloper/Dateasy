@@ -5,7 +5,11 @@ import com.example.dateasy.adapter.MyListViewAdapter;
 
 import android.view.View;
 import android.widget.ListView;
-
+/**
+ * 发现Fragment
+ * @author Xu
+ *
+ */
 public class ViewFragment extends SingleFragment {
 
 	private ListView mListView;

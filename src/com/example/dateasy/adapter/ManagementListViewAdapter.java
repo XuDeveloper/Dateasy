@@ -8,6 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+/**
+ * 管理界面的listview adapter
+ * @author Xu
+ *
+ */
 public class ManagementListViewAdapter extends BaseAdapter{
 	private Context mContext;
 	public ManagementListViewAdapter(Context mContext){

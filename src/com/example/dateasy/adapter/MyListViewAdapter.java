@@ -8,6 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+/**
+ * ListView的Adapter
+ * @author Xu
+ *
+ */
 public class MyListViewAdapter extends BaseAdapter {
 
 	private Context mContext;

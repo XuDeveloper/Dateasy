@@ -4,6 +4,11 @@ import com.example.dateasy.R;
 
 import android.view.View;
 
+/**
+ * 管理界面的管理报名界面Fragment
+ * @author Xu
+ *
+ */
 public class RegisterFragment extends SingleFragment{
 
 	@Override

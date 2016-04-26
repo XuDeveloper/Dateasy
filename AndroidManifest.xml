@@ -26,6 +26,7 @@
         <activity android:name=".activity.LocationActivity"></activity>
         <activity android:name=".activity.AddNewActivity"></activity>
         <activity android:name=".activity.SearchActivity"></activity>
+        <activity android:name=".activity.DetailActivity"></activity>
     </application>
 
 </manifest>

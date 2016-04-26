@@ -74,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:paddingTop="8dp"
-                android:text="组织活动"
+                android:text="组织聚会"
                 android:textColor="#666666"
                 android:textSize="12sp" />
         </LinearLayout>
@@ -136,7 +136,7 @@
             android:paddingLeft="48dp" >
 
             <ImageButton
-                android:id="@+id/activities_new_ib"
+                android:id="@+id/activities_signup_new_ib"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
                 android:background="@drawable/activities_icon_hdpi" />

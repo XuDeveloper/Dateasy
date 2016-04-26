@@ -80,7 +80,7 @@ public class BladeView extends View {
 			case MotionEvent.ACTION_DOWN:
 				showBkg = true;
 				if (oldChoose != c) {
-					if (c >= 0 && c < b.length) {	//璁╃涓�涓瓧姣嶅搷搴旂偣鍑讳簨浠�
+					if (c >= 0 && c < b.length) {	
 						performItemClicked(c);
 						choose = c;
 						invalidate();
@@ -91,7 +91,7 @@ public class BladeView extends View {
 				break;
 			case MotionEvent.ACTION_MOVE:
 				if (oldChoose != c) {
-					if (c >= 0 && c < b.length) {	//璁╃涓�涓瓧姣嶅搷搴旂偣鍑讳簨浠�
+					if (c >= 0 && c < b.length) {	
 						performItemClicked(c);
 						choose = c;
 						invalidate();

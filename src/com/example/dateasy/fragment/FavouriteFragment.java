@@ -1,5 +1,10 @@
 package com.example.dateasy.fragment;
 
+/**
+ * 精选Fragment
+ * @author Xu
+ *  
+ */
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
