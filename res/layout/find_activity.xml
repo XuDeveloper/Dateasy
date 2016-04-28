@@ -2,9 +2,32 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     android:orientation="vertical" >
 
-    <include layout="@layout/actionbar_location" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="#ffffff" >
+
+        <ImageButton
+            android:id="@+id/find_activity_back_ib"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:background="@drawable/location_back" />
+
+        <TextView
+            android:id="@+id/find_activity_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="定位"
+            android:textColor="#666666"
+            android:textSize="20sp" />
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,11 +40,12 @@
             android:layout_height="match_parent" >
 
             <TextView
+                android:id="@+id/find_activity_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="活动类型"
-                android:textColor="@drawable/button_tv"
+                android:textColor="@drawable/gray"
                 android:textSize="12sp" />
 
             <TextView
@@ -38,11 +62,12 @@
             android:layout_marginLeft="15dp" >
 
             <TextView
+                android:id="@+id/find_activity_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="活动地点"
-                android:textColor="@drawable/button_tv"
+                android:textColor="@drawable/gray"
                 android:textSize="12sp" />
 
             <TextView
@@ -60,11 +85,12 @@
             android:layout_marginLeft="15dp" >
 
             <TextView
+                android:id="@+id/find_activity_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="活动时间"
-                android:textColor="@drawable/button_tv"
+                android:textColor="@drawable/gray"
                 android:textSize="12sp" />
 
             <TextView
@@ -77,56 +103,242 @@
         </RelativeLayout>
     </LinearLayout>
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="32dp"
-        android:background="#eeeeee"
-        android:gravity="center" >
+        android:background="#eeeeee" >
 
-        <Button
-            android:layout_width="40dp"
-            android:layout_height="16dp"
-            android:background="@drawable/button_bg"
-            android:text="不限"
-            android:textColor="@drawable/button_tv"
-            android:textSize="10sp" />
+        <RadioGroup
+            android:id="@+id/find_activity_type_detail"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:background="#eeeeee"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="visible" >
 
-        <Button
-            android:layout_width="40dp"
-            android:layout_height="16dp"
-            android:layout_marginLeft="8dp"
-            android:background="@drawable/button_bg"
-            android:text="今天"
-            android:textColor="@drawable/button_tv"
-            android:textSize="10sp" />
+            <RadioButton
+                android:id="@+id/find_activity_type_1"
+                android:layout_width="40dp"
+                android:layout_height="16dp"
+                android:background="@drawable/button_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:text="户外活动"
+                android:textColor="@drawable/button_tv"
+                android:textSize="10sp" />
 
-        <Button
-            android:layout_width="40dp"
-            android:layout_height="16dp"
-            android:layout_marginLeft="8dp"
-            android:background="@drawable/button_bg"
-            android:text="近一周"
-            android:textColor="@drawable/button_tv"
-            android:textSize="10sp" />
+            <RadioButton
+                android:id="@+id/find_activity_type_2"
+                android:layout_width="40dp"
+                android:layout_height="16dp"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/button_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:text="组织聚会"
+                android:textColor="@drawable/button_tv"
+                android:textSize="10sp" />
 
-        <Button
-            android:layout_width="40dp"
-            android:layout_height="16dp"
-            android:layout_marginLeft="8dp"
-            android:background="@drawable/button_bg"
-            android:text="近一月"
-            android:textColor="@drawable/button_tv"
-            android:textSize="10sp" />
+            <RadioButton
+                android:id="@+id/find_activity_type_3"
+                android:layout_width="40dp"
+                android:layout_height="16dp"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/button_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:text="文娱活动"
+                android:textColor="@drawable/button_tv"
+                android:textSize="10sp" />
 
-        <Button
-            android:layout_width="40dp"
-            android:layout_height="16dp"
-            android:layout_marginLeft="8dp"
-            android:background="@drawable/button_bg"
-            android:text="选择日期"
-            android:textColor="@drawable/button_tv"
-            android:textSize="10sp" />
-    </LinearLayout>
+            <RadioButton
+                android:id="@+id/find_activity_type_4"
+                android:layout_width="40dp"
+                android:layout_height="16dp"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/button_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:text="行业会议"
+                android:textColor="@drawable/button_tv"
+                android:textSize="10sp" />
+
+            <RadioButton
+                android:id="@+id/find_activity_type_5"
+                android:layout_width="40dp"
+                android:layout_height="16dp"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/button_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:text="活动报名"
+                android:textColor="@drawable/button_tv"
+                android:textSize="10sp" />
+
+            <RadioButton
+                android:id="@+id/find_activity_type_6"
+                android:layout_width="40dp"
+                android:layout_height="16dp"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/button_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:text="其他"
+                android:textColor="@drawable/button_tv"
+                android:textSize="10sp" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/find_activity_location_detail"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:background="#eeeeee"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="invisible" >
+
+            <RadioButton
+                android:id="@+id/find_activity_location_1"
+                android:layout_width="40dp"
+                android:layout_height="16dp"
+                android:background="@drawable/button_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:text="广州"
+                android:textColor="@drawable/button_tv"
+                android:textSize="10sp" />
+
+            <RadioButton
+                android:id="@+id/find_activity_location_2"
+                android:layout_width="40dp"
+                android:layout_height="16dp"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/button_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:text="上海"
+                android:textColor="@drawable/button_tv"
+                android:textSize="10sp" />
+
+            <RadioButton
+                android:id="@+id/find_activity_location_3"
+                android:layout_width="40dp"
+                android:layout_height="16dp"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/button_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:text="北京"
+                android:textColor="@drawable/button_tv"
+                android:textSize="10sp" />
+
+            <RadioButton
+                android:id="@+id/find_activity_location_4"
+                android:layout_width="40dp"
+                android:layout_height="16dp"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/button_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:text="深圳"
+                android:textColor="@drawable/button_tv"
+                android:textSize="10sp" />
+
+            <RadioButton
+                android:id="@+id/find_activity_location_5"
+                android:layout_width="40dp"
+                android:layout_height="16dp"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/button_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:text="长沙"
+                android:textColor="@drawable/button_tv"
+                android:textSize="10sp" />
+
+            <RadioButton
+                android:id="@+id/find_activity_location_6"
+                android:layout_width="40dp"
+                android:layout_height="16dp"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/button_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:text="其他"
+                android:textColor="@drawable/button_tv"
+                android:textSize="10sp" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/find_activity_time_detail"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:background="#eeeeee"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="invisible" >
+
+            <RadioButton
+                android:id="@+id/find_activity_time_1"
+                android:layout_width="40dp"
+                android:layout_height="16dp"
+                android:background="@drawable/button_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:text="不限"
+                android:textColor="@drawable/button_tv"
+                android:textSize="10sp" />
+
+            <RadioButton
+                android:id="@+id/find_activity_time_2"
+                android:layout_width="40dp"
+                android:layout_height="16dp"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/button_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:text="今天"
+                android:textColor="@drawable/button_tv"
+                android:textSize="10sp" />
+
+            <RadioButton
+                android:id="@+id/find_activity_time_3"
+                android:layout_width="40dp"
+                android:layout_height="16dp"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/button_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:text="近一周"
+                android:textColor="@drawable/button_tv"
+                android:textSize="10sp" />
+
+            <RadioButton
+                android:id="@+id/find_activity_time_4"
+                android:layout_width="40dp"
+                android:layout_height="16dp"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/button_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:text="近一月"
+                android:textColor="@drawable/button_tv"
+                android:textSize="10sp" />
+
+            <RadioButton
+                android:id="@+id/find_activity_time_5"
+                android:layout_width="40dp"
+                android:layout_height="16dp"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/button_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:text="选择日期"
+                android:textColor="@drawable/button_tv"
+                android:textSize="10sp" />
+        </RadioGroup>
+    </FrameLayout>
 
     <ListView
         android:id="@+id/find_lv"

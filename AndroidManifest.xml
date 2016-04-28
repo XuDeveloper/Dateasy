@@ -52,7 +52,10 @@
         <activity 
             android:name=".activity.TypeActivity"
             android:screenOrientation="portrait">
-            
+        </activity>
+         <activity 
+            android:name=".activity.FindActivity"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 

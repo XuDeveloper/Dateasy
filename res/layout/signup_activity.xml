@@ -55,28 +55,6 @@
         android:textColor="#666666"
         android:textSize="10sp" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal" >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="浏览量：63"
-            android:textColor="#666666"
-            android:textSize="10sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:text="分享：124"
-            android:textColor="#666666"
-            android:textSize="10sp" />
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"

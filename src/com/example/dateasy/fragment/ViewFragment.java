@@ -1,6 +1,7 @@
 package com.example.dateasy.fragment;
 
 import com.example.dateasy.R;
+import com.example.dateasy.activity.FindActivity;
 import com.example.dateasy.activity.TypeActivity;
 import com.example.dateasy.adapter.MyListViewAdapter;
 import com.example.dateasy.consts.Const;
@@ -76,23 +77,28 @@ public class ViewFragment extends SingleFragment implements OnClickListener {
 		Bundle bundle = new Bundle();
 		switch (v.getId()) {
 		case R.id.outdooractivities:
-
+			bundle.putString("TITLE", Const.OUTDOOR_ACTIVITIES);
+			Utils.toAnotherActivity(getActivity(), FindActivity.class, bundle);
 			break;
 
 		case R.id.gathering:
-
+			bundle.putString("TITLE", Const.GATHERING);
+			Utils.toAnotherActivity(getActivity(), FindActivity.class, bundle);
 			break;
 
 		case R.id.meeting:
-
+			bundle.putString("TITLE", Const.MEETING);
+			Utils.toAnotherActivity(getActivity(), FindActivity.class, bundle);
 			break;
 
 		case R.id.entertainment:
-
+			bundle.putString("TITLE", Const.ENTERTAINMENT);
+			Utils.toAnotherActivity(getActivity(), FindActivity.class, bundle);
 			break;
 
 		case R.id.activities_signup:
-
+			// 有问题，逻辑？
+			// Utils.toAnotherActivity(getActivity(), FindActivity.class);
 			break;
 
 		case R.id.surroundings_ib:

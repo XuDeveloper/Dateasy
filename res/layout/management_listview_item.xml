@@ -74,7 +74,7 @@
                 android:textColor="#f37029"
                 android:textSize="10sp" />
         </FrameLayout>
-
+        
         <TextView
             android:id="@+id/management_lv_number"
             android:layout_width="wrap_content"

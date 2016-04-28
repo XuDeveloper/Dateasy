@@ -31,11 +31,9 @@ import com.example.dateasy.ui.CirclePoint;
 
 public class FavouriteFragment extends SingleFragment {
 	private LinearLayout mViewPagerContent;
-	private ViewPager mViewPager;
 	private AutoScrollViewPager mAutoScrollViewPager;
 	private FavouriteAdvViewPagerAdapter mViewPagerAdapter;
 	private List<Integer> mImageList = new ArrayList<>();
-	private AdvViewPagerScroller mScroller;
 	private CirclePoint mCirclePoint;
 	private ListView mListView;
 
