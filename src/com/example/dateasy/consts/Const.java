@@ -14,4 +14,10 @@ public class Const {
 	
 	public static String OTHERS = "自定义活动";
 	
+	public static String SURROUNDINGS = "愉约周边";
+	
+	public static String WEEKEND = "周末去哪";
+	
+	public static String DEFAULT_CITY = "广州";
+	
 }

@@ -3,14 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="44dp"
     android:background="#ffffff" >
-    <ImageButton 
+
+    <ImageButton
         android:id="@+id/location_back_ib"
-		android:layout_width="20dp"
+        android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:layout_marginLeft="16dp"
-        android:background="@drawable/location_back"/>
+        android:background="@drawable/location_back" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,14 +20,5 @@
         android:text="定位"
         android:textColor="#666666"
         android:textSize="20sp" />
-
-    <ImageButton
-        android:id="@+id/search_ib"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="16dp"
-        android:background="@drawable/search_ib"/>
 
 </RelativeLayout>

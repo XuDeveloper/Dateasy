@@ -16,7 +16,7 @@
             android:orientation="horizontal" >
         </LinearLayout>
 
-        <LinearLayout
+        <com.example.dateasy.ui.CirclePoint
             android:id="@+id/favourite_circlepoint_group"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -24,7 +24,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="-20dp"
             android:orientation="horizontal" >
-        </LinearLayout>
+        </com.example.dateasy.ui.CirclePoint>
     </RelativeLayout>
 
     <ListView

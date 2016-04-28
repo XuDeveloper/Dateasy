@@ -2,26 +2,39 @@ package com.example.dateasy.adapter;
 
 import java.util.List;
 
+import com.example.dateasy.R;
+import com.example.dateasy.activity.TypeActivity;
+import com.example.dateasy.consts.Const;
+import com.example.dateasy.util.Utils;
+
+import android.content.Context;
+import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.ViewParent;
+import android.widget.ImageView;
 
 /**
  * 首页轮转的图片Adapter
+ * 
  * @author Xu
- *
+ * 
  */
-public class FavouriteAdvViewPagerAdapter extends PagerAdapter {
-	private List views;
+public class FavouriteAdvViewPagerAdapter extends PagerAdapter implements
+		OnClickListener {
+	private List<Integer> imageList;
+	private Context mContext;
 
-	public FavouriteAdvViewPagerAdapter(List views) {
-		this.views = views;
+	public FavouriteAdvViewPagerAdapter(Context mContext,
+			List<Integer> imageList) {
+		this.imageList = imageList;
+		this.mContext = mContext;
 	}
 
 	@Override
 	public int getCount() {
-		return Integer.MAX_VALUE;
+		return imageList.size();
 	}
 
 	@Override
@@ -31,25 +44,84 @@ public class FavouriteAdvViewPagerAdapter extends PagerAdapter {
 
 	@Override
 	public void destroyItem(ViewGroup container, int position, Object object) {
-
+		container.removeView((View) object);
 	}
 
 	@Override
-	public Object instantiateItem(ViewGroup container, int args0) {
-		int position = ((args0 - Integer.MAX_VALUE / 2) % views.size()) - 1;
-		if (position < 0) {
-			position = views.size() + position;
+	public Object instantiateItem(ViewGroup container, final int position) {
+		ImageView iv = new ImageView(mContext);
+		iv.setBackgroundResource(imageList.get(position));
+		switch (position) {
+		case 1:
+			iv.setId(R.id.img2_id);
+			break;
+
+		case 2:
+			iv.setId(R.id.img3_id);
+			break;
+
+		case 3:
+			iv.setId(R.id.img4_id);
+			break;
+
+		case 4:
+			iv.setId(R.id.img5_id);
+			break;
+
+		case 5:
+			iv.setId(R.id.img0_id);
+			break;
+
+		case 0:
+			iv.setId(R.id.img1_id);
+			break;
 		}
-		View view = (View) views.get(position);
-		ViewParent vp = view.getParent();
-		if (vp != null) {
-			ViewGroup parent = (ViewGroup) vp;
-			parent.removeView(view);
-		}
-		container.addView(view);
-		return views.get(position);
+		container.addView(iv);
+		iv.setOnClickListener(this);
+		return iv;
 	}
-	
-	
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		Bundle bundle = new Bundle();
+		switch (v.getId()) {
+		case R.id.img1_id:
+			bundle.putString("NAME", Const.OTHERS);
+			bundle.putInt("IMAGE", R.drawable.custom);
+			Utils.toAnotherActivity(mContext, TypeActivity.class, bundle);
+			break;
+
+		case R.id.img2_id:
+			bundle.putString("NAME", Const.ACTIVITY_SIGNUP);
+			bundle.putInt("IMAGE", R.drawable.activities_enrollment);
+			Utils.toAnotherActivity(mContext, TypeActivity.class, bundle);
+			break;
+
+		case R.id.img3_id:
+			bundle.putString("NAME", Const.MEETING);
+			bundle.putInt("IMAGE", R.drawable.meeting);
+			Utils.toAnotherActivity(mContext, TypeActivity.class, bundle);
+			break;
+
+		case R.id.img4_id:
+			bundle.putString("NAME", Const.OUTDOOR_ACTIVITIES);
+			bundle.putInt("IMAGE", R.drawable.outdoor_activities);
+			Utils.toAnotherActivity(mContext, TypeActivity.class, bundle);
+			break;
+
+		case R.id.img5_id:
+			bundle.putString("NAME", Const.GATHERING);
+			bundle.putInt("IMAGE", R.drawable.party);
+			Utils.toAnotherActivity(mContext, TypeActivity.class, bundle);
+			break;
+
+		case R.id.img0_id:
+			bundle.putString("NAME", Const.ENTERTAINMENT);
+			bundle.putInt("IMAGE", R.drawable.recreational_activities);
+			Utils.toAnotherActivity(mContext, TypeActivity.class, bundle);
+			break;
+		}
+	}
 
 }

@@ -1,10 +1,15 @@
 package com.example.dateasy.fragment;
 
 import com.example.dateasy.R;
+import com.example.dateasy.activity.TypeActivity;
 import com.example.dateasy.adapter.MyListViewAdapter;
+import com.example.dateasy.consts.Const;
+import com.example.dateasy.util.Utils;
 
+import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -23,6 +28,8 @@ public class ViewFragment extends SingleFragment implements OnClickListener {
 	private ImageView mMeetingImageView;
 	private ImageView mEntertainmentImageView;
 	private ImageView mActiviySignUpImageView;
+	private ImageButton mSurroundingsImageButton;
+	private ImageButton mWeekendImageButton;
 
 	@Override
 	protected int getLayoutId() {
@@ -50,17 +57,23 @@ public class ViewFragment extends SingleFragment implements OnClickListener {
 				.findViewById(R.id.entertainment);
 		mActiviySignUpImageView = (ImageView) view
 				.findViewById(R.id.activities_signup);
+		mSurroundingsImageButton = (ImageButton) view
+				.findViewById(R.id.surroundings_ib);
+		mWeekendImageButton = (ImageButton) view.findViewById(R.id.weekend_ib);
 		mOutDoorActivitiesImageView.setOnClickListener(this);
 		mGatheringImageView.setOnClickListener(this);
 		mMeetingImageView.setOnClickListener(this);
 		mEntertainmentImageView.setOnClickListener(this);
 		mActiviySignUpImageView.setOnClickListener(this);
 		mOutDoorActivitiesImageView.setOnClickListener(this);
+		mSurroundingsImageButton.setOnClickListener(this);
+		mWeekendImageButton.setOnClickListener(this);
 	}
 
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
+		Bundle bundle = new Bundle();
 		switch (v.getId()) {
 		case R.id.outdooractivities:
 
@@ -69,6 +82,7 @@ public class ViewFragment extends SingleFragment implements OnClickListener {
 		case R.id.gathering:
 
 			break;
+
 		case R.id.meeting:
 
 			break;
@@ -79,6 +93,18 @@ public class ViewFragment extends SingleFragment implements OnClickListener {
 
 		case R.id.activities_signup:
 
+			break;
+
+		case R.id.surroundings_ib:
+			bundle.putString("NAME", Const.SURROUNDINGS);
+			bundle.putInt("IMAGE", R.drawable.surroundings_hdpi);
+			Utils.toAnotherActivity(getActivity(), TypeActivity.class, bundle);
+			break;
+
+		case R.id.weekend_ib:
+			bundle.putString("NAME", Const.WEEKEND);
+			bundle.putInt("IMAGE", R.drawable.weekend_hdpi);
+			Utils.toAnotherActivity(getActivity(), TypeActivity.class, bundle);
 			break;
 
 		}

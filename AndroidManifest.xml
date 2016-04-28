@@ -49,6 +49,11 @@
             android:name=".activity.SignupActivity"
             android:screenOrientation="portrait" >
         </activity>
+        <activity 
+            android:name=".activity.TypeActivity"
+            android:screenOrientation="portrait">
+            
+        </activity>
     </application>
 
 </manifest>

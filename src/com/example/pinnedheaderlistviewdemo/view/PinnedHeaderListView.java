@@ -16,6 +16,8 @@
 
 package com.example.pinnedheaderlistviewdemo.view;
 
+import com.example.pinnedheaderlistviewdemo.view.BladeView.OnItemClickListener;
+
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
@@ -179,4 +181,6 @@ public class PinnedHeaderListView extends ListView {
             drawChild(canvas, mHeaderView, getDrawingTime());
         }
     }
+
+
 }

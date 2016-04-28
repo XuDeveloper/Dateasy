@@ -2,8 +2,68 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:background="#eeeeee" >
+	<RelativeLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@id/management_navigation_bar"
+	    android:layout_marginTop="24dp"
+	    android:id="@+id/management_activity_text_ll">
+	    <TextView
+	        android:id="@+id/management_tv_1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentLeft="true"
+			android:layout_centerVertical="true"
+	        android:layout_marginLeft="16dp"
+	        android:text="共"
+	        android:textColor="#666666"
+	        android:textSize="12sp" />
 
+	    <TextView
+	        android:id="@+id/management_tv_number"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_toRightOf="@+id/management_tv_1"
+	        android:paddingLeft="5dp"
+	        android:paddingRight="5dp"
+	        android:layout_centerVertical="true"
+	        android:text="1"
+	        android:textColor="#666666"
+	        android:textSize="20sp" />
+
+	    <TextView
+	        android:id="@+id/textView1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_toRightOf="@id/management_tv_number"
+	        android:text="个活动"
+	        android:layout_centerVertical="true"
+	        android:textColor="#666666"
+	        android:textSize="12sp" />
+	
+	    <ImageButton
+	        android:id="@+id/management_click"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentRight="true"
+	        android:layout_marginRight="16dp"
+	        android:layout_centerVertical="true"
+	        android:src="@drawable/management_click"
+	        android:background="#ffffff"
+	        android:scaleType="fitCenter"/>
+	    <TextView 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_toLeftOf="@id/management_click"
+	        android:layout_centerVertical="true"
+	        android:paddingRight="5dp"
+	        android:text="只看进行中的活动"
+	        android:textColor="#666666"/>
+	    
+	</RelativeLayout>
+    
     <ListView
         android:id="@+id/management_lv"
         android:layout_width="match_parent"

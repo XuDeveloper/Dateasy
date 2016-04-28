@@ -11,6 +11,7 @@
         android:background="#ffffff" >
 
         <ImageButton
+            android:id="@+id/type_activity_back"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_alignParentLeft="true"
@@ -19,6 +20,7 @@
             android:background="@drawable/location_back" />
 
         <TextView
+            android:id="@+id/type_activity_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -26,22 +28,17 @@
             android:textColor="#666666"
             android:textSize="20sp" />
 
-        <ImageButton
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="16dp"
-            android:background="@drawable/search_ib" />
     </RelativeLayout>
 
     <ImageView
+        android:id="@+id/type_activity_iv"
         android:layout_width="match_parent"
         android:layout_height="184dp"
         android:scaleType="fitXY"
-        android:src="@drawable/outdoor_activities" />
+         />
 
     <ListView
+        android:id="@+id/type_activity_lv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
     </ListView>

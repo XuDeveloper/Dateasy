@@ -17,10 +17,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.dateasy.R;
+import com.example.dateasy.util.Utils;
 import com.example.pinnedheaderlistviewdemo.City;
 import com.example.pinnedheaderlistviewdemo.MyComparator;
 import com.example.pinnedheaderlistviewdemo.MySectionIndexer;
@@ -29,7 +31,7 @@ import com.example.pinnedheaderlistviewdemo.adapter.LocationGridViewAdapter;
 import com.example.pinnedheaderlistviewdemo.db.CityDao;
 import com.example.pinnedheaderlistviewdemo.db.DBHelper;
 import com.example.pinnedheaderlistviewdemo.view.BladeView;
-import com.example.pinnedheaderlistviewdemo.view.BladeView.OnItemClickListener;
+
 import com.example.pinnedheaderlistviewdemo.view.NoScrollGridView;
 import com.example.pinnedheaderlistviewdemo.view.PinnedHeaderListView;
 
@@ -40,8 +42,9 @@ import com.example.pinnedheaderlistviewdemo.view.PinnedHeaderListView;
  * 
  */
 public class LocationActivity extends Activity implements OnClickListener,
-		OnItemClickListener {
-
+		com.example.pinnedheaderlistviewdemo.view.BladeView.OnItemClickListener {
+	private static final int LISTVIEW = 0;
+	private static final int GRIDVIEW = 1;
 	private static final int COPY_DB_SUCCESS = 10;
 	private static final int COPY_DB_FAILED = 11;
 	protected static final int QUERY_CITY_FINISH = 12;
@@ -217,13 +220,42 @@ public class LocationActivity extends Activity implements OnClickListener,
 
 	private void findView() {
 		mListView = (PinnedHeaderListView) findViewById(R.id.mListView);
+		mListView.setLabelFor(LISTVIEW);
 		BladeView mLetterListView = (BladeView) findViewById(R.id.mLetterListView);
 		mBack_ib = (ImageButton) findViewById(R.id.location_back_ib);
 		mGridView = new NoScrollGridView(this);
+		mGridView.setLabelFor(GRIDVIEW);
 		mGridView.setNumColumns(4);
+
 		scale = this.getResources().getDisplayMetrics().density;
 		mLetterListView.setOnItemClickListener(this);
 		mBack_ib.setOnClickListener(this);
+		mListView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				// TODO Auto-generated method stub
+				Bundle bundle = new Bundle();
+				bundle.putString("CITY", allCityList.get(position - 1)
+						.getName());
+				Utils.toAnotherActivity(LocationActivity.this,
+						MainActivity.class, bundle);
+			}
+		});
+		mGridView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				// TODO Auto-generated method stub
+				Bundle bundle = new Bundle();
+				bundle.putString("CITY", cityList.get(position).getName());
+				Utils.toAnotherActivity(LocationActivity.this,
+						MainActivity.class, bundle);
+			}
+		});
+
 	}
 
 	@Override
@@ -245,9 +277,6 @@ public class LocationActivity extends Activity implements OnClickListener,
 			int section = ALL_CHARACTER.indexOf(s);
 
 			int position = mIndexer.getPositionForSection(section);
-
-			Log.i(TAG, "s:" + s + ",section:" + section + ",position:"
-					+ position);
 
 			if (position != -1) {
 				mListView.setSelection(position);

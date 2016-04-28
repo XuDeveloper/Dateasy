@@ -128,14 +128,14 @@
     </LinearLayout>
 
     <ImageButton
-        android:id="@+id/surroundings_iv"
+        android:id="@+id/surroundings_ib"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/surroundings" />
 
     <ImageButton
-        android:id="@+id/weekend_iv"
+        android:id="@+id/weekend_ib"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_marginTop="8dp"

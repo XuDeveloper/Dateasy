@@ -1,6 +1,7 @@
 package com.example.dateasy.activity;
 
 import com.example.dateasy.R;
+import com.example.dateasy.consts.Const;
 import com.example.dateasy.fragment.ManagementFragment;
 import com.example.dateasy.fragment.MyBelongingsFragment;
 import com.example.dateasy.fragment.FavouriteFragment;
@@ -22,7 +23,7 @@ import android.widget.TextView;
 /**
  * 主Activity，生成主界面
  * 
- * @author Administrator
+ * @author Xu
  * 
  */
 public class MainActivity extends Activity implements OnCheckedChangeListener,
@@ -37,8 +38,11 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
 	private ViewFragment mViewFragment;
 	private ManagementFragment mManagementFragment;
 	private MyBelongingsFragment mMyBelongingsFragment;
-	private TextView mActionBar_tv;
-	private ImageButton mSearch_bt;
+	private TextView mActionBarTextView;
+	private TextView mCityTextView;
+	private ImageButton mSearchImageButton;
+
+	private String mCity;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +51,37 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
 		initViews();
 
 		// 判断当前显示哪一个framgent
+		showFragment();
+
+		// 更新城市
+		updateCity();
+
+	}
+
+	/**
+	 * 更新城市
+	 */
+	private void updateCity() {
+		Bundle bundle = getIntent().getExtras();
+		if (bundle != null) {
+			mCity = bundle.getString("CITY");
+			mCityTextView.setText(mCity);
+		} else {
+			mCity = Const.DEFAULT_CITY;
+			mCityTextView.setText(mCity);
+		}
+
+	}
+
+	/**
+	 * 判断当前显示哪一个framgent
+	 */
+	private void showFragment() {
 		if (getIntent().getExtras() != null) {
 			if (getIntent().getExtras().getBoolean("RETURN_TO_MANAGEMENT")) {
 				mManagementRadioButton.setChecked(true);
+			} else {
+				mStarRadioButton.setChecked(true);
 			}
 		} else {
 			mStarRadioButton.setChecked(true);
@@ -60,14 +92,15 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
 		mRadioGroup = (RadioGroup) findViewById(R.id.bottom_bar_rg);
 		mStarRadioButton = (RadioButton) findViewById(R.id.star_rb);
 		mManagementRadioButton = (RadioButton) findViewById(R.id.management_rb);
-		mActionBar_tv = (TextView) findViewById(R.id.main_actionbar_tv);
-		mSearch_bt = (ImageButton) findViewById(R.id.search_ib);
+		mActionBarTextView = (TextView) findViewById(R.id.main_actionbar_tv);
+		mSearchImageButton = (ImageButton) findViewById(R.id.search_ib);
 		mLocationImageButton = (ImageButton) findViewById(R.id.main_location_ib);
 		mAddImageButton = (RadioButton) findViewById(R.id.add_rb);
+		mCityTextView = (TextView) findViewById(R.id.main_location_tv);
 		mRadioGroup.setOnCheckedChangeListener(this);
 		mLocationImageButton.setOnClickListener(this);
 		mAddImageButton.setOnClickListener(this);
-		mSearch_bt.setOnClickListener(this);
+		mSearchImageButton.setOnClickListener(this);
 	}
 
 	/**
@@ -87,7 +120,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
 			} else {
 				transaction.show(mFavouriteFragment);
 			}
-			mActionBar_tv.setText("精选");
+			mActionBarTextView.setText("精选");
 			break;
 
 		case R.id.view_rb:
@@ -97,7 +130,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
 			} else {
 				transaction.show(mViewFragment);
 			}
-			mActionBar_tv.setText("发现");
+			mActionBarTextView.setText("发现");
 			break;
 
 		case R.id.management_rb:
@@ -107,7 +140,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
 			} else {
 				transaction.show(mManagementFragment);
 			}
-			mActionBar_tv.setText("管理");
+			mActionBarTextView.setText("管理");
 			break;
 
 		case R.id.mybelongings_rb:
@@ -117,7 +150,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
 			} else {
 				transaction.show(mMyBelongingsFragment);
 			}
-			mActionBar_tv.setText("我的");
+			mActionBarTextView.setText("我的");
 			break;
 		}
 		transaction.commit();

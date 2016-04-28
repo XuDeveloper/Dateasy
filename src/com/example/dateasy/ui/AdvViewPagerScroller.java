@@ -12,8 +12,9 @@ public class AdvViewPagerScroller extends Scroller {
 		super(context);
 	}
 
-	public AdvViewPagerScroller(Context context, Interpolator interpolator) {
+	public AdvViewPagerScroller(Context context, Interpolator interpolator, int mScrollDuration) {
 		super(context, interpolator);
+		this.mScrollDuration = mScrollDuration;
 	}
 
 	public AdvViewPagerScroller(Context context, Interpolator interpolator,
