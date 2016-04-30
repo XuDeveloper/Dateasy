@@ -1,18 +1,21 @@
 package com.example.dateasy.fragment;
 
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.ListView;
+
 import com.example.dateasy.R;
 import com.example.dateasy.activity.FindActivity;
+import com.example.dateasy.activity.SignupActivity;
 import com.example.dateasy.activity.TypeActivity;
 import com.example.dateasy.adapter.MyListViewAdapter;
 import com.example.dateasy.consts.Const;
 import com.example.dateasy.util.Utils;
-
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.ListView;
 
 /**
  * 发现Fragment
@@ -45,6 +48,15 @@ public class ViewFragment extends SingleFragment implements OnClickListener {
 		mAdapter = new MyListViewAdapter(this.getActivity());
 		mListView.setAdapter(mAdapter);
 
+		mListView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				// TODO Auto-generated method stub
+				Utils.toAnotherActivity(getActivity(), SignupActivity.class);
+			}
+		});
 		initViews(view);
 	}
 

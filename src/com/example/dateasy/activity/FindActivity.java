@@ -5,6 +5,7 @@ package com.example.dateasy.activity;
  * @author Xu
  */
 import com.example.dateasy.R;
+import com.example.dateasy.adapter.FindActivityListViewAdapter;
 import com.example.dateasy.consts.Const;
 
 import android.R.integer;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -52,6 +54,8 @@ public class FindActivity extends Activity implements OnClickListener {
 	private RadioButton mTime4RadioButton;
 	private RadioButton mTime5RadioButton;
 	private TextView mTitleTextView;
+	private ListView mListView;
+	private FindActivityListViewAdapter mAdapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +69,7 @@ public class FindActivity extends Activity implements OnClickListener {
 	}
 
 	/**
-	 * 设置标题
+	 * 设置标题逻辑
 	 */
 	private void setTitleText() {
 		// TODO Auto-generated method stub
@@ -83,7 +87,7 @@ public class FindActivity extends Activity implements OnClickListener {
 				mTypeMeetingRadioButton.setChecked(true);
 			} else if (title.equals(Const.ACTIVITY_SIGNUP)) {
 				mTypeActivitySignupRadioButton.setChecked(true);
-			} else {
+			} else if (title.equals(Const.OTHERS)) {
 				mTypeOthersRadioButton.setChecked(true);
 			}
 		} else {
@@ -151,6 +155,9 @@ public class FindActivity extends Activity implements OnClickListener {
 		mTime3RadioButton = (RadioButton) findViewById(R.id.find_activity_time_3);
 		mTime4RadioButton = (RadioButton) findViewById(R.id.find_activity_time_4);
 		mTime5RadioButton = (RadioButton) findViewById(R.id.find_activity_time_5);
+		mListView = (ListView) findViewById(R.id.find_lv);
+		mAdapter = new FindActivityListViewAdapter(FindActivity.this);
+		mListView.setAdapter(mAdapter);
 		mTypeTextView.setOnClickListener(this);
 		mLocationTextView.setOnClickListener(this);
 		mTimeTextView.setOnClickListener(this);

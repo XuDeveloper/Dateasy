@@ -11,15 +11,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
- * 精选页面和发现页面中ListView的Adapter
+ * FindActivity中ListView的Adapter
  * @author Xu
  *
  */
-public class MyListViewAdapter extends BaseAdapter {
+public class FindActivityListViewAdapter extends BaseAdapter {
 
 	private Context mContext;
 
-	public MyListViewAdapter(Context context) {
+	public FindActivityListViewAdapter(Context context) {
 		mContext = context;
 	}
 
@@ -48,12 +48,14 @@ public class MyListViewAdapter extends BaseAdapter {
 		Viewholder viewholder;
 		if (convertView == null) {
 			view = LayoutInflater.from(mContext).inflate(
-					R.layout.favourite_listview_item, null);
+					R.layout.find_activity_lv_item, null);
 			viewholder = new Viewholder();
-			viewholder.mEventNameTextView = (TextView) view.findViewById(R.id.favourite_event_name_tv);
-			viewholder.mTimeTextView = (TextView) view.findViewById(R.id.favourite_event_time_tv);
-			viewholder.mLocationTextView = (TextView) view.findViewById(R.id.favourite_event_location_tv);
-			viewholder.mCountTextView = (TextView) view.findViewById(R.id.favourite_event_count_tv);
+			viewholder.mEventNameTextView = (TextView) view.findViewById(R.id.find_activity_event_name_tv);
+			viewholder.mTimeTextView = (TextView) view.findViewById(R.id.find_activity_event_time_tv);
+			viewholder.mLocationTextView = (TextView) view.findViewById(R.id.find_activity_event_location_tv);
+			viewholder.mReleaseUserTextView = (TextView) view
+					.findViewById(R.id.find_activity_event_releaseuser_tv);
+			viewholder.mCountTextView = (TextView) view.findViewById(R.id.find_activity_event_count_tv);
 			view.setTag(viewholder);
 		}else {
 			view = convertView;
@@ -82,6 +84,11 @@ public class MyListViewAdapter extends BaseAdapter {
 		 * 活动地点
 		 */
 		TextView mLocationTextView;
+		
+		/**
+		 * 活动发起人
+		 */
+		TextView mReleaseUserTextView;
 		
 		/**
 		 * 报名人数

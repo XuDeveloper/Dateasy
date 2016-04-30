@@ -30,6 +30,7 @@
             android:orientation="vertical" >
 
             <TextView
+                android:id="@+id/find_activity_event_name_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="环保接力"
@@ -49,6 +50,7 @@
                     android:src="@drawable/time" />
 
                 <TextView
+                    android:id="@+id/find_activity_event_time_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -71,6 +73,7 @@
                     android:src="@drawable/address" />
 
                 <TextView
+                    android:id="@+id/find_activity_event_location_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -86,6 +89,7 @@
                 android:layout_marginTop="10dp" >
 
                 <TextView
+                    android:id="@+id/find_activity_event_releaseuser_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="广州市政府"
@@ -93,6 +97,7 @@
                     android:textSize="10sp" />
 
                 <TextView
+                    android:id="@+id/find_activity_event_count_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="89报名"

@@ -28,7 +28,7 @@
             android:textSize="20sp" />
 
         <ImageButton
-            android:id="@+id/share_bt"
+            android:id="@+id/signup_share_ib"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_alignParentRight="true"
@@ -38,6 +38,7 @@
     </RelativeLayout>
 
     <TextView
+        android:id="@+id/signup_event_name_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -47,6 +48,7 @@
         android:textSize="16sp" />
 
     <TextView
+        android:id="@+id/signup_event_releaseuser_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -76,6 +78,7 @@
                 android:src="@drawable/time" />
 
             <TextView
+                android:id="@+id/signup_event_time_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -98,6 +101,7 @@
                 android:src="@drawable/address" />
 
             <TextView
+                android:id="@+id/signup_event_location_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -120,6 +124,7 @@
                 android:src="@drawable/people" />
 
             <TextView
+                android:id="@+id/signup_event_count_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -139,6 +144,17 @@
         android:text="活动简介"
         android:textColor="#666666"
         android:textSize="16sp" />
+    
+    <TextView
+        android:id="@+id/signup_event_description_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="简介啦啦啦啦"
+        android:textColor="#666666"
+        android:textSize="14sp" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -152,6 +168,7 @@
             android:orientation="horizontal" >
 
             <Button
+                android:id="@+id/signup_event_collect_bt"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -161,6 +178,7 @@
                 android:textSize="16sp" />
 
             <Button
+                android:id="@+id/signup_event_bt"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

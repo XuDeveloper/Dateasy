@@ -10,7 +10,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
 /**
  * 新建活动详情页
@@ -20,7 +19,6 @@ import android.widget.TextView;
 public class DetailActivity extends Activity implements OnClickListener {
 
 	private ImageButton mBackImageButton;
-	private TextView mTitleTextView;
 	private EditText mNewActivityNameEditText;
 	private EditText mNewActivityTimeEditText;
 	private EditText mNewActivityEndTimeEditText;
@@ -35,13 +33,11 @@ public class DetailActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.new_activity_detail);
 		initViews();
 
-		String title = getIntent().getStringExtra("TITLE");
-		setTitleText(title);
+		Utils.setActivityTitle(this, R.id.detail_topbar_title_tv, "TITLE");
 	}
 
 	private void initViews() {
 		mBackImageButton = (ImageButton) findViewById(R.id.detail_back_ib);
-		mTitleTextView = (TextView) findViewById(R.id.detail_topbar_title_tv);
 		mNewActivityNameEditText = (EditText) findViewById(R.id.new_activity_name);
 		mNewActivityTimeEditText = (EditText) findViewById(R.id.new_activity_time);
 		mNewActivityEndTimeEditText = (EditText) findViewById(R.id.new_activity_end_time);
@@ -66,7 +62,4 @@ public class DetailActivity extends Activity implements OnClickListener {
 		}
 	}
 
-	private void setTitleText(String title) {
-		mTitleTextView.setText(title);
-	}
 }

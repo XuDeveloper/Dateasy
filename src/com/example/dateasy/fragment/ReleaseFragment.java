@@ -6,7 +6,7 @@ import com.example.dateasy.adapter.ManagementListViewAdapter;
 import android.view.View;
 import android.widget.ListView;
 /**
- * 管理界面的我发布的Fragment
+ * 管理界面中我发布的Fragment
  * @author Xu
  *
  */

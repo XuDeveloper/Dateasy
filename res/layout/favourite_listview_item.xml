@@ -5,7 +5,7 @@
     android:orientation="vertical" >
 
     <ImageView
-        android:id="@+id/event_image_iv"
+        android:id="@+id/favourite_event_image_iv"
         android:layout_width="288dp"
         android:layout_height="160dp"
         android:layout_gravity="top|center_horizontal"
@@ -24,7 +24,7 @@
             android:layout_height="wrap_content" >
 
             <TextView
-                android:id="@+id/event_name_tv"
+                android:id="@+id/favourite_event_name_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="8dp"
@@ -33,7 +33,7 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/event_people_tv"
+                android:id="@+id/favourite_event_count_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -57,7 +57,7 @@
                 android:paddingLeft="8dp" />
             
             <TextView 
-                android:id="@+id/event_time_tv"
+                android:id="@+id/favourite_event_time_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2016-06-18   18:00~21:00"
@@ -79,7 +79,7 @@
                 android:paddingLeft="8dp" />
             
             <TextView 
-                android:id="@+id/event_address_tv"
+                android:id="@+id/favourite_event_location_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="广东省广州市番禺区广州大学城外环西路378号"

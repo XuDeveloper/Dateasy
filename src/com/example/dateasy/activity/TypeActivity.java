@@ -6,16 +6,18 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.ListView;
 
 import com.example.dateasy.R;
+import com.example.dateasy.adapter.FindActivityListViewAdapter;
 import com.example.dateasy.util.Utils;
 
 public class TypeActivity extends Activity {
 
-	private TextView mTitleTextView;
 	private ImageView mImageView;
 	private ImageButton mBackImageButton;
+	private ListView mListView;
+	private FindActivityListViewAdapter mAdapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,16 +38,17 @@ public class TypeActivity extends Activity {
 
 	private void initViews() {
 		// TODO Auto-generated method stub
-		mTitleTextView = (TextView) findViewById(R.id.type_activity_title);
 		mImageView = (ImageView) findViewById(R.id.type_activity_iv);
 		mBackImageButton = (ImageButton) findViewById(R.id.type_activity_back);
+		mListView = (ListView) findViewById(R.id.type_activity_lv);
+		mAdapter = new FindActivityListViewAdapter(TypeActivity.this);
+		mListView.setAdapter(mAdapter);
 	}
 
 	private void setTitleAndImage() {
+		Utils.setActivityTitle(this, R.id.type_activity_title, "NAME");
 		Bundle bundle = getIntent().getExtras();
-		String title = bundle.getString("NAME");
 		int imageId = bundle.getInt("IMAGE");
-		mTitleTextView.setText(title);
 		mImageView.setBackgroundResource(imageId);
 	}
 }

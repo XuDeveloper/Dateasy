@@ -11,17 +11,20 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+
 /**
  * 管理界面Fragment
+ * 
  * @author Xu
- *
+ * 
  */
-public class ManagementFragment extends SingleFragment implements OnCheckedChangeListener{
-	private ListView mListView;
+public class ManagementFragment extends SingleFragment implements
+		OnCheckedChangeListener {
 	private RadioGroup mRadioGroup;
 	private RadioButton mRadioButton;
 	private ReleaseFragment mReleaseFragment;
 	private RegisterFragment mRegisterFragment;
+
 	@Override
 	protected int getLayoutId() {
 		// TODO Auto-generated method stub
@@ -31,15 +34,18 @@ public class ManagementFragment extends SingleFragment implements OnCheckedChang
 	@Override
 	protected void createView(View view) {
 		// TODO Auto-generated method stub
-		mRadioGroup = (RadioGroup) view.findViewById(R.id.management_navigation);
+		mRadioGroup = (RadioGroup) view
+				.findViewById(R.id.management_navigation);
 		mRadioButton = (RadioButton) view.findViewById(R.id.management_release);
 		mRadioGroup.setOnCheckedChangeListener(this);
 		mRadioButton.setChecked(true);
-//		FragmentManager fm = getChildFragmentManager();
-//		FragmentTransaction transaction = fm.beginTransaction();
-//		transaction.add(R.id.management_fragment_container, new ReleaseFragment());
-//		transaction.add(R.id.management_fragment_container, new RegisterFragment());
-//		transaction.commit();
+		// FragmentManager fm = getChildFragmentManager();
+		// FragmentTransaction transaction = fm.beginTransaction();
+		// transaction.add(R.id.management_fragment_container, new
+		// ReleaseFragment());
+		// transaction.add(R.id.management_fragment_container, new
+		// RegisterFragment());
+		// transaction.commit();
 	}
 
 	@Override
@@ -52,27 +58,28 @@ public class ManagementFragment extends SingleFragment implements OnCheckedChang
 		case R.id.management_release:
 			if (mReleaseFragment == null) {
 				mReleaseFragment = new ReleaseFragment();
-				transaction.add(R.id.management_fragment_container, mReleaseFragment);
-			}
-			else {
+				transaction.add(R.id.management_fragment_container,
+						mReleaseFragment);
+			} else {
 				transaction.show(mReleaseFragment);
 			}
 			break;
 
 		case R.id.management_register:
-			if(mRegisterFragment == null){
+			if (mRegisterFragment == null) {
 				mRegisterFragment = new RegisterFragment();
-				transaction.add(R.id.management_fragment_container, mRegisterFragment);
-			}
-			else{
+				transaction.add(R.id.management_fragment_container,
+						mRegisterFragment);
+			} else {
 				transaction.show(mRegisterFragment);
 			}
-			
+
 			break;
-			
-	}
+
+		}
 		transaction.commit();
-}
+	}
+
 	private void hideAllFragment(FragmentTransaction transaction) {
 		if (mReleaseFragment != null) {
 			transaction.hide(mReleaseFragment);
@@ -81,6 +88,5 @@ public class ManagementFragment extends SingleFragment implements OnCheckedChang
 			transaction.hide(mRegisterFragment);
 		}
 	}
-
 
 }

@@ -12,7 +12,7 @@
         android:background="@drawable/management_listview_item_bg" >
 
         <TextView
-            android:id="@+id/management_lv_title"
+            android:id="@+id/management_event_name_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
@@ -22,11 +22,11 @@
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/management_lv_time"
+            android:id="@+id/management_event_time_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/management_lv_title"
-            android:layout_below="@id/management_lv_title"
+            android:layout_alignLeft="@id/management_event_name_tv"
+            android:layout_below="@id/management_event_name_tv"
             android:layout_marginTop="8dp"
             android:text="3天前发布了该活动"
             android:textColor="#999999"
@@ -36,11 +36,12 @@
             android:id="@+id/management_lv_type1"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/management_lv_title"
-            android:layout_below="@id/management_lv_time"
+            android:layout_alignLeft="@id/management_event_name_tv"
+            android:layout_below="@id/management_event_time_tv"
             android:background="@drawable/management_lv_item_type1_bg" >
 
             <TextView
+                android:id="@+id/management_event_type_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -57,12 +58,13 @@
             android:id="@+id/frameLayout1"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/management_lv_time"
+            android:layout_below="@id/management_event_time_tv"
             android:layout_marginLeft="8dp"
             android:layout_toRightOf="@id/management_lv_type1"
             android:background="@drawable/management_lv_item_type2_bg" >
 
             <TextView
+                android:id="@+id/management_event_issignup_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -76,10 +78,10 @@
         </FrameLayout>
         
         <FrameLayout
-            android:id="@+id/frameLayout2"
+            android:id="@+id/management_event_cost_fl"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/management_lv_time"
+            android:layout_below="@id/management_event_time_tv"
             android:layout_marginLeft="8dp"
             android:layout_toRightOf="@id/frameLayout1"
             android:background="@drawable/management_lv_item_type3_bg"
@@ -99,10 +101,10 @@
         </FrameLayout>
         
         <FrameLayout
-            android:id="@+id/frameLayout3"
+            android:id="@+id/management_event_nocost_fl"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/management_lv_time"
+            android:layout_below="@id/management_event_time_tv"
             android:layout_marginLeft="8dp"
             android:layout_toRightOf="@id/frameLayout1"
             android:background="@drawable/management_lv_item_type4_bg"
@@ -122,7 +124,7 @@
         </FrameLayout>
         
         <TextView
-            android:id="@+id/management_lv_number"
+            android:id="@+id/management_event_count_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -136,7 +138,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/frameLayout1"
-            android:layout_toLeftOf="@id/management_lv_number"
+            android:layout_toLeftOf="@id/management_event_count_tv"
             android:text="报名"
             android:textColor="#666666"
             android:textSize="12sp" />

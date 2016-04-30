@@ -27,6 +27,7 @@
             android:background="@drawable/location_gv_item_bg" >
 
             <TextView
+                android:id="@+id/search_1_tv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -45,7 +46,7 @@
             android:background="@drawable/location_gv_item_bg" >
 
             <TextView
-                android:id="@+id/gv_city_name_tv"
+                android:id="@+id/search_2_tv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -64,6 +65,7 @@
             android:background="@drawable/location_gv_item_bg" >
 
             <TextView
+                android:id="@+id/search_3_tv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -82,6 +84,7 @@
             android:background="@drawable/location_gv_item_bg" >
 
             <TextView
+                android:id="@+id/search_4_tv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
