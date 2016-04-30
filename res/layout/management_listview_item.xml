@@ -75,6 +75,52 @@
                 android:textSize="10sp" />
         </FrameLayout>
         
+        <FrameLayout
+            android:id="@+id/frameLayout2"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/management_lv_time"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@id/frameLayout1"
+            android:background="@drawable/management_lv_item_type3_bg"
+            android:visibility="visible" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="2dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginTop="2dp"
+                android:text="收费"
+                android:textColor="#fecc06"
+                android:textSize="10sp" />
+        </FrameLayout>
+        
+        <FrameLayout
+            android:id="@+id/frameLayout3"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/management_lv_time"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@id/frameLayout1"
+            android:background="@drawable/management_lv_item_type4_bg"
+            android:visibility="invisible" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="2dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginTop="2dp"
+                android:text="不收费"
+                android:textColor="#999999"
+                android:textSize="10sp" />
+        </FrameLayout>
+        
         <TextView
             android:id="@+id/management_lv_number"
             android:layout_width="wrap_content"

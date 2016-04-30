@@ -1,5 +1,8 @@
 package com.example.dateasy.activity;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import com.example.dateasy.R;
 import com.example.dateasy.consts.Const;
 import com.example.dateasy.fragment.ManagementFragment;
@@ -15,9 +18,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 /**
@@ -57,6 +64,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
 		updateCity();
 
 	}
+
 
 	/**
 	 * 更新城市

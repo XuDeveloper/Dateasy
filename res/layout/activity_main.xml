@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.dateasy.activity.MainActivity" >
+    tools:context="com.example.dateasy.activity.MainActivity"
+    android:id="@+id/main_layout" >
 
     <include
         android:id="@+id/actionbar_favourite"
