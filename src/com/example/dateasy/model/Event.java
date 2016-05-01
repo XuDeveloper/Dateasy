@@ -11,170 +11,174 @@ public class Event {
 	/**
 	 * 活动类型
 	 */
-	private final String mType;
+	private String mType;
 
 	/**
 	 * 活动名称
 	 */
-	private final String mEventName;
+	private String mEventName;
 
 	/**
 	 * 活动地点
 	 */
-	private final String mLocation;
+	private String mLocation;
 
 	/**
 	 * 活动发布时间
 	 */
-	private final String mReleaseTime;
+	private String mReleaseTime;
 
 	/**
 	 * 活动开始时间
 	 */
-	private final String mStartTime;
+	private String mStartTime;
 
 	/**
 	 * 活动结束时间
 	 */
-	private final String mEndTime;
+	private String mEndTime;
 
 	/**
 	 * 活动截止报名时间
 	 */
-	private final String mEndApplyTime;
+	private String mEndApplyTime;
 
 	/**
 	 * 活动描述
 	 */
-	private final String mDescription;
+	private String mDescription;
 
 	/**
 	 * 活动人数
 	 */
-	private final int mCapacity;
+	private int mCapacity;
 
 	/**
 	 * 活动是否允许推荐
 	 */
-	private final boolean mIsRecommand;
+	private boolean mIsRecommand;
 
 	/**
 	 * 活动费用
 	 */
-	private final int mCost;
+	private int mCost;
 	
 	/**
 	 * 活动发起人
 	 */
-	private final User mReleaseUser;
+	private User mReleaseUser;
 	
 	/**
 	 * 活动参与的人数
 	 */
-	private final int mCount;
+	private int mCount;
 
-	public static class Builder {
-
-		private String mType = null;
-		private String mEventName = null;
-		private String mLocation = null;
-		private String mReleaseTime = null;
-		private String mStartTime = null;
-		private String mEndTime = null;
-		private String mEndApplyTime = null;
-		private String mDescription = null;
-		private int mCapacity = 0;
-		private boolean mIsRecommand = false;
-		private int mCost = 0;
-		private User mReleaseUser = null;
-		private int mCount = 0;
-
-		public Builder() {
-		}
-
-		public Builder type(String type) {
-			mType = type;
-			return this;
-		}
-
-		public Builder eventName(String eventName) {
-			mEventName = eventName;
-			return this;
-		}
-
-		public Builder location(String location) {
-			mLocation = location;
-			return this;
-		}
-
-		public Builder releaseTime(String releaseTime) {
-			mReleaseTime = releaseTime;
-			return this;
-		}
-
-		public Builder startTime(String startTime) {
-			mStartTime = startTime;
-			return this;
-		}
-
-		public Builder endTime(String endTime) {
-			mEndTime = endTime;
-			return this;
-		}
-
-		public Builder endApplyTime(String endApplyTime) {
-			mEndApplyTime = endApplyTime;
-			return this;
-		}
-
-		public Builder description(String description) {
-			mDescription = description;
-			return this;
-		}
-
-		public Builder capacity(int capacity) {
-			mCapacity = capacity;
-			return this;
-		}
-
-		public Builder isRecommend(boolean isRecommend) {
-			mIsRecommand = isRecommend;
-			return this;
-		}
-
-		public Builder cost(int cost) {
-			mCost = cost;
-			return this;
-		}
-
-		public Builder releaseUser(User releaseUser) {
-			mReleaseUser = releaseUser;
-			return this;
-		}
-		
-		public Builder count(int count) {
-			mCount = count;
-			return this;
-		}
-		
-		public Event build() {
-			return new Event(this);
-		}
+	public String getmType() {
+		return mType;
 	}
 
-	private Event(Builder builder) {
-		this.mType = builder.mType;
-		this.mEventName = builder.mEventName;
-		this.mLocation = builder.mLocation;
-		this.mReleaseTime = builder.mReleaseTime;
-		this.mStartTime = builder.mStartTime;
-		this.mEndTime = builder.mEndTime;
-		this.mEndApplyTime = builder.mEndApplyTime;
-		this.mDescription = builder.mDescription;
-		this.mCapacity = builder.mCapacity;
-		this.mIsRecommand = builder.mIsRecommand;
-		this.mCost = builder.mCost;
-		this.mReleaseUser = builder.mReleaseUser;
-		this.mCount = builder.mCount;
+	public void setmType(String mType) {
+		this.mType = mType;
 	}
+
+	public String getmEventName() {
+		return mEventName;
+	}
+
+	public void setmEventName(String mEventName) {
+		this.mEventName = mEventName;
+	}
+
+	public String getmLocation() {
+		return mLocation;
+	}
+
+	public void setmLocation(String mLocation) {
+		this.mLocation = mLocation;
+	}
+
+	public String getmReleaseTime() {
+		return mReleaseTime;
+	}
+
+	public void setmReleaseTime(String mReleaseTime) {
+		this.mReleaseTime = mReleaseTime;
+	}
+
+	public String getmStartTime() {
+		return mStartTime;
+	}
+
+	public void setmStartTime(String mStartTime) {
+		this.mStartTime = mStartTime;
+	}
+
+	public String getmEndTime() {
+		return mEndTime;
+	}
+
+	public void setmEndTime(String mEndTime) {
+		this.mEndTime = mEndTime;
+	}
+
+	public String getmEndApplyTime() {
+		return mEndApplyTime;
+	}
+
+	public void setmEndApplyTime(String mEndApplyTime) {
+		this.mEndApplyTime = mEndApplyTime;
+	}
+
+	public String getmDescription() {
+		return mDescription;
+	}
+
+	public void setmDescription(String mDescription) {
+		this.mDescription = mDescription;
+	}
+
+	public int getmCapacity() {
+		return mCapacity;
+	}
+
+	public void setmCapacity(int mCapacity) {
+		this.mCapacity = mCapacity;
+	}
+
+	public boolean ismIsRecommand() {
+		return mIsRecommand;
+	}
+
+	public void setmIsRecommand(boolean mIsRecommand) {
+		this.mIsRecommand = mIsRecommand;
+	}
+
+	public int getmCost() {
+		return mCost;
+	}
+
+	public void setmCost(int mCost) {
+		this.mCost = mCost;
+	}
+
+	public User getmReleaseUser() {
+		return mReleaseUser;
+	}
+
+	public void setmReleaseUser(User mReleaseUser) {
+		this.mReleaseUser = mReleaseUser;
+	}
+
+	public int getmCount() {
+		return mCount;
+	}
+
+	public void setmCount(int mCount) {
+		this.mCount = mCount;
+	}
+
+	public Event() {
+	}
+	
+	
 }

@@ -1,6 +1,11 @@
 package com.example.dateasy.fragment;
 
+import java.util.ArrayList;
+
+import okhttp3.Call;
+import okhttp3.Response;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -8,6 +13,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.dateasy.R;
 import com.example.dateasy.activity.FindActivity;
@@ -15,7 +21,12 @@ import com.example.dateasy.activity.SignupActivity;
 import com.example.dateasy.activity.TypeActivity;
 import com.example.dateasy.adapter.MyListViewAdapter;
 import com.example.dateasy.consts.Const;
+import com.example.dateasy.model.User;
+import com.example.dateasy.net.NetworkUtils;
+import com.example.dateasy.net.UserCallback;
 import com.example.dateasy.util.Utils;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.Callback;
 
 /**
  * 发现Fragment
@@ -58,10 +69,32 @@ public class ViewFragment extends SingleFragment implements OnClickListener {
 			}
 		});
 		initViews(view);
+
+		// url
+//		NetworkUtils.getData(url,
+//				new UserCallback() {
+//
+//					@Override
+//					public void onResponse(ArrayList<User> arg0) {
+//						// TODO Auto-generated method stub
+//						Toast.makeText(
+//								getActivity(),
+//								arg0.get(0).toString() + "\n"
+//										+ arg0.get(1).toString(),
+//								Toast.LENGTH_LONG).show();
+//					}
+//
+//					@Override
+//					public void onError(Call arg0, Exception arg1) {
+//						// TODO Auto-generated method stub
+//						Toast.makeText(getActivity(), arg1.toString(), Toast.LENGTH_LONG).show();
+//					}
+//				});
+
 	}
 
 	private void initViews(View view) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method st
 		mOutDoorActivitiesImageView = (ImageView) view
 				.findViewById(R.id.outdooractivities);
 		mGatheringImageView = (ImageView) view.findViewById(R.id.gathering);
