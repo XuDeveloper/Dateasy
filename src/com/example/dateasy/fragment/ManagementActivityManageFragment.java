@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.example.dateasy.R;
 import com.example.dateasy.activity.AddNewActivity;
-import com.example.dateasy.activity.DetailActivity;
 import com.example.dateasy.activity.SignupActivity;
 import com.example.dateasy.util.Utils;
 
