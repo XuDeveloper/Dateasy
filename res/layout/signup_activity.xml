@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/signup_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
@@ -145,16 +146,12 @@
         android:textColor="#666666"
         android:textSize="16sp" />
     
-    <TextView
-        android:id="@+id/signup_event_description_tv"
+    <ImageView 
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
+        android:src="@drawable/masquerade"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:text="简介啦啦啦啦"
-        android:textColor="#666666"
-        android:textSize="14sp" />
+        android:id="@+id/signup_event_description_iv"/>
 
     <RelativeLayout
         android:layout_width="match_parent"

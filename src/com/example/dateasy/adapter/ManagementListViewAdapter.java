@@ -1,5 +1,7 @@
 package com.example.dateasy.adapter;
 
+import java.util.List;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +11,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.example.dateasy.R;
+import com.example.dateasy.model.ManageEvent;
 
 /**
  * 管理界面的listview adapter
@@ -17,25 +20,28 @@ import com.example.dateasy.R;
  */
 public class ManagementListViewAdapter extends BaseAdapter{
 	private Context mContext;
-	public ManagementListViewAdapter(Context mContext){
+	private List<ManageEvent> mContent;
+	public ManagementListViewAdapter(Context mContext, List<ManageEvent> mContent){
 		this.mContext = mContext;
+		this.mContent = mContent;
 	}
+	
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return 1;
+		return mContent.size();
 	}
 
 	@Override
 	public Object getItem(int position) {
 		// TODO Auto-generated method stub
-		return null;
+		return mContent.get(position);
 	}
 
 	@Override
 	public long getItemId(int position) {
 		// TODO Auto-generated method stub
-		return 0;
+		return position;
 	}
 
 	@Override
@@ -43,6 +49,7 @@ public class ManagementListViewAdapter extends BaseAdapter{
 		// TODO Auto-generated method stub
 		View view;
 		Viewholder viewholder;
+		ManageEvent me = mContent.get(position);
 		if (convertView == null) {
 			view = LayoutInflater.from(mContext).inflate(
 					R.layout.management_listview_item, null);
@@ -58,6 +65,17 @@ public class ManagementListViewAdapter extends BaseAdapter{
 			view = convertView;
 			viewholder = (Viewholder) view.getTag();
 		}
+		viewholder.mEventNameTextView.setText(me.getmEventName());
+		viewholder.mTimeTextView.setText(me.getmReleaseTime());
+		viewholder.mIsSignupTextView.setText(me.getmEventState());
+		if(me.ismIfCost()){
+			viewholder.mCostFrameLayout.setVisibility(View.VISIBLE);
+			viewholder.mNoCostFrameLayout.setVisibility(View.INVISIBLE);
+		}else{
+			viewholder.mCostFrameLayout.setVisibility(View.INVISIBLE);
+			viewholder.mNoCostFrameLayout.setVisibility(View.VISIBLE);
+		}
+		viewholder.mCountTextView.setText(me.getmCount()+"");
 		return view;
 	}
 	

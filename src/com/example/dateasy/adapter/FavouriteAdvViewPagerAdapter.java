@@ -88,37 +88,37 @@ public class FavouriteAdvViewPagerAdapter extends PagerAdapter implements
 		switch (v.getId()) {
 		case R.id.img1_id:
 			bundle.putString("NAME", Const.OTHERS);
-			bundle.putInt("IMAGE", R.drawable.custom);
+			bundle.putInt("IMAGE", imageList.get(0));
 			Utils.toAnotherActivity(mContext, TypeActivity.class, bundle);
 			break;
 
 		case R.id.img2_id:
 			bundle.putString("NAME", Const.ACTIVITY_SIGNUP);
-			bundle.putInt("IMAGE", R.drawable.activities_enrollment);
+			bundle.putInt("IMAGE", imageList.get(1));
 			Utils.toAnotherActivity(mContext, TypeActivity.class, bundle);
 			break;
 
 		case R.id.img3_id:
 			bundle.putString("NAME", Const.MEETING);
-			bundle.putInt("IMAGE", R.drawable.meeting);
+			bundle.putInt("IMAGE", imageList.get(2));
 			Utils.toAnotherActivity(mContext, TypeActivity.class, bundle);
 			break;
 
 		case R.id.img4_id:
 			bundle.putString("NAME", Const.OUTDOOR_ACTIVITIES);
-			bundle.putInt("IMAGE", R.drawable.outdoor_activities);
+			bundle.putInt("IMAGE", imageList.get(3));
 			Utils.toAnotherActivity(mContext, TypeActivity.class, bundle);
 			break;
 
 		case R.id.img5_id:
 			bundle.putString("NAME", Const.GATHERING);
-			bundle.putInt("IMAGE", R.drawable.party);
+			bundle.putInt("IMAGE", imageList.get(4));
 			Utils.toAnotherActivity(mContext, TypeActivity.class, bundle);
 			break;
 
 		case R.id.img0_id:
 			bundle.putString("NAME", Const.ENTERTAINMENT);
-			bundle.putInt("IMAGE", R.drawable.recreational_activities);
+			bundle.putInt("IMAGE", imageList.get(5));
 			Utils.toAnotherActivity(mContext, TypeActivity.class, bundle);
 			break;
 		}

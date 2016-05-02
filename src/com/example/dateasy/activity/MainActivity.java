@@ -11,6 +11,7 @@ import com.example.dateasy.util.Utils;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -63,15 +64,17 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
 	 * 更新城市
 	 */
 	private void updateCity() {
+		SharedPreferences sharedPreferences = getSharedPreferences("CITY", MODE_PRIVATE);
+		SharedPreferences.Editor editor = sharedPreferences.edit();
 		Bundle bundle = getIntent().getExtras();
-		if (bundle != null) {
+		if (bundle != null && bundle.getString("CITY") != null) {
 			mCity = bundle.getString("CITY");
 			mCityTextView.setText(mCity);
+			editor.putString("CONCURRENT_CITY", mCity).commit();
 		} else {
-			mCity = Const.DEFAULT_CITY;
+			mCity = sharedPreferences.getString("CONCURRENT_CITY", Const.DEFAULT_CITY);
 			mCityTextView.setText(mCity);
 		}
-
 	}
 
 	/**

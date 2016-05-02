@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#eeeeee"
+    android:orientation="horizontal"
+    android:weightSum="6." >
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.1" >
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <ImageButton
+            android:id="@+id/management_event_manage_exportlist_ib"
+            android:layout_width="28dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center_horizontal"
+            android:background="#eeeeee"
+            android:scaleType="fitCenter"
+            android:src="@drawable/export_list" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:gravity="center_horizontal"
+            android:text="导入名单"
+            android:textColor="#999999"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.2" >
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <ImageButton
+            android:id="@+id/management_event_manage_checkactivity_ib"
+            android:layout_width="28dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center_horizontal"
+            android:background="#eeeeee"
+            android:scaleType="fitCenter"
+            android:src="@drawable/check_activity" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:gravity="center_horizontal"
+            android:text="查看活动"
+            android:textColor="#999999"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.2" >
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:weightSum="3" >
+
+        <ImageButton
+            android:id="@+id/management_event_manage_addnew_ib"
+            android:layout_width="28dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center_horizontal"
+            android:background="#eeeeee"
+            android:scaleType="fitCenter"
+            android:src="@drawable/add_new_again" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="再发一个"
+            android:textColor="#999999"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.2" >
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:weightSum="3" >
+
+        <ImageButton
+            android:id="@+id/management_event_manage_downloadqrcode_ib"
+            android:layout_width="28dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center_horizontal"
+            android:background="#eeeeee"
+            android:scaleType="fitCenter"
+            android:src="@drawable/download_qrcode" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.95"
+            android:gravity="center_horizontal"
+            android:text="下载二维码"
+            android:textColor="#999999"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.2" >
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:weightSum="3" >
+
+        <ImageButton
+            android:id="@+id/management_event_manage_addcoverpic_ib"
+            android:layout_width="28dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center_horizontal"
+            android:background="#eeeeee"
+            android:scaleType="fitCenter"
+            android:src="@drawable/add_coverpic" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="添加封面"
+            android:textColor="#999999"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.1" >
+    </RelativeLayout>
+
+</LinearLayout>

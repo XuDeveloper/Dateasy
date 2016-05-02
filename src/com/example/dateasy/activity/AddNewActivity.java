@@ -58,8 +58,7 @@ public class AddNewActivity extends Activity implements OnClickListener {
 		switch (v.getId()) {
 		case R.id.location_back_ib:
 			finish();
-			Intent intent = new Intent(AddNewActivity.this, MainActivity.class);
-			startActivity(intent);
+			Utils.toAnotherActivity(AddNewActivity.this, MainActivity.class);
 			break;
 
 		case R.id.outdooractivities_new_ib:

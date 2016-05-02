@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eeeeee" >
+
+    <RelativeLayout
+        android:id="@+id/management_activity_description"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/management_listview_item_bg" >
+
+        <TextView
+            android:id="@+id/management_event_manage_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:text="假面舞会"
+            android:textColor="#666666"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/management_event_manage_time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/management_event_manage_name_tv"
+            android:layout_below="@id/management_event_manage_name_tv"
+            android:layout_marginTop="8dp"
+            android:text="3天前发布了该活动"
+            android:textColor="#999999"
+            android:textSize="12sp" />
+
+        <FrameLayout
+            android:id="@+id/management_lv_type1"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/management_event_manage_name_tv"
+            android:layout_below="@id/management_event_manage_time_tv"
+            android:background="@drawable/management_lv_item_type1_bg" >
+
+            <TextView
+                android:id="@+id/management_event_manage_type_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="2dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginTop="2dp"
+                android:text="组织聚会"
+                android:textColor="#00b6bc"
+                android:textSize="10sp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/frameLayout1"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/management_event_manage_time_tv"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@id/management_lv_type1"
+            android:background="@drawable/management_lv_item_type2_bg" >
+
+            <TextView
+                android:id="@+id/management_event_issignup_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="2dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginTop="2dp"
+                android:text="报名中"
+                android:textColor="#f37029"
+                android:textSize="10sp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/management_event_manage_cost_fl"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/management_event_manage_time_tv"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@id/frameLayout1"
+            android:background="@drawable/management_lv_item_type3_bg"
+            android:focusable="true"
+            android:visibility="invisible" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="2dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginTop="2dp"
+                android:focusable="false"
+                android:text="收费"
+                android:textColor="#fecc06"
+                android:textSize="10sp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/management_event_manage_nocost_fl"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/management_event_manage_time_tv"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@id/frameLayout1"
+            android:background="@drawable/management_lv_item_type4_bg"
+            android:focusable="true"
+            android:visibility="visible" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="2dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginTop="2dp"
+                android:focusable="false"
+                android:text="不收费"
+                android:textColor="#999999"
+                android:textSize="10sp" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/management_event_manage_count_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="16dp"
+            android:text="23"
+            android:textColor="#f37029"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/frameLayout1"
+            android:layout_toLeftOf="@id/management_event_manage_count_tv"
+            android:text="报名"
+            android:textColor="#666666"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/management_activity_description"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:background="#ffffff" >
+
+        <EditText
+            android:id="@+id/management_event_manage_change_eventname_et"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:background="@null"
+            android:textColor="#999999" />
+
+        <Button
+            android:id="@+id/management_event_manage_change_eventname_bt"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:layout_below="@id/management_event_manage_change_eventname_et"
+            android:background="#00b6bc"
+            android:text="修改活动名称"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/management_activity_bottom_navigationbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        layout="@layout/management_activity_bottom_navigationbar" />
+
+    <TextView
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@id/management_activity_bottom_navigationbar"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="#dcdcdc" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/divider"
+        android:layout_alignLeft="@id/divider"
+        android:layout_marginBottom="4dp"
+        android:text="更多"
+        android:textColor="#666666"
+        android:textSize="12sp" />
+
+</RelativeLayout>

@@ -22,7 +22,7 @@ import com.example.dateasy.activity.TypeActivity;
 import com.example.dateasy.adapter.MyListViewAdapter;
 import com.example.dateasy.consts.Const;
 import com.example.dateasy.model.User;
-import com.example.dateasy.net.NetworkUtils;
+import com.example.dateasy.util.NetworkUtils;
 import com.example.dateasy.net.UserCallback;
 import com.example.dateasy.util.Utils;
 import com.zhy.http.okhttp.OkHttpUtils;

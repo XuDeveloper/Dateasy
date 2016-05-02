@@ -127,7 +127,7 @@
             android:id="@+id/management_event_count_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            android:layout_alignBottom="@id/management_event_cost_fl"
             android:layout_alignParentRight="true"
             android:layout_marginRight="16dp"
             android:text="23"

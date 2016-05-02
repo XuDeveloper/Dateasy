@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--通用尺寸-->
+    <!--General sizes-->
+    <dimen name="WheelItemSpace">8dp</dimen>
+    <dimen name="WheelPadding">8dp</dimen>
+    <dimen name="WheelTextSize">16sp</dimen>
+    <dimen name="WheelPickerHeight">96dp</dimen>
+    <dimen name="WheelLabelTextSize">16sp</dimen>
+</resources>

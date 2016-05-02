@@ -4,18 +4,31 @@ package com.example.dateasy.activity;
  * 发现Activity
  * @author Xu
  */
+import com.aigestudio.wheelpicker.core.AbstractWheelDecor;
+import com.aigestudio.wheelpicker.core.AbstractWheelPicker;
+import com.aigestudio.wheelpicker.view.WheelCrossPicker;
+import com.aigestudio.wheelpicker.widget.curved.WheelDayPicker;
+import com.aigestudio.wheelpicker.widget.curved.WheelMonthPicker;
+import com.aigestudio.wheelpicker.widget.curved.WheelYearPicker;
 import com.example.dateasy.R;
 import com.example.dateasy.adapter.FindActivityListViewAdapter;
 import com.example.dateasy.consts.Const;
 
 import android.R.integer;
 import android.app.Activity;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -53,21 +66,61 @@ public class FindActivity extends Activity implements OnClickListener {
 	private RadioButton mTime3RadioButton;
 	private RadioButton mTime4RadioButton;
 	private RadioButton mTime5RadioButton;
+	private PopupWindow mTimeWheelPicker;
+	private View mTimeWheelPickerView;
 	private TextView mTitleTextView;
 	private ListView mListView;
 	private FindActivityListViewAdapter mAdapter;
-
+	private int mScreenWidth;
+	private int mScreenHeight;
+	private WindowManager mWindowManager;
+	private WheelYearPicker mPickerYear;
+	private WheelMonthPicker mPickerMonth;
+	private WheelDayPicker mPickerDay;
+	private int padding;
+    private int padding2x;
+    private int mTextColor = 0xff666666;
+    private int mCurrentTextColor = 0xff00b6bc;
+    private int mLabelColor = 0xff00b6bc;
+    private int mStateYear, mStateMonth, mStateDay;
+    private String mYear, mMonth, mDay;
+    private AbstractWheelPicker.OnWheelChangeListener mOnWheelChangeListener;
+    
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.find_activity);
 		initViews();
-
+		initPopupWindow();
 		setTitleText();
 
 	}
-
+	private void initPopupWindow(){
+		padding = getResources().getDimensionPixelSize(com.aigestudio.wheelpicker.R.dimen.WheelPadding);
+		padding2x = padding * 2;
+		mPickerYear.setPadding(0, padding, padding2x, padding);
+		mPickerMonth.setPadding(0, padding, padding2x - 1, padding);
+		mPickerDay.setPadding(0, padding, padding2x, padding);
+		mPickerYear.setTextColor(mTextColor);
+		mPickerMonth.setTextColor(mTextColor);
+		mPickerDay.setTextColor(mTextColor);
+        mPickerYear.setCurrentTextColor(mCurrentTextColor);
+        mPickerMonth.setCurrentTextColor(mCurrentTextColor);
+        mPickerDay.setCurrentTextColor(mCurrentTextColor);
+        addLabel(mPickerYear, "年");
+        addLabel(mPickerMonth, "月");
+        addLabel(mPickerDay, "日");
+        initListener(mPickerYear, 0);
+        initListener(mPickerMonth, 1);
+        initListener(mPickerDay, 2);
+		mWindowManager = getWindowManager();
+		mScreenWidth = mWindowManager.getDefaultDisplay().getWidth();
+		mScreenHeight = mWindowManager.getDefaultDisplay().getHeight();
+		mTimeWheelPicker = new PopupWindow(mTimeWheelPickerView, mScreenWidth, 350, true);
+		mTimeWheelPicker.setAnimationStyle(R.style.anim_sharemenu_inandout);
+	}
+	
 	/**
 	 * 设置标题逻辑
 	 */
@@ -156,13 +209,81 @@ public class FindActivity extends Activity implements OnClickListener {
 		mTime4RadioButton = (RadioButton) findViewById(R.id.find_activity_time_4);
 		mTime5RadioButton = (RadioButton) findViewById(R.id.find_activity_time_5);
 		mListView = (ListView) findViewById(R.id.find_lv);
+		mTimeWheelPickerView = getLayoutInflater().inflate(R.layout.time_wheel_picker, null);
+		mPickerYear = (WheelYearPicker) mTimeWheelPickerView.findViewById(R.id.test_year);
+        mPickerMonth = (WheelMonthPicker) mTimeWheelPickerView.findViewById(R.id.test_month);
+        mPickerDay = (WheelDayPicker) mTimeWheelPickerView.findViewById(R.id.test_day);
 		mAdapter = new FindActivityListViewAdapter(FindActivity.this);
 		mListView.setAdapter(mAdapter);
 		mTypeTextView.setOnClickListener(this);
 		mLocationTextView.setOnClickListener(this);
 		mTimeTextView.setOnClickListener(this);
 		mBackImageButton.setOnClickListener(this);
+		mTime5RadioButton.setOnClickListener(this);
 	}
+	private void addLabel(WheelCrossPicker picker, final String label) {
+        picker.setWheelDecor(true, new AbstractWheelDecor() {
+            @Override
+            public void drawDecor(Canvas canvas, Rect rectLast, Rect rectNext, Paint paint) {
+                paint.setColor(mLabelColor);
+                paint.setTextAlign(Paint.Align.CENTER);
+                paint.setTextSize(padding * 1.5F);
+                canvas.drawText(label, rectNext.centerX(),
+                        rectNext.centerY() - (paint.ascent() + paint.descent()) / 2.0F, paint);
+            }
+
+
+        });
+    }
+    private void initListener(final WheelCrossPicker picker, final int type) {
+        picker.setOnWheelChangeListener(new AbstractWheelPicker.OnWheelChangeListener() {
+            @Override
+            public void onWheelScrolling(float deltaX, float deltaY) {
+                if (null != mOnWheelChangeListener) mOnWheelChangeListener.onWheelScrolling(deltaX, deltaY);
+            }
+
+            @Override
+            public void onWheelSelected(int index, String data) {
+                if (type == 0) mYear = data;
+                if (type == 1) mMonth = data;
+                if (type == 2) mDay = data;
+                if (isValidDate()) {
+                    if (type == 0 || type == 1)
+                        mPickerDay.setCurrentYearAndMonth(Integer.valueOf(mYear),
+                                Integer.valueOf(mMonth));
+                    if (null != mOnWheelChangeListener)
+                    	mOnWheelChangeListener.onWheelSelected(-1, mYear + "-" + mMonth + "-" + mDay);
+                }
+            }
+
+            @Override
+            public void onWheelScrollStateChanged(int state) {
+                if (type == 0) mStateYear = state;
+                if (type == 1) mStateMonth = state;
+                if (type == 2) mStateDay = state;
+                if (null != mOnWheelChangeListener) checkState(mOnWheelChangeListener);
+            }
+        });
+    }
+    private boolean isValidDate() {
+        return !TextUtils.isEmpty(mYear) && !TextUtils.isEmpty(mMonth) && !TextUtils.isEmpty(mDay);
+    }
+    private void checkState(AbstractWheelPicker.OnWheelChangeListener listener) {
+        if (mStateYear == AbstractWheelPicker.SCROLL_STATE_IDLE &&
+        		mStateMonth == AbstractWheelPicker.SCROLL_STATE_IDLE &&
+        		mStateDay == AbstractWheelPicker.SCROLL_STATE_IDLE) {
+            listener.onWheelScrollStateChanged(AbstractWheelPicker.SCROLL_STATE_IDLE);
+        }
+        if (mStateYear == AbstractWheelPicker.SCROLL_STATE_SCROLLING ||
+        		mStateMonth == AbstractWheelPicker.SCROLL_STATE_SCROLLING ||
+        		mStateDay == AbstractWheelPicker.SCROLL_STATE_SCROLLING) {
+            listener.onWheelScrollStateChanged(AbstractWheelPicker.SCROLL_STATE_SCROLLING);
+        }
+        if (mStateYear + mStateMonth + mStateDay == 1) {
+            listener.onWheelScrollStateChanged(AbstractWheelPicker.SCROLL_STATE_DRAGGING);
+        }
+    }
+
 
 	@Override
 	public void onClick(View v) {
@@ -182,6 +303,9 @@ public class FindActivity extends Activity implements OnClickListener {
 
 		case R.id.find_activity_time:
 			setChecked(TIME_CHECKED);
+			break;
+		case R.id.find_activity_time_5:
+			mTimeWheelPicker.showAtLocation(findViewById(R.id.find_activity), Gravity.NO_GRAVITY, 0, mScreenHeight);
 			break;
 		}
 	}

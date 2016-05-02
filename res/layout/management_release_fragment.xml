@@ -43,16 +43,18 @@
 	        android:textColor="#666666"
 	        android:textSize="12sp" />
 	
-	    <ImageButton
+	    <CheckBox
 	        android:id="@+id/management_click"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_alignParentRight="true"
 	        android:layout_marginRight="16dp"
 	        android:layout_centerVertical="true"
-	        android:src="@drawable/management_click"
+	        android:drawableRight="@drawable/management_release_ib"
 	        android:background="#ffffff"
-	        android:scaleType="fitCenter"/>
+	        android:scaleType="fitCenter"
+	        android:checked="true"
+	        android:button="@null"/>
 	    <TextView 
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"

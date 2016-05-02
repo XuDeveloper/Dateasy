@@ -61,6 +61,10 @@
             android:name=".activity.FindActivity"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name=".activity.ManagementActivity"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>
