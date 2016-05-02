@@ -1,7 +1,7 @@
 package com.example.dateasy.fragment;
 
 import com.example.dateasy.R;
-import com.example.dateasy.adapter.ManagementListViewAdapter;
+import com.example.dateasy.adapter.ManagementReleaseListViewAdapter;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;

@@ -34,6 +34,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
 	private RadioButton mStarRadioButton;
 	private RadioButton mAddImageButton;
 	private RadioButton mManagementRadioButton;
+	private RadioButton mMybelongingsRadioButton;
 	private ImageButton mLocationImageButton;
 	private FavouriteFragment mFavouriteFragment;
 	private ViewFragment mViewFragment;
@@ -59,12 +60,12 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
 
 	}
 
-
 	/**
 	 * 更新城市
 	 */
 	private void updateCity() {
-		SharedPreferences sharedPreferences = getSharedPreferences("CITY", MODE_PRIVATE);
+		SharedPreferences sharedPreferences = getSharedPreferences("CITY",
+				MODE_PRIVATE);
 		SharedPreferences.Editor editor = sharedPreferences.edit();
 		Bundle bundle = getIntent().getExtras();
 		if (bundle != null && bundle.getString("CITY") != null) {
@@ -72,7 +73,8 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
 			mCityTextView.setText(mCity);
 			editor.putString("CONCURRENT_CITY", mCity).commit();
 		} else {
-			mCity = sharedPreferences.getString("CONCURRENT_CITY", Const.DEFAULT_CITY);
+			mCity = sharedPreferences.getString("CONCURRENT_CITY",
+					Const.DEFAULT_CITY);
 			mCityTextView.setText(mCity);
 		}
 	}
@@ -84,6 +86,9 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
 		if (getIntent().getExtras() != null) {
 			if (getIntent().getExtras().getBoolean("RETURN_TO_MANAGEMENT")) {
 				mManagementRadioButton.setChecked(true);
+			} else if (getIntent().getExtras().getBoolean(
+					"RETURN_TO_MYBELONGINGS")) {
+				mMybelongingsRadioButton.setChecked(true);
 			} else {
 				mStarRadioButton.setChecked(true);
 			}
@@ -96,6 +101,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
 		mRadioGroup = (RadioGroup) findViewById(R.id.bottom_bar_rg);
 		mStarRadioButton = (RadioButton) findViewById(R.id.star_rb);
 		mManagementRadioButton = (RadioButton) findViewById(R.id.management_rb);
+		mMybelongingsRadioButton = (RadioButton) findViewById(R.id.mybelongings_rb);
 		mActionBarTextView = (TextView) findViewById(R.id.main_actionbar_tv);
 		mSearchImageButton = (ImageButton) findViewById(R.id.search_ib);
 		mLocationImageButton = (ImageButton) findViewById(R.id.main_location_ib);

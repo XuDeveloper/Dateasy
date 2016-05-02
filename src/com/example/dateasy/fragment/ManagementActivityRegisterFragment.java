@@ -4,7 +4,7 @@ import com.example.dateasy.R;
 
 import android.view.View;
 
-public class ManagementActivityRegisterFragment extends SingleFragment{
+public class ManagementActivityRegisterFragment extends SingleFragment {
 
 	@Override
 	protected int getLayoutId() {
@@ -15,7 +15,7 @@ public class ManagementActivityRegisterFragment extends SingleFragment{
 	@Override
 	protected void createView(View view) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

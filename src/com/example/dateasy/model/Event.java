@@ -1,5 +1,7 @@
 package com.example.dateasy.model;
 
+import java.util.ArrayList;
+
 /**
  * 活动类
  * 
@@ -54,6 +56,11 @@ public class Event {
 	private int mCapacity;
 
 	/**
+	 * 具体的报名人信息
+	 */
+	private ArrayList<User> mRegisterUsers;
+
+	/**
 	 * 活动是否允许推荐
 	 */
 	private boolean mIsRecommand;
@@ -62,12 +69,12 @@ public class Event {
 	 * 活动费用
 	 */
 	private int mCost;
-	
+
 	/**
 	 * 活动发起人
 	 */
 	private User mReleaseUser;
-	
+
 	/**
 	 * 活动参与的人数
 	 */
@@ -177,8 +184,15 @@ public class Event {
 		this.mCount = mCount;
 	}
 
+	public ArrayList<User> getmRegisterUsers() {
+		return mRegisterUsers;
+	}
+
+	public void setmRegisterUsers(ArrayList<User> mRegisterUsers) {
+		this.mRegisterUsers = mRegisterUsers;
+	}
+
 	public Event() {
 	}
-	
-	
+
 }

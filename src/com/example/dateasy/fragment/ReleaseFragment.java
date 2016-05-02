@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.example.dateasy.R;
 import com.example.dateasy.activity.ManagementActivity;
-import com.example.dateasy.adapter.ManagementListViewAdapter;
+import com.example.dateasy.adapter.ManagementReleaseListViewAdapter;
 import com.example.dateasy.model.ManageEvent;
 import com.example.dateasy.util.Utils;
 
@@ -32,8 +32,8 @@ public class ReleaseFragment extends SingleFragment implements OnItemClickListen
 	protected void createView(View view) {
 		// TODO Auto-generated method stub
 		initContent();
-		mListView = (ListView) view.findViewById(R.id.management_lv);
-		mListView.setAdapter(new ManagementListViewAdapter(getActivity(), mContent));
+		mListView = (ListView) view.findViewById(R.id.management_release_lv);
+		mListView.setAdapter(new ManagementReleaseListViewAdapter(getActivity(), mContent));
 		mListView.setOnItemClickListener(this);
 	}
 

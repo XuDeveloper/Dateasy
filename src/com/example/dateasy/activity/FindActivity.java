@@ -4,6 +4,24 @@ package com.example.dateasy.activity;
  * 发现Activity
  * @author Xu
  */
+import android.app.Activity;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.Gravity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
+import android.widget.ImageButton;
+import android.widget.ListView;
+import android.widget.PopupWindow;
+import android.widget.PopupWindow.OnDismissListener;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+
 import com.aigestudio.wheelpicker.core.AbstractWheelDecor;
 import com.aigestudio.wheelpicker.core.AbstractWheelPicker;
 import com.aigestudio.wheelpicker.view.WheelCrossPicker;
@@ -13,25 +31,6 @@ import com.aigestudio.wheelpicker.widget.curved.WheelYearPicker;
 import com.example.dateasy.R;
 import com.example.dateasy.adapter.FindActivityListViewAdapter;
 import com.example.dateasy.consts.Const;
-
-import android.R.integer;
-import android.app.Activity;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.Gravity;
-import android.view.View;
-import android.view.WindowManager;
-import android.view.View.OnClickListener;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.PopupWindow;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TextView;
 
 public class FindActivity extends Activity implements OnClickListener {
 
@@ -117,9 +116,10 @@ public class FindActivity extends Activity implements OnClickListener {
 		mWindowManager = getWindowManager();
 		mScreenWidth = mWindowManager.getDefaultDisplay().getWidth();
 		mScreenHeight = mWindowManager.getDefaultDisplay().getHeight();
-		mTimeWheelPicker = new PopupWindow(mTimeWheelPickerView, mScreenWidth, 350, true);
+		mTimeWheelPicker = new PopupWindow(mTimeWheelPickerView, mScreenWidth, 500, true);
 		mTimeWheelPicker.setAnimationStyle(R.style.anim_sharemenu_inandout);
 	}
+	
 	
 	/**
 	 * 设置标题逻辑

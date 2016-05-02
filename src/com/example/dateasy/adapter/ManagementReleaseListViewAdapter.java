@@ -18,10 +18,10 @@ import com.example.dateasy.model.ManageEvent;
  * @author Xu
  *
  */
-public class ManagementListViewAdapter extends BaseAdapter{
+public class ManagementReleaseListViewAdapter extends BaseAdapter{
 	private Context mContext;
 	private List<ManageEvent> mContent;
-	public ManagementListViewAdapter(Context mContext, List<ManageEvent> mContent){
+	public ManagementReleaseListViewAdapter(Context mContext, List<ManageEvent> mContent){
 		this.mContext = mContext;
 		this.mContent = mContent;
 	}
@@ -52,7 +52,7 @@ public class ManagementListViewAdapter extends BaseAdapter{
 		ManageEvent me = mContent.get(position);
 		if (convertView == null) {
 			view = LayoutInflater.from(mContext).inflate(
-					R.layout.management_listview_item, null);
+					R.layout.management_release_listview_item, null);
 			viewholder = new Viewholder();
 			viewholder.mEventNameTextView = (TextView) view.findViewById(R.id.management_event_name_tv);
 			viewholder.mTimeTextView = (TextView) view.findViewById(R.id.management_event_time_tv);

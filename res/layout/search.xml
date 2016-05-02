@@ -22,14 +22,13 @@
         <FrameLayout
             android:id="@+id/search_outdoor"
             android:layout_width="64dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"
-            android:background="@drawable/location_gv_item_bg" >
+            android:layout_height="40dp" >
 
             <TextView
                 android:id="@+id/search_1_tv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@drawable/location_gv_item_bg"
                 android:gravity="center"
                 android:text="户外"
                 android:textColor="@drawable/location_gv_item_text"
@@ -42,13 +41,13 @@
             android:layout_width="64dp"
             android:layout_height="40dp"
             android:layout_marginLeft="8dp"
-            android:layout_toRightOf="@id/search_outdoor"
-            android:background="@drawable/location_gv_item_bg" >
+            android:layout_toRightOf="@id/search_outdoor" >
 
             <TextView
                 android:id="@+id/search_2_tv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@drawable/location_gv_item_bg"
                 android:gravity="center"
                 android:text="聚会"
                 android:textColor="@drawable/location_gv_item_text"
@@ -61,13 +60,13 @@
             android:layout_width="64dp"
             android:layout_height="40dp"
             android:layout_marginLeft="8dp"
-            android:layout_toRightOf="@id/search_party"
-            android:background="@drawable/location_gv_item_bg" >
+            android:layout_toRightOf="@id/search_party" >
 
             <TextView
                 android:id="@+id/search_3_tv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@drawable/location_gv_item_bg"
                 android:gravity="center"
                 android:text="聚餐"
                 android:textColor="@drawable/location_gv_item_text"
@@ -80,13 +79,13 @@
             android:layout_width="64dp"
             android:layout_height="40dp"
             android:layout_marginLeft="8dp"
-            android:layout_toRightOf="@id/search_eat"
-            android:background="@drawable/location_gv_item_bg" >
+            android:layout_toRightOf="@id/search_eat" >
 
             <TextView
                 android:id="@+id/search_4_tv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@drawable/location_gv_item_bg"
                 android:gravity="center"
                 android:text="义工"
                 android:textColor="@drawable/location_gv_item_text"

@@ -10,6 +10,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 /**
  * 新建活动详情页
@@ -24,6 +25,7 @@ public class DetailActivity extends Activity implements OnClickListener {
 	private EditText mNewActivityEndTimeEditText;
 	private EditText mNewActivityAddressEditText;
 	private EditText mNewActivityDescriptionEditText;
+	private TextView mIfRecommendTextView;
 	private Button mAnnounceButton;
 
 	@Override
@@ -44,8 +46,10 @@ public class DetailActivity extends Activity implements OnClickListener {
 		mNewActivityAddressEditText = (EditText) findViewById(R.id.new_activity_address);
 		mNewActivityDescriptionEditText = (EditText) findViewById(R.id.new_activity_description);
 		mAnnounceButton = (Button) findViewById(R.id.announce_bt);
+		mIfRecommendTextView = (TextView) findViewById(R.id.detail_ifrecommend_tv);
 		mBackImageButton.setOnClickListener(this);
 		mAnnounceButton.setOnClickListener(this);
+		mIfRecommendTextView.setOnClickListener(this);
 	}
 
 	@Override
@@ -58,6 +62,14 @@ public class DetailActivity extends Activity implements OnClickListener {
 		case R.id.announce_bt:
 			finish();
 			Utils.toAnotherActivity(DetailActivity.this, AnnounceSuccessActivity.class);
+			break;
+			
+		case R.id.detail_ifrecommend_tv:
+			if (mIfRecommendTextView.getText().toString().equals("是")) {
+				mIfRecommendTextView.setText("否");
+			}else {
+				mIfRecommendTextView.setText("是");
+			}
 			break;
 		}
 	}

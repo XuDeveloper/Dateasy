@@ -67,7 +67,7 @@
 	</RelativeLayout>
     
     <ListView
-        android:id="@+id/management_lv"
+        android:id="@+id/management_release_lv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
     </ListView>
