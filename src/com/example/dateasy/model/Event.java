@@ -2,6 +2,8 @@ package com.example.dateasy.model;
 
 import java.util.ArrayList;
 
+import android.graphics.Bitmap;
+
 /**
  * 活动类
  * 
@@ -79,7 +81,17 @@ public class Event {
 	 * 活动参与的人数
 	 */
 	private int mCount;
-
+	/**
+	 * 活动封面
+	 */
+	private Bitmap mEventCover;
+	
+	public Bitmap getmEventCover(){
+		return mEventCover;
+	}
+	public void setmEventCover(Bitmap mEventCover){
+		this.mEventCover = mEventCover;
+	}
 	public String getmType() {
 		return mType;
 	}

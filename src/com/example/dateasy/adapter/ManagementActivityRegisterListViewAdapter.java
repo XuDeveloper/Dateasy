@@ -1,36 +1,21 @@
 package com.example.dateasy.adapter;
 
-import java.util.List;
+import com.example.dateasy.R;
+import com.example.dateasy.adapter.ManagementRegisterListViewAdapter.Viewholder;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.dateasy.R;
-import com.example.dateasy.activity.SignupActivity;
-import com.example.dateasy.model.User;
-import com.example.dateasy.util.Utils;
-
-/**
- * 管理界面的listview adapter
- * 
- * @author Xu
- * 
- */
-public class ManagementRegisterListViewAdapter extends BaseAdapter {
+public class ManagementActivityRegisterListViewAdapter extends BaseAdapter{
 	private Context mContext;
-	private List<User> mUser;
-
-	public ManagementRegisterListViewAdapter(Context mContext, List<User> mUser) {
+	public ManagementActivityRegisterListViewAdapter(Context mContext){
 		this.mContext = mContext;
-//		this.mUser = mUser;
 	}
-
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
@@ -40,7 +25,7 @@ public class ManagementRegisterListViewAdapter extends BaseAdapter {
 	@Override
 	public Object getItem(int position) {
 		// TODO Auto-generated method stub
-		return 1;
+		return null;
 	}
 
 	@Override
@@ -57,34 +42,27 @@ public class ManagementRegisterListViewAdapter extends BaseAdapter {
 //		User user = mUser.get(position);
 		if (convertView == null) {
 			view = LayoutInflater.from(mContext).inflate(
-					R.layout.management_register_listview_item, null);
+					R.layout.management_activity_register_listview_item, null);
 			viewholder = new Viewholder();
 			viewholder.mUserHeadImageView = (ImageView) view
-					.findViewById(R.id.management_register_user_head_iv);
+					.findViewById(R.id.management_activity_register_user_head_iv);
 			viewholder.mUserNameTextView = (TextView) view
-					.findViewById(R.id.management_register_user_name_tv);
+					.findViewById(R.id.management_activity_register_user_name_tv);
 			viewholder.mUserSignUpTimeTextView = (TextView) view
-					.findViewById(R.id.management_register_user_signuptime_tv);
+					.findViewById(R.id.management__activity_register_user_signuptime_tv);
 			viewholder.mSignupEventNameTextView = (TextView) view
-					.findViewById(R.id.management_register_user_signupevent_name_tv);
+					.findViewById(R.id.management_activity_register_user_signupevent_name_tv);
 			viewholder.mSignupStatusTextView = (TextView) view
-					.findViewById(R.id.management_register_user_signupstatus_tv);
+					.findViewById(R.id.management_activity_register_user_signupevent_name_tv);
+			viewholder.mUserTelephoneTextView = (TextView) view
+					.findViewById(R.id.management_activity_register_user_telephone_tv);
 			view.setTag(viewholder);
 		} else {
 			view = convertView;
 			viewholder = (Viewholder) view.getTag();
 		}
-//		viewholder.mUserHeadImageView.setOnClickListener(new OnClickListener() {
-//
-//			@Override
-//			public void onClick(View v) {
-//				// TODO Auto-generated method stub
-//				Utils.toAnotherActivity(mContext, SignupActivity.class);
-//			}
-//		});
 		return view;
 	}
-
 	class Viewholder {
 		/**
 		 * 用户头像
@@ -110,7 +88,11 @@ public class ManagementRegisterListViewAdapter extends BaseAdapter {
 		 * 用户报名状态
 		 */
 		TextView mSignupStatusTextView;
-
+		
+		/**
+		 * 用户电话
+		 */
+		TextView mUserTelephoneTextView;
 	}
 
 }

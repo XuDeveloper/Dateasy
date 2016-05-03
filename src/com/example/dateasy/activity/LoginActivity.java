@@ -12,18 +12,18 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
-
 import com.example.dateasy.R;
 import com.example.dateasy.util.CheckUtils;
 import com.example.dateasy.util.Utils;
 
-public class LoginActivity extends Activity implements OnClickListener{
+public class LoginActivity extends Activity implements OnClickListener {
 
 	private Button mRegisterButton;
 	private Button mLoginButton;
 	private EditText mUserAccountEditText;
 	private EditText mUserPasswordEditText;
 	private CheckUtils mCheck;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -42,11 +42,12 @@ public class LoginActivity extends Activity implements OnClickListener{
 		mLoginButton.setOnClickListener(this);
 		mCheck = new CheckUtils(this);
 	}
-	private boolean loginCheck(){
+
+	private boolean loginCheck() {
 		String mUserAccount = mUserAccountEditText.getText().toString();
 		String mUserPassword = mUserPasswordEditText.getText().toString();
 		boolean result = mCheck.loginCheck(mUserAccount, mUserPassword);
-		if(!result){
+		if (!result) {
 			mUserAccountEditText.setText("");
 			mUserPasswordEditText.setText("");
 		}
@@ -62,12 +63,12 @@ public class LoginActivity extends Activity implements OnClickListener{
 			break;
 
 		case R.id.login_bt:
-			if(loginCheck()){
+			if (loginCheck()) {
 				Utils.toAnotherActivity(LoginActivity.this, MainActivity.class);
 				finish();
 			}
 			break;
 		}
 	}
-	
+
 }

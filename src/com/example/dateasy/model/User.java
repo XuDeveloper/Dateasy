@@ -2,6 +2,8 @@ package com.example.dateasy.model;
 
 import java.util.ArrayList;
 
+import android.graphics.Bitmap;
+
 /**
  * 用户类
  * 
@@ -49,8 +51,18 @@ public class User {
 	 * 用户报名的活动
 	 */
 	private ArrayList<Event> mSignupEvents;
-
 	
+	/**
+	 * 用户头像
+	 */
+	private Bitmap mHead;
+	
+	public Bitmap getmHead(){
+		return mHead;
+	}
+	public void setmHead(Bitmap mHead){
+		this.mHead = mHead;
+	}
 	public String getmNickName() {
 		return mNickName;
 	}

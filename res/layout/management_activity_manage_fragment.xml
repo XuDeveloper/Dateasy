@@ -151,6 +151,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/management_activity_manage_fragment_changename_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/management_activity_description"
@@ -175,13 +176,25 @@
             android:text="修改活动名称"
             android:textSize="12sp" />
     </RelativeLayout>
+    <Button 
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:background="#ffffff"
+        android:text="验票"
+        android:textColor="#00b6bc"
+        android:textSize="12sp"
+        android:layout_below="@id/management_activity_manage_fragment_changename_ll"
+        android:layout_marginTop="16dp"
+        android:layout_alignLeft="@id/management_activity_manage_fragment_changename_ll"
+        android:layout_alignRight="@id/management_activity_manage_fragment_changename_ll"/>
 
     <include
         android:id="@+id/management_activity_bottom_navigationbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        layout="@layout/management_activity_bottom_navigationbar" />
+        layout="@layout/management_activity_bottom_navigationbar"
+        android:layout_marginBottom="20dp" />
 
     <TextView
         android:id="@+id/divider"

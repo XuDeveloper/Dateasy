@@ -1,11 +1,15 @@
 package com.example.dateasy.adapter;
 
+import java.util.List;
+
 import com.example.dateasy.R;
+import com.example.dateasy.model.Event;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.MimeTypeMap;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,9 +22,10 @@ import android.widget.TextView;
 public class MyListViewAdapter extends BaseAdapter {
 
 	private Context mContext;
-
+	private List<Event> mContent;
 	public MyListViewAdapter(Context context) {
 		mContext = context;
+//		this.mContent = mContent; 
 	}
 
 	@Override
@@ -59,6 +64,12 @@ public class MyListViewAdapter extends BaseAdapter {
 			view = convertView;
 			viewholder = (Viewholder) view.getTag();
 		}
+//		Event mEvent = mContent.get(position);
+//		viewholder.mImageView.setImageBitmap(mEvent.getmEventCover());
+//		viewholder.mEventNameTextView.setText(mEvent.getmEventName());
+//		viewholder.mTimeTextView.setText(mEvent.getmEndTime());
+//		viewholder.mLocationTextView.setText(mEvent.getmLocation());
+//		viewholder.mCountTextView.setText(mEvent.getmCount());
 		return view;
 	}
 	
