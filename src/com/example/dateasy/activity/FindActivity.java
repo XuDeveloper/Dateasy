@@ -8,8 +8,10 @@ import android.app.Activity;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -21,6 +23,7 @@ import android.widget.PopupWindow.OnDismissListener;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.aigestudio.wheelpicker.core.AbstractWheelDecor;
 import com.aigestudio.wheelpicker.core.AbstractWheelPicker;
@@ -32,7 +35,7 @@ import com.example.dateasy.R;
 import com.example.dateasy.adapter.FindActivityListViewAdapter;
 import com.example.dateasy.consts.Const;
 
-public class FindActivity extends Activity implements OnClickListener {
+public class FindActivity extends Activity implements OnClickListener, OnDismissListener {
 
 	private static int TYPE_CHECKED = 0;
 	private static int LOCATION_CHECKED = 1;
@@ -116,8 +119,10 @@ public class FindActivity extends Activity implements OnClickListener {
 		mWindowManager = getWindowManager();
 		mScreenWidth = mWindowManager.getDefaultDisplay().getWidth();
 		mScreenHeight = mWindowManager.getDefaultDisplay().getHeight();
-		mTimeWheelPicker = new PopupWindow(mTimeWheelPickerView, mScreenWidth, 500, true);
+		mTimeWheelPicker = new PopupWindow(mTimeWheelPickerView, mScreenWidth, 350, true);
 		mTimeWheelPicker.setAnimationStyle(R.style.anim_sharemenu_inandout);
+		mTimeWheelPicker.setBackgroundDrawable(new BitmapDrawable());
+		mTimeWheelPicker.setOnDismissListener(this);
 	}
 	
 	
@@ -306,7 +311,21 @@ public class FindActivity extends Activity implements OnClickListener {
 			break;
 		case R.id.find_activity_time_5:
 			mTimeWheelPicker.showAtLocation(findViewById(R.id.find_activity), Gravity.NO_GRAVITY, 0, mScreenHeight);
+			setBackgroundDark();
 			break;
 		}
+	}
+	private void setBackgroundDark(){
+		WindowManager.LayoutParams lp = getWindow().getAttributes();
+		lp.alpha = 0.7f;
+		getWindow().setAttributes(lp);
+	}
+	@Override
+	public void onDismiss() {
+		// TODO Auto-generated method stub
+		WindowManager.LayoutParams lp = getWindow().getAttributes();
+		lp.alpha = 1f;
+		getWindow().setAttributes(lp);
+		Toast.makeText(getApplicationContext(), mYear + "-" + mMonth + "-" + mDay, Toast.LENGTH_SHORT).show();
 	}
 }

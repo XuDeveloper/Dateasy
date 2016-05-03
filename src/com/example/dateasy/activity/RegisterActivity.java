@@ -9,9 +9,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.example.dateasy.R;
+import com.example.dateasy.model.Check;
 import com.example.dateasy.util.Utils;
 
 public class RegisterActivity extends Activity implements OnClickListener{
@@ -19,6 +21,11 @@ public class RegisterActivity extends Activity implements OnClickListener{
 	private ImageButton mBackImageButton;
 	private Button mLoginButton;
 	private Button mRegisterAndLoginButton;
+	private EditText mUserAccountEditText;
+	private EditText mUserPasswordEditText;
+	private EditText mUserConfirmPasswordEditText;
+	private EditText mVertificationCodeEditText;
+	private Check mCheck;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +40,29 @@ public class RegisterActivity extends Activity implements OnClickListener{
 		mBackImageButton = (ImageButton) findViewById(R.id.register_back_ib);
 		mLoginButton = (Button) findViewById(R.id.register_login_bt);
 		mRegisterAndLoginButton = (Button) findViewById(R.id.register_and_login_bt);
+		mUserAccountEditText = (EditText) findViewById(R.id.register_account);
+		mUserPasswordEditText = (EditText) findViewById(R.id.register_password);
+		mUserConfirmPasswordEditText = (EditText) findViewById(R.id.register_confirm_password);
+		mVertificationCodeEditText = (EditText) findViewById(R.id.register_vertification_code);
+		mCheck = new Check(this);
 		mBackImageButton.setOnClickListener(this);
 		mLoginButton.setOnClickListener(this);
 		mRegisterAndLoginButton.setOnClickListener(this);
 	}
-
+	private boolean registerCheck(){
+		String mUserAccount = mUserAccountEditText.getText().toString();
+		String mUserPassword = mUserPasswordEditText.getText().toString();
+		String mUserConfirmPassword = mUserConfirmPasswordEditText.getText().toString();
+		String mVertificationCode = mVertificationCodeEditText.getText().toString();
+		boolean result = mCheck.registerCheck(mUserAccount, mUserPassword, mUserConfirmPassword, mVertificationCode);
+		if(!result){
+			mUserAccountEditText.setText("");
+			mUserPasswordEditText.setText("");
+			mUserConfirmPasswordEditText.setText("");
+			mVertificationCodeEditText.setText("");
+		}
+		return result;
+	}
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
@@ -47,11 +72,13 @@ public class RegisterActivity extends Activity implements OnClickListener{
 			break;
 
 		case R.id.register_login_bt:
-			Utils.toAnotherActivity(RegisterActivity.this, MainActivity.class);
+			Utils.toAnotherActivity(RegisterActivity.this, LoginActivity.class);
 			break;
 			
 		case R.id.register_and_login_bt:
-			Utils.toAnotherActivity(RegisterActivity.this, MainActivity.class);
+			if(registerCheck()){
+				Utils.toAnotherActivity(RegisterActivity.this, MainActivity.class);
+			}
 			break;
 		}
 	}

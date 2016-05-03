@@ -63,7 +63,7 @@ public class SignupActivity extends Activity implements OnClickListener, OnDismi
 		mBackImageButton.setOnClickListener(this);
 		mSignupButton.setOnClickListener(this);
 		mSignupShareButton.setOnClickListener(this);
-		mShareMenu = new PopupWindow(mShareMenuView, mScreenWidth, 500, true);
+		mShareMenu = new PopupWindow(mShareMenuView, mScreenWidth, 300, true);
 		mShareMenu.setAnimationStyle(R.style.anim_sharemenu_inandout);
 		mShareMenuCloseImageButton = (ImageButton)mShareMenuView.findViewById(R.id.share_menu_close);
 		mShareMenu.setOnDismissListener(this);
@@ -83,6 +83,7 @@ public class SignupActivity extends Activity implements OnClickListener, OnDismi
 			break;
 		case R.id.signup_share_ib:
 			mShareMenu.showAtLocation(findViewById(R.id.signup_activity), Gravity.NO_GRAVITY, 0, mScreenHeight);
+			setBackgroundDark();
 			break;
 		case R.id.share_menu_close:
 			if(mShareMenu.isShowing()){
@@ -90,10 +91,16 @@ public class SignupActivity extends Activity implements OnClickListener, OnDismi
 			}
 		}
 	}
-
+	private void setBackgroundDark(){
+		WindowManager.LayoutParams lp = getWindow().getAttributes();
+		lp.alpha = 0.7f;
+		getWindow().setAttributes(lp);
+	}
 	@Override
 	public void onDismiss() {
 		// TODO Auto-generated method stub
-		
+		WindowManager.LayoutParams lp = getWindow().getAttributes();
+		lp.alpha = 1f;
+		getWindow().setAttributes(lp);
 	}
 }

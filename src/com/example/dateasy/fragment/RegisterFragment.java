@@ -1,15 +1,19 @@
 package com.example.dateasy.fragment;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.example.dateasy.R;
+import com.example.dateasy.activity.SignupUserDetailActivity;
 import com.example.dateasy.adapter.ManagementRegisterListViewAdapter;
 import com.example.dateasy.model.User;
+import com.example.dateasy.util.Utils;
 
 /**
  * 管理界面的管理报名界面Fragment
@@ -19,7 +23,7 @@ import com.example.dateasy.model.User;
  */
 public class RegisterFragment extends SingleFragment {
 	private ListView mListView;
-	private ArrayList<User> mSignupUsers;
+	private List<User> mSignupUsers= new ArrayList<User>();;
 
 	@Override
 	protected int getLayoutId() {
@@ -39,7 +43,12 @@ public class RegisterFragment extends SingleFragment {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				// TODO Auto-generated method stub
-
+//				User mUser = mSignupUsers.get(position);
+//				Bundle bundle = new Bundle();
+//				bundle.putString("NICKNAME", mUser.getmNickName());
+//				bundle.putString("TELEPHONE", mUser.getmTelephone());
+//				Utils.toAnotherActivity(getActivity(), SignupUserDetailActivity.class, bundle);
+				Utils.toAnotherActivity(getActivity(), SignupUserDetailActivity.class);
 			}
 		});
 	}
