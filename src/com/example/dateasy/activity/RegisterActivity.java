@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.example.dateasy.R;
-import com.example.dateasy.model.Check;
+import com.example.dateasy.util.CheckUtils;
 import com.example.dateasy.util.Utils;
 
 public class RegisterActivity extends Activity implements OnClickListener{
@@ -25,7 +25,7 @@ public class RegisterActivity extends Activity implements OnClickListener{
 	private EditText mUserPasswordEditText;
 	private EditText mUserConfirmPasswordEditText;
 	private EditText mVertificationCodeEditText;
-	private Check mCheck;
+	private CheckUtils mCheck;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +44,7 @@ public class RegisterActivity extends Activity implements OnClickListener{
 		mUserPasswordEditText = (EditText) findViewById(R.id.register_password);
 		mUserConfirmPasswordEditText = (EditText) findViewById(R.id.register_confirm_password);
 		mVertificationCodeEditText = (EditText) findViewById(R.id.register_vertification_code);
-		mCheck = new Check(this);
+		mCheck = new CheckUtils(this);
 		mBackImageButton.setOnClickListener(this);
 		mLoginButton.setOnClickListener(this);
 		mRegisterAndLoginButton.setOnClickListener(this);

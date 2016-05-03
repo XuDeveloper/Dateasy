@@ -1,4 +1,4 @@
-package com.example.dateasy.model;
+package com.example.dateasy.util;
 
 /**
  * 注册或登录的逻辑检查类
@@ -10,10 +10,10 @@ import java.util.regex.Pattern;
 import android.content.Context;
 import android.widget.Toast;
 
-public class Check {
+public class CheckUtils {
 	private Context mContext;
 
-	public Check(Context mContext) {
+	public CheckUtils(Context mContext) {
 		this.mContext = mContext;
 	}
 

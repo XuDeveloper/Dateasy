@@ -14,7 +14,7 @@ import android.widget.EditText;
 
 
 import com.example.dateasy.R;
-import com.example.dateasy.model.Check;
+import com.example.dateasy.util.CheckUtils;
 import com.example.dateasy.util.Utils;
 
 public class LoginActivity extends Activity implements OnClickListener{
@@ -23,7 +23,7 @@ public class LoginActivity extends Activity implements OnClickListener{
 	private Button mLoginButton;
 	private EditText mUserAccountEditText;
 	private EditText mUserPasswordEditText;
-	private Check mCheck;
+	private CheckUtils mCheck;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -40,7 +40,7 @@ public class LoginActivity extends Activity implements OnClickListener{
 		mUserPasswordEditText = (EditText) findViewById(R.id.login_password);
 		mRegisterButton.setOnClickListener(this);
 		mLoginButton.setOnClickListener(this);
-		mCheck = new Check(this);
+		mCheck = new CheckUtils(this);
 	}
 	private boolean loginCheck(){
 		String mUserAccount = mUserAccountEditText.getText().toString();
