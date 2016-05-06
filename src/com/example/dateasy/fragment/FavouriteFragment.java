@@ -8,35 +8,42 @@ package com.example.dateasy.fragment;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
-import android.support.v4.view.ViewPager;
+import okhttp3.Call;
+
+import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.dateasy.R;
 import com.example.dateasy.activity.SignupActivity;
 import com.example.dateasy.adapter.FavouriteAdvViewPagerAdapter;
 import com.example.dateasy.adapter.MyListViewAdapter;
-import com.example.dateasy.ui.AdvViewPagerScroller;
+import com.example.dateasy.consts.Const;
+import com.example.dateasy.model.Event;
+import com.example.dateasy.net.EventCallback;
 import com.example.dateasy.ui.AutoScrollViewPager;
+import com.example.dateasy.util.NetworkUtils;
 import com.example.dateasy.util.Utils;
 import com.example.dateasy.ui.CirclePoint;
 
 public class FavouriteFragment extends SingleFragment {
 	private LinearLayout mViewPagerContent;
 	private AutoScrollViewPager mAutoScrollViewPager;
-	private FavouriteAdvViewPagerAdapter mViewPagerAdapter;
 	private List<Integer> mImageList = new ArrayList<>();
 	private CirclePoint mCirclePoint;
 	private ListView mListView;
-
 	private MyListViewAdapter mAdapter;
 
 	@Override
@@ -50,13 +57,12 @@ public class FavouriteFragment extends SingleFragment {
 		// TODO Auto-generated method stub
 		mViewPagerContent = (LinearLayout) view
 				.findViewById(R.id.favourite_viewpager_content);
-
 		mCirclePoint = (CirclePoint) view
 				.findViewById(R.id.favourite_circlepoint_group);
 		mListView = (ListView) view.findViewById(R.id.favourite_lv);
 		initViewPager();
-		mAdapter = new MyListViewAdapter(getActivity());
-		mListView.setAdapter(mAdapter);
+		// 获取数据
+		loadDataFromServer();
 		mListView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -96,4 +102,49 @@ public class FavouriteFragment extends SingleFragment {
 		mImageList.add(R.drawable.recreational_activities);
 	}
 
+	/**
+	 * 从服务器端加载数据
+	 */
+	private void loadDataFromServer() {
+		Timer timer = new Timer();
+		timer.schedule(new TimerTask() {
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				NetworkUtils.getData(Const.FAVOURITE_URL, new EventCallback() {
+
+					@Override
+					public void onResponse(final ArrayList<Event> arg0) {
+						// TODO Auto-generated method stub
+						mAdapter = new MyListViewAdapter(getActivity(), arg0,
+								Utils.getCity());
+						mListView.setAdapter(mAdapter);
+						mListView
+								.setOnItemClickListener(new OnItemClickListener() {
+
+									@Override
+									public void onItemClick(
+											AdapterView<?> parent, View view,
+											int position, long id) {
+										// TODO Auto-generated method stub
+										Bundle bundle = new Bundle();
+										Event event = arg0.get(position);
+										bundle.putSerializable("DATA", event);
+										Utils.toAnotherActivity(getActivity(),
+												SignupActivity.class, bundle);
+									}
+								});
+					}
+
+					@Override
+					public void onError(Call arg0, Exception arg1) {
+						// TODO Auto-generated method stub
+						Toast.makeText(getActivity(), "网络连接失败，请检查你的网络连接",
+								Toast.LENGTH_LONG).show();
+					}
+				});
+			}
+		}, Const.START_TIME, Const.REFRESH_TIME);
+	}
 }

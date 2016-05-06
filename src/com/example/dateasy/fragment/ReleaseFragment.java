@@ -51,7 +51,7 @@ public class ReleaseFragment extends SingleFragment implements OnItemClickListen
 		me.setmEventName("假面舞会");
 		me.setmEventState("报名中");
 		me.setmIfCost(false);
-		me.setmReleaseTime("3天前发布了该活动");
+//		me.setmReleaseTime("3天前发布了该活动");
 		me.setmType("组织聚会");
 		me.setmCount(23);
 		mContent.add(me);

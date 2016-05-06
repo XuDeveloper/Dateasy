@@ -10,10 +10,12 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
+import android.widget.Toast;
 import android.widget.PopupWindow.OnDismissListener;
 import android.widget.TextView;
 
 import com.example.dateasy.R;
+import com.example.dateasy.model.Event;
 
 /**
  * 活动报名页
@@ -28,6 +30,7 @@ public class SignupActivity extends Activity implements OnClickListener, OnDismi
 	private TextView mTimeTextView;
 	private TextView mLocationTextView;
 	private TextView mCountTextView;
+	private TextView mDescriptionTextView;
 	private ImageView mDescriptionImageView;
 	private Button mSignupButton;
 	private ImageButton mSignupShareButton;
@@ -37,11 +40,28 @@ public class SignupActivity extends Activity implements OnClickListener, OnDismi
 	private int mScreenHeight;
 	private ImageButton mShareMenuCloseImageButton;
 	private WindowManager mWindowManager;
+	private Event mEvent;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.signup_activity);
 		initViews();
+		
+		setData();
+	}
+
+	/**
+	 * 设置数据
+	 */
+	private void setData() {
+		// TODO Auto-generated method stub
+		mEvent = (Event) getIntent().getExtras().getSerializable("DATA");
+		mEventNameTextView.setText(mEvent.getmEventName());
+//		mReleaseUserTextView.setText(mEvent.getmReleaseUser().getNick_name());
+		mTimeTextView.setText(mEvent.getmStartTime());
+		mLocationTextView.setText(mEvent.getmLocation());
+		mCountTextView.setText("已有" + mEvent.getmCount() + "人报名");
+		mDescriptionTextView.setText(mEvent.getmDescription());
 	}
 
 	private void initViews() {
@@ -52,9 +72,9 @@ public class SignupActivity extends Activity implements OnClickListener, OnDismi
 		mTimeTextView = (TextView) findViewById(R.id.signup_event_time_tv);
 		mLocationTextView = (TextView) findViewById(R.id.signup_event_location_tv);
 		mCountTextView = (TextView) findViewById(R.id.signup_event_count_tv);
-		mDescriptionImageView = (ImageView) findViewById(R.id.signup_event_description_iv);
+//		mDescriptionImageView = (ImageView) findViewById(R.id.signup_event_description_iv);
 		mSignupShareButton = (ImageButton) findViewById(R.id.signup_share_ib);
-//		mDescriptionTextView = (TextView) findViewById(R.id.signup_event_description_tv);
+		mDescriptionTextView = (TextView) findViewById(R.id.signup_event_description_tv);
 		mSignupButton = (Button) findViewById(R.id.signup_event_bt);
 		mShareMenuView = getLayoutInflater().inflate(R.layout.share_menu, null);
 		mWindowManager = getWindowManager();

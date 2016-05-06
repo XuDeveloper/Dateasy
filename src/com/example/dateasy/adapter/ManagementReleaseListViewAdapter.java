@@ -66,7 +66,7 @@ public class ManagementReleaseListViewAdapter extends BaseAdapter{
 			viewholder = (Viewholder) view.getTag();
 		}
 		viewholder.mEventNameTextView.setText(me.getmEventName());
-		viewholder.mTimeTextView.setText(me.getmReleaseTime());
+//		viewholder.mTimeTextView.setText(me.getmReleaseTime());
 		viewholder.mIsSignupTextView.setText(me.getmEventState());
 		if(me.ismIfCost()){
 			viewholder.mCostFrameLayout.setVisibility(View.VISIBLE);

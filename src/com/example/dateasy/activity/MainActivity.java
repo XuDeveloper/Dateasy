@@ -71,12 +71,13 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
 		if (bundle != null && bundle.getString("CITY") != null) {
 			mCity = bundle.getString("CITY");
 			mCityTextView.setText(mCity);
-			editor.putString("CONCURRENT_CITY", mCity).commit();
+			editor.putString("CURRENT_CITY", mCity).commit();
 		} else {
-			mCity = sharedPreferences.getString("CONCURRENT_CITY",
+			mCity = sharedPreferences.getString("CURRENT_CITY",
 					Const.DEFAULT_CITY);
 			mCityTextView.setText(mCity);
 		}
+		Utils.setCity(mCity);
 	}
 
 	/**
@@ -122,10 +123,13 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
 		FragmentManager fm = getFragmentManager();
 		FragmentTransaction transaction = fm.beginTransaction();
 		hideAllFragment(transaction);
+		Bundle bundle = new Bundle();
+		bundle.putString("CURRENT_CITY", mCity);
 		switch (checkedId) {
 		case R.id.star_rb:
 			if (mFavouriteFragment == null) {
 				mFavouriteFragment = new FavouriteFragment();
+				mFavouriteFragment.setArguments(bundle);
 				transaction.add(R.id.fragment_container, mFavouriteFragment);
 			} else {
 				transaction.show(mFavouriteFragment);
@@ -136,6 +140,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
 		case R.id.view_rb:
 			if (mViewFragment == null) {
 				mViewFragment = new ViewFragment();
+				mViewFragment.setArguments(bundle);
 				transaction.add(R.id.fragment_container, mViewFragment);
 			} else {
 				transaction.show(mViewFragment);
@@ -146,6 +151,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
 		case R.id.management_rb:
 			if (mManagementFragment == null) {
 				mManagementFragment = new ManagementFragment();
+				mManagementFragment.setArguments(bundle);
 				transaction.add(R.id.fragment_container, mManagementFragment);
 			} else {
 				transaction.show(mManagementFragment);
@@ -156,6 +162,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
 		case R.id.mybelongings_rb:
 			if (mMyBelongingsFragment == null) {
 				mMyBelongingsFragment = new MyBelongingsFragment();
+				mMyBelongingsFragment.setArguments(bundle);
 				transaction.add(R.id.fragment_container, mMyBelongingsFragment);
 			} else {
 				transaction.show(mMyBelongingsFragment);
@@ -192,12 +199,15 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
 		switch (v.getId()) {
 		case R.id.main_location_ib:
 			Utils.toAnotherActivity(MainActivity.this, LocationActivity.class);
+			finish();
 			break;
 		case R.id.add_rb:
 			Utils.toAnotherActivity(MainActivity.this, AddNewActivity.class);
+			finish();
 			break;
 		case R.id.search_ib:
 			Utils.toAnotherActivity(MainActivity.this, SearchActivity.class);
+			finish();
 			break;
 		}
 	}

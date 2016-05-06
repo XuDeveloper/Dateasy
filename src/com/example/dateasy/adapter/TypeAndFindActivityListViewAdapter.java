@@ -1,6 +1,9 @@
 package com.example.dateasy.adapter;
 
+import java.util.ArrayList;
+
 import com.example.dateasy.R;
+import com.example.dateasy.model.Event;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -15,24 +18,33 @@ import android.widget.TextView;
  * @author Xu
  *
  */
-public class FindActivityListViewAdapter extends BaseAdapter {
+public class TypeAndFindActivityListViewAdapter extends BaseAdapter {
 
 	private Context mContext;
+	private ArrayList<Event> mContent;
 
-	public FindActivityListViewAdapter(Context context) {
+	public TypeAndFindActivityListViewAdapter(Context context, ArrayList<Event> mEvents, String city) {
 		mContext = context;
+//		mContent = new ArrayList<>();
+//		
+//		for (Event item : mEvents) {
+//			if (item.getmLocation().substring(0, 2).equals(city)) {
+//				mContent.add(item);
+//			}
+//		}
+		mContent = mEvents;
 	}
 
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return 1;
+		return mContent.size();
 	}
 
 	@Override
 	public Object getItem(int position) {
 		// TODO Auto-generated method stub
-		return null;
+		return mContent.get(position);
 	}
 
 	@Override
@@ -46,6 +58,7 @@ public class FindActivityListViewAdapter extends BaseAdapter {
 		// TODO Auto-generated method stub
 		View view;
 		Viewholder viewholder;
+		Event event = mContent.get(position);
 		if (convertView == null) {
 			view = LayoutInflater.from(mContext).inflate(
 					R.layout.find_activity_lv_item, null);
@@ -61,6 +74,12 @@ public class FindActivityListViewAdapter extends BaseAdapter {
 			view = convertView;
 			viewholder = (Viewholder) view.getTag();
 		}
+		viewholder.mEventNameTextView.setText(event.getmEventName());
+		viewholder.mTimeTextView.setText(event.getmStartTime());
+		viewholder.mLocationTextView.setText(event.getmLocation());
+		viewholder.mReleaseUserTextView.setText(event.getmReleaseUser().getNick_name());
+		viewholder.mCountTextView.setText(event.getmCount() + "报名");
+		
 		return view;
 	}
 	

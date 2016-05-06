@@ -1,5 +1,6 @@
 package com.example.dateasy.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import android.graphics.Bitmap;
@@ -10,7 +11,7 @@ import android.graphics.Bitmap;
  * @author Xu
  * 
  */
-public class Event {
+public class Event implements Serializable {
 
 	/**
 	 * 活动类型
@@ -26,11 +27,6 @@ public class Event {
 	 * 活动地点
 	 */
 	private String mLocation;
-
-	/**
-	 * 活动发布时间
-	 */
-	private String mReleaseTime;
 
 	/**
 	 * 活动开始时间
@@ -85,13 +81,15 @@ public class Event {
 	 * 活动封面
 	 */
 	private Bitmap mEventCover;
-	
-	public Bitmap getmEventCover(){
+
+	public Bitmap getmEventCover() {
 		return mEventCover;
 	}
-	public void setmEventCover(Bitmap mEventCover){
+
+	public void setmEventCover(Bitmap mEventCover) {
 		this.mEventCover = mEventCover;
 	}
+
 	public String getmType() {
 		return mType;
 	}
@@ -114,14 +112,6 @@ public class Event {
 
 	public void setmLocation(String mLocation) {
 		this.mLocation = mLocation;
-	}
-
-	public String getmReleaseTime() {
-		return mReleaseTime;
-	}
-
-	public void setmReleaseTime(String mReleaseTime) {
-		this.mReleaseTime = mReleaseTime;
 	}
 
 	public String getmStartTime() {

@@ -253,6 +253,7 @@ public class LocationActivity extends Activity implements OnClickListener,
 				bundle.putString("CITY", cityList.get(position).getName());
 				Utils.toAnotherActivity(LocationActivity.this,
 						MainActivity.class, bundle);
+				finish();
 			}
 		});
 

@@ -146,7 +146,18 @@
         android:textColor="#666666"
         android:textSize="16sp" />
     
+    <TextView
+        android:layout_marginTop="16dp" 
+        android:id="@+id/signup_event_description_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:textColor="#666666"
+        android:textSize="14sp"/>
+    
     <ImageView 
+        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:src="@drawable/masquerade"

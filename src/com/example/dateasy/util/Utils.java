@@ -5,6 +5,7 @@ package com.example.dateasy.util;
  * @author Xu
  * 
  */
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +14,8 @@ import android.widget.TextView;
 
 public class Utils {
 
+	private static String mCity;
+	
 	/**
 	 * Activity跳转
 	 * @param from
@@ -36,11 +39,25 @@ public class Utils {
 		from.startActivity(intent);
 	}
 	
+	/**
+	 * 设置标题
+	 * @param activity
+	 * @param resID
+	 * @param key
+	 */
 	public static void setActivityTitle(Activity activity, int resID, String key) {
 		TextView titleTextView = (TextView) activity.findViewById(resID);
 		Bundle bundle = activity.getIntent().getExtras();
 		String title = bundle.getString(key);
 		titleTextView.setText(title);
 	}
-
+	
+	public static void setCity(String city) {
+		mCity = city;
+	}
+	
+	public static String getCity() {
+		return mCity;
+	}
+	
 }

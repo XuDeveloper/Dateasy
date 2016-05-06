@@ -1,9 +1,11 @@
 package com.example.dateasy.fragment;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import okhttp3.Call;
-import okhttp3.Response;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,12 +23,10 @@ import com.example.dateasy.activity.SignupActivity;
 import com.example.dateasy.activity.TypeActivity;
 import com.example.dateasy.adapter.MyListViewAdapter;
 import com.example.dateasy.consts.Const;
-import com.example.dateasy.model.User;
+import com.example.dateasy.model.Event;
 import com.example.dateasy.util.NetworkUtils;
-import com.example.dateasy.net.UserCallback;
+import com.example.dateasy.net.EventCallback;
 import com.example.dateasy.util.Utils;
-import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.callback.Callback;
 
 /**
  * 发现Fragment
@@ -55,41 +55,10 @@ public class ViewFragment extends SingleFragment implements OnClickListener {
 	@Override
 	protected void createView(View view) {
 		// TODO Auto-generated method stub
-		mListView = (ListView) view.findViewById(R.id.view_lv);
-		mAdapter = new MyListViewAdapter(this.getActivity());
-		mListView.setAdapter(mAdapter);
-
-		mListView.setOnItemClickListener(new OnItemClickListener() {
-
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				// TODO Auto-generated method stub
-				Utils.toAnotherActivity(getActivity(), SignupActivity.class);
-			}
-		});
 		initViews(view);
-
-		// url
-//		NetworkUtils.getData(url,
-//				new UserCallback() {
-//
-//					@Override
-//					public void onResponse(ArrayList<User> arg0) {
-//						// TODO Auto-generated method stub
-//						Toast.makeText(
-//								getActivity(),
-//								arg0.get(0).toString() + "\n"
-//										+ arg0.get(1).toString(),
-//								Toast.LENGTH_LONG).show();
-//					}
-//
-//					@Override
-//					public void onError(Call arg0, Exception arg1) {
-//						// TODO Auto-generated method stub
-//						Toast.makeText(getActivity(), arg1.toString(), Toast.LENGTH_LONG).show();
-//					}
-//				});
+		mListView = (ListView) view.findViewById(R.id.view_lv);
+		// 读取数据
+		loadDataFromServer();
 
 	}
 
@@ -114,6 +83,53 @@ public class ViewFragment extends SingleFragment implements OnClickListener {
 		mOutDoorActivitiesImageView.setOnClickListener(this);
 		mSurroundingsImageButton.setOnClickListener(this);
 		mWeekendImageButton.setOnClickListener(this);
+	}
+
+	/**
+	 * 从服务器端加载数据
+	 */
+	private void loadDataFromServer() {
+		Timer timer = new Timer();
+		timer.schedule(new TimerTask() {
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				NetworkUtils.getData(Const.VIEW_URL, new EventCallback() {
+
+					@Override
+					public void onResponse(final ArrayList<Event> arg0) {
+						// TODO Auto-generated method stub
+						mAdapter = new MyListViewAdapter(getActivity(), arg0,
+								Utils.getCity());
+						mListView.setAdapter(mAdapter);
+						mListView
+								.setOnItemClickListener(new OnItemClickListener() {
+
+									@Override
+									public void onItemClick(
+											AdapterView<?> parent, View view,
+											int position, long id) {
+										// TODO Auto-generated method stub
+										Bundle bundle = new Bundle();
+										Event event = arg0.get(position);
+										bundle.putSerializable("DATA", event);
+										Utils.toAnotherActivity(getActivity(),
+												SignupActivity.class, bundle);
+									}
+								});
+					}
+
+					@Override
+					public void onError(Call arg0, Exception arg1) {
+						// TODO Auto-generated method stub
+						Toast.makeText(getActivity(), "网络连接失败，请检查你的网络连接",
+								Toast.LENGTH_LONG).show();
+					}
+				});
+			}
+		}, Const.START_TIME, Const.REFRESH_TIME);
+
 	}
 
 	@Override
@@ -142,8 +158,8 @@ public class ViewFragment extends SingleFragment implements OnClickListener {
 			break;
 
 		case R.id.activities_signup:
-			// 有问题，逻辑？
-			// Utils.toAnotherActivity(getActivity(), FindActivity.class);
+			bundle.putString("TITLE", Const.ACTIVITY_SIGNUP);
+			Utils.toAnotherActivity(getActivity(), FindActivity.class, bundle);
 			break;
 
 		case R.id.surroundings_ib:

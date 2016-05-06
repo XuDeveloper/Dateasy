@@ -15,32 +15,32 @@ public class User {
 	/**
 	 * 用户昵称
 	 */
-	private String mNickName;
+	private String nick_name;
 
 	/**
 	 * 用户密码
 	 */
-	private String mPassword;
+	private String password;
 
 	/**
 	 * 用户性别
 	 */
-	private String mSex;
+	private String sex;
 
 	/**
 	 * 用户真实姓名
 	 */
-	private String mTrueName;
+	private String true_name;
 
 	/**
 	 * 用户手机
 	 */
-	private String mTelephone;
+	private String telephone;
 
 	/**
 	 * 用户邮箱
 	 */
-	private String mEmail;
+	private String email;
 
 	/**
 	 * 用户发起的活动
@@ -51,64 +51,62 @@ public class User {
 	 * 用户报名的活动
 	 */
 	private ArrayList<Event> mSignupEvents;
-	
+
 	/**
 	 * 用户头像
 	 */
 	private Bitmap mHead;
-	
-	public Bitmap getmHead(){
-		return mHead;
-	}
-	public void setmHead(Bitmap mHead){
-		this.mHead = mHead;
-	}
-	public String getmNickName() {
-		return mNickName;
+
+	public User() {
+
 	}
 
-	public void setmNickName(String mNickName) {
-		this.mNickName = mNickName;
+	public String getNick_name() {
+		return nick_name;
 	}
 
-	public String getmPassword() {
-		return mPassword;
+	public void setNick_name(String nick_name) {
+		this.nick_name = nick_name;
 	}
 
-	public void setmPassword(String mPassword) {
-		this.mPassword = mPassword;
+	public String getPassword() {
+		return password;
 	}
 
-	public String getmSex() {
-		return mSex;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-	public void setmSex(String mSex) {
-		this.mSex = mSex;
+	public String getSex() {
+		return sex;
 	}
 
-	public String getmTrueName() {
-		return mTrueName;
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
 
-	public void setmTrueName(String mTrueName) {
-		this.mTrueName = mTrueName;
+	public String getTrue_name() {
+		return true_name;
 	}
 
-	public String getmTelephone() {
-		return mTelephone;
+	public void setTrue_name(String true_name) {
+		this.true_name = true_name;
 	}
 
-	public void setmTelephone(String mTelephone) {
-		this.mTelephone = mTelephone;
+	public String getTelephone() {
+		return telephone;
 	}
 
-	public String getmEmail() {
-		return mEmail;
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
 	}
 
-	public void setmEmail(String mEmail) {
-		this.mEmail = mEmail;
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public ArrayList<Event> getmReleaseEvents() {
@@ -127,14 +125,12 @@ public class User {
 		this.mSignupEvents = mSignupEvents;
 	}
 
-	public User() {
-		
+	public Bitmap getmHead() {
+		return mHead;
 	}
-	
-	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return "User{" + "nickname:" + mNickName + ",password:"+ mPassword + ",sex:" + mSex + ",truename:" + mTrueName 
-				+ ",telephone:" + mTelephone + ",email:" + mEmail + "}";
+
+	public void setmHead(Bitmap mHead) {
+		this.mHead = mHead;
 	}
+
 }
