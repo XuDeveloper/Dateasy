@@ -1,5 +1,6 @@
 package com.example.dateasy.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import android.graphics.Bitmap;
@@ -10,7 +11,7 @@ import android.graphics.Bitmap;
  * @author Xu
  * 
  */
-public class User {
+public class User implements Serializable {
 
 	/**
 	 * 用户昵称

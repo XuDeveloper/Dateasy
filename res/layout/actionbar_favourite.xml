@@ -40,5 +40,10 @@
         android:layout_centerVertical="true"
         android:layout_marginRight="16dp"
         android:background="@drawable/search_ib" />
+    
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dcdcdc" />
 
 </RelativeLayout>

@@ -149,14 +149,19 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
 			break;
 
 		case R.id.management_rb:
-			if (mManagementFragment == null) {
-				mManagementFragment = new ManagementFragment();
-				mManagementFragment.setArguments(bundle);
-				transaction.add(R.id.fragment_container, mManagementFragment);
+			if (Utils.getmCurrentUser() != null) {
+				if (mManagementFragment == null) {
+					mManagementFragment = new ManagementFragment();
+					mManagementFragment.setArguments(bundle);
+					transaction.add(R.id.fragment_container, mManagementFragment);
+				} else {
+					transaction.show(mManagementFragment);
+				}
+				mActionBarTextView.setText("管理");
 			} else {
-				transaction.show(mManagementFragment);
+				bundle.putBoolean("MANAGEMENT", true);
+				Utils.toAnotherActivity(MainActivity.this, LoginActivity.class, bundle);
 			}
-			mActionBarTextView.setText("管理");
 			break;
 
 		case R.id.mybelongings_rb:

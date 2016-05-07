@@ -29,6 +29,11 @@
             android:textSize="20sp" />
 
     </RelativeLayout>
+    
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dcdcdc" />
 
     <ImageView
         android:id="@+id/type_activity_iv"

@@ -2,8 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#ffffff" >
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="44dp"
@@ -38,7 +39,13 @@
             android:textColor="#ffffff"
             android:textSize="14sp" />
     </RelativeLayout>
-     <LinearLayout
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dcdcdc" />
+
+    <LinearLayout
         android:layout_width="288dp"
         android:layout_height="32dp"
         android:layout_gravity="center_horizontal"
@@ -49,14 +56,14 @@
             android:id="@+id/register_account"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@null"
+            android:cursorVisible="true"
             android:hint="请用昵称作为账号（不超过20字）"
             android:paddingLeft="40dp"
-            android:textColorHint="#cfcfcf"
             android:textColor="#000000"
-            android:textSize="12sp"
-            android:background="@null" 
-            android:cursorVisible="true"
-            android:textCursorDrawable="@null"/>
+            android:textColorHint="#cfcfcf"
+            android:textCursorDrawable="@null"
+            android:textSize="12sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -70,16 +77,17 @@
             android:id="@+id/register_password"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@null"
+            android:cursorVisible="true"
             android:hint="请输入密码"
             android:inputType="textPassword"
             android:paddingLeft="40dp"
-            android:textColorHint="#cfcfcf"
             android:textColor="#000000"
-            android:textSize="12sp"
-            android:background="@null"
-            android:cursorVisible="true"
-            android:textCursorDrawable="@null" />
+            android:textColorHint="#cfcfcf"
+            android:textCursorDrawable="@null"
+            android:textSize="12sp" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="288dp"
         android:layout_height="32dp"
@@ -91,65 +99,67 @@
             android:id="@+id/register_confirm_password"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@null"
+            android:cursorVisible="true"
             android:hint="确认密码"
             android:inputType="textPassword"
             android:paddingLeft="40dp"
-            android:textColorHint="#cfcfcf"
-            android:textSize="12sp"
-            android:background="@null"
             android:textColor="#000000"
-            android:cursorVisible="true"
-            android:textCursorDrawable="@null" />
+            android:textColorHint="#cfcfcf"
+            android:textCursorDrawable="@null"
+            android:textSize="12sp" />
     </LinearLayout>
-    <LinearLayout 
+
+    <LinearLayout
         android:layout_width="288dp"
         android:layout_height="32dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="8dp"
-        android:weightSum="5">
+        android:weightSum="5" >
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="32dp"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/verification_code_bg"
-            android:layout_weight="2" >
-	
-	        <EditText
-	            android:id="@+id/register_vertification_code"
-	            android:layout_width="match_parent"
-	            android:layout_height="match_parent"
-	            android:hint="请输入验证码"
-	            android:paddingLeft="5dp"
-	            android:textColorHint="#cfcfcf"
-	            android:textColor="#000000"
-	            android:textSize="12sp" 
-	            android:background="@null"
-	            android:cursorVisible="true"
-            	android:textCursorDrawable="@null"/>
-	    </LinearLayout>
-	    <LinearLayout 
-	        android:layout_width="0dp"
-	        android:layout_height="32dp"
-	        android:layout_gravity="center_horizontal"
-	        android:layout_weight="3">
-	        <ImageView 
-	            android:layout_width="64dp"
-	            android:layout_height="24dp"
-	            android:layout_gravity="center_vertical"
-	            android:src="@drawable/verification_code"/>
-	        <TextView 
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:layout_gravity="center_vertical"
-	            android:gravity="center"
-	            android:text="看不清，换一张"
-	            android:textColor="#666666"
-	            android:textSize="14sp"
-	            />
-	    </LinearLayout>
-    </LinearLayout>
+            android:layout_weight="2"
+            android:background="@drawable/verification_code_bg" >
 
+            <EditText
+                android:id="@+id/register_vertification_code"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:cursorVisible="true"
+                android:hint="请输入验证码"
+                android:paddingLeft="5dp"
+                android:textColor="#000000"
+                android:textColorHint="#cfcfcf"
+                android:textCursorDrawable="@null"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="3" >
+
+            <ImageView
+                android:layout_width="64dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/verification_code" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:text="看不清，换一张"
+                android:textColor="#666666"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
 
     <Button
         android:id="@+id/register_and_login_bt"

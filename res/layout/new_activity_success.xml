@@ -28,6 +28,11 @@
             android:layout_marginRight="16dp"
             android:background="@drawable/search_ib" />
     </RelativeLayout>
+    
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dcdcdc" />
 
     <LinearLayout
         android:layout_width="match_parent"

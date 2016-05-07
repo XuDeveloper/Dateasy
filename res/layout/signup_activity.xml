@@ -37,6 +37,11 @@
             android:layout_marginRight="16dp"
             android:background="@drawable/share" />
     </RelativeLayout>
+    
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dcdcdc" />
 
     <TextView
         android:id="@+id/signup_event_name_tv"

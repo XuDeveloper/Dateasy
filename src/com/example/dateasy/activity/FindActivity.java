@@ -440,7 +440,7 @@ public class FindActivity extends Activity implements OnClickListener,
 			@Override
 			public void onError(Call arg0, Exception arg1) {
 				// TODO Auto-generated method stub
-				Toast.makeText(FindActivity.this, "网络连接失败，请检查你的网络连接",
+				Toast.makeText(FindActivity.this, Const.ERROR_MESSAGE,
 						Toast.LENGTH_LONG).show();
 			}
 		});

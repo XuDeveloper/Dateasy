@@ -2,6 +2,7 @@ package com.example.dateasy.fragment;
 
 import com.example.dateasy.R;
 import com.example.dateasy.adapter.ManagementReleaseListViewAdapter;
+import com.example.dateasy.util.Utils;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
 /**
@@ -24,6 +26,7 @@ public class ManagementFragment extends SingleFragment implements
 	private RadioButton mRadioButton;
 	private ReleaseFragment mReleaseFragment;
 	private RegisterFragment mRegisterFragment;
+	private TextView mUserNameTextView;
 
 	@Override
 	protected int getLayoutId() {
@@ -34,11 +37,7 @@ public class ManagementFragment extends SingleFragment implements
 	@Override
 	protected void createView(View view) {
 		// TODO Auto-generated method stub
-		mRadioGroup = (RadioGroup) view
-				.findViewById(R.id.management_navigation);
-		mRadioButton = (RadioButton) view.findViewById(R.id.management_release);
-		mRadioGroup.setOnCheckedChangeListener(this);
-		mRadioButton.setChecked(true);
+		initViews(view);
 		// FragmentManager fm = getChildFragmentManager();
 		// FragmentTransaction transaction = fm.beginTransaction();
 		// transaction.add(R.id.management_fragment_container, new
@@ -46,6 +45,17 @@ public class ManagementFragment extends SingleFragment implements
 		// transaction.add(R.id.management_fragment_container, new
 		// RegisterFragment());
 		// transaction.commit();
+	}
+
+	private void initViews(View view) {
+		// TODO Auto-generated method stub
+		mRadioGroup = (RadioGroup) view
+				.findViewById(R.id.management_navigation);
+		mRadioButton = (RadioButton) view.findViewById(R.id.management_release);
+		mUserNameTextView = (TextView) view.findViewById(R.id.management_user_name);
+		mUserNameTextView.setText(Utils.getmCurrentUser().getNick_name());
+		mRadioGroup.setOnCheckedChangeListener(this);
+		mRadioButton.setChecked(true);
 	}
 
 	@Override

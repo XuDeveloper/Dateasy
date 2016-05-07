@@ -102,7 +102,13 @@
                 android:background="#00b6bc"
                 android:visibility="invisible" />
         </RelativeLayout>
+
     </LinearLayout>
+    
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dcdcdc" />
 
     <FrameLayout
         android:layout_width="match_parent"

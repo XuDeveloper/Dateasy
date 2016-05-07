@@ -1,4 +1,5 @@
 package com.example.dateasy.activity;
+
 /**
  * 注册Activity
  * @author Xu
@@ -16,7 +17,7 @@ import com.example.dateasy.R;
 import com.example.dateasy.util.CheckUtils;
 import com.example.dateasy.util.Utils;
 
-public class RegisterActivity extends Activity implements OnClickListener{
+public class RegisterActivity extends Activity implements OnClickListener {
 
 	private ImageButton mBackImageButton;
 	private Button mLoginButton;
@@ -26,7 +27,7 @@ public class RegisterActivity extends Activity implements OnClickListener{
 	private EditText mUserConfirmPasswordEditText;
 	private EditText mVertificationCodeEditText;
 	private CheckUtils mCheck;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -49,13 +50,17 @@ public class RegisterActivity extends Activity implements OnClickListener{
 		mLoginButton.setOnClickListener(this);
 		mRegisterAndLoginButton.setOnClickListener(this);
 	}
-	private boolean registerCheck(){
+
+	private boolean registerCheck() {
 		String mUserAccount = mUserAccountEditText.getText().toString();
 		String mUserPassword = mUserPasswordEditText.getText().toString();
-		String mUserConfirmPassword = mUserConfirmPasswordEditText.getText().toString();
-		String mVertificationCode = mVertificationCodeEditText.getText().toString();
-		boolean result = mCheck.registerCheck(mUserAccount, mUserPassword, mUserConfirmPassword, mVertificationCode);
-		if(!result){
+		String mUserConfirmPassword = mUserConfirmPasswordEditText.getText()
+				.toString();
+		String mVertificationCode = mVertificationCodeEditText.getText()
+				.toString();
+		boolean result = mCheck.registerCheck(mUserAccount, mUserPassword,
+				mUserConfirmPassword, mVertificationCode);
+		if (!result) {
 			mUserAccountEditText.setText("");
 			mUserPasswordEditText.setText("");
 			mUserConfirmPasswordEditText.setText("");
@@ -63,6 +68,7 @@ public class RegisterActivity extends Activity implements OnClickListener{
 		}
 		return result;
 	}
+
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
@@ -74,10 +80,11 @@ public class RegisterActivity extends Activity implements OnClickListener{
 		case R.id.register_login_bt:
 			Utils.toAnotherActivity(RegisterActivity.this, LoginActivity.class);
 			break;
-			
+
 		case R.id.register_and_login_bt:
-			if(registerCheck()){
-				Utils.toAnotherActivity(RegisterActivity.this, MainActivity.class);
+			if (registerCheck()) {
+				Utils.toAnotherActivity(RegisterActivity.this,
+						DetailActivity.class);
 			}
 			break;
 		}

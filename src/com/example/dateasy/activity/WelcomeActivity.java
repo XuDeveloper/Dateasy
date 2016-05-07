@@ -27,7 +27,7 @@ public class WelcomeActivity extends Activity {
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
-				Utils.toAnotherActivity(WelcomeActivity.this, LoginActivity.class);
+				Utils.toAnotherActivity(WelcomeActivity.this, MainActivity.class);
 				finish();
 			}
 		};

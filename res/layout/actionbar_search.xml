@@ -48,15 +48,21 @@
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@id/search_search_ib"
                 android:background="@null"
+                android:cursorVisible="true"
                 android:focusable="true"
                 android:hint="输入点什么..."
                 android:paddingLeft="5dp"
-                android:textSize="16sp"
                 android:textColor="#000000"
-                android:cursorVisible="true"
-                android:textCursorDrawable="@null" >
+                android:textCursorDrawable="@null"
+                android:textSize="16sp" >
             </EditText>
         </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#dcdcdc"
+            android:layout_alignParentBottom="true" />
     </RelativeLayout>
 
 </RelativeLayout>

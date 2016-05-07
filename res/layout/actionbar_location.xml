@@ -21,4 +21,9 @@
         android:textColor="#666666"
         android:textSize="20sp" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dcdcdc"
+        android:layout_alignParentBottom="true" />
 </RelativeLayout>

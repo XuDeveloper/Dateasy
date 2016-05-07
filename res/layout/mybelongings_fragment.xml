@@ -19,14 +19,14 @@
             android:layout_height="72dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="8dp"
-            android:src="@drawable/management_head" />
+            android:src="@drawable/mybelonging_head_null" />
 
         <TextView
             android:id="@+id/mybelongings_user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="华南师范大学经管朋辈心理发展协会"
+            android:text="点击头像登录"
             android:textColor="#ffffff"
             android:textSize="12sp" />
 
@@ -47,7 +47,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1"
+                    android:text="0"
                     android:textColor="#ffffff"
                     android:textSize="14sp" />
 
@@ -76,7 +76,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1"
+                    android:text="0"
                     android:textColor="#ffffff"
                     android:textSize="14sp" />
 

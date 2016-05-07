@@ -6,11 +6,14 @@ package com.example.dateasy.activity;
  * 
  */
 import android.app.Activity;
+import android.media.Image;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import com.example.dateasy.R;
 import com.example.dateasy.util.CheckUtils;
@@ -20,6 +23,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 
 	private Button mRegisterButton;
 	private Button mLoginButton;
+	private ImageButton mBackImageButton;
 	private EditText mUserAccountEditText;
 	private EditText mUserPasswordEditText;
 	private CheckUtils mCheck;
@@ -38,6 +42,8 @@ public class LoginActivity extends Activity implements OnClickListener {
 		mLoginButton = (Button) findViewById(R.id.login_bt);
 		mUserAccountEditText = (EditText) findViewById(R.id.login_account);
 		mUserPasswordEditText = (EditText) findViewById(R.id.login_password);
+		mBackImageButton = (ImageButton) findViewById(R.id.login_back_ib);
+		mBackImageButton.setOnClickListener(this);
 		mRegisterButton.setOnClickListener(this);
 		mLoginButton.setOnClickListener(this);
 		mCheck = new CheckUtils(this);
@@ -63,12 +69,31 @@ public class LoginActivity extends Activity implements OnClickListener {
 			break;
 
 		case R.id.login_bt:
-			if (loginCheck()) {
+			if (loginCheck() && !isToMain()) {
+				Utils.toAnotherActivity(LoginActivity.this, DetailActivity.class);
+				finish();
+			}else {
 				Utils.toAnotherActivity(LoginActivity.this, MainActivity.class);
 				finish();
 			}
 			break;
+			
+		case R.id.login_back_ib:
+			finish();
+			break;
 		}
+		
 	}
-
+	
+	/**
+	 * 判断是否返回MainActivity
+	 */
+	private boolean isToMain() {
+		Bundle bundle = getIntent().getExtras();
+		if (bundle != null) {
+			return bundle.getBoolean("MANAGEMENT");
+		}
+		return false;
+	}
+	
 }

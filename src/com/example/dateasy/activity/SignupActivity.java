@@ -1,12 +1,15 @@
 package com.example.dateasy.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
@@ -83,7 +86,7 @@ public class SignupActivity extends Activity implements OnClickListener, OnDismi
 		mBackImageButton.setOnClickListener(this);
 		mSignupButton.setOnClickListener(this);
 		mSignupShareButton.setOnClickListener(this);
-		mShareMenu = new PopupWindow(mShareMenuView, mScreenWidth, 300, true);
+		mShareMenu = new PopupWindow(mShareMenuView, mScreenWidth, 500, true);
 		mShareMenu.setAnimationStyle(R.style.anim_sharemenu_inandout);
 		mShareMenuCloseImageButton = (ImageButton)mShareMenuView.findViewById(R.id.share_menu_close);
 		mShareMenu.setOnDismissListener(this);
@@ -99,8 +102,20 @@ public class SignupActivity extends Activity implements OnClickListener, OnDismi
 			break;
 
 		case R.id.signup_event_bt:
+			AlertDialog.Builder builder = new AlertDialog.Builder(SignupActivity.this);
+			View view = getLayoutInflater().inflate(R.layout.signup_activity_user_detail, null);
+			builder.setView(view).setPositiveButton("完 成", new AlertDialog.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					// TODO Auto-generated method stub
+//					EditText mUserNameEditText = 
+				}
+
+			});
 			
 			break;
+			
 		case R.id.signup_share_ib:
 			mShareMenu.showAtLocation(findViewById(R.id.signup_activity), Gravity.NO_GRAVITY, 0, mScreenHeight);
 			setBackgroundDark();
