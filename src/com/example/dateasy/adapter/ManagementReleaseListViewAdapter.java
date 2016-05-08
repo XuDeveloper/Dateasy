@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import com.example.dateasy.R;
 import com.example.dateasy.model.Event;
-import com.example.dateasy.model.ManageEvent;
 
 /**
  * 管理界面的listview adapter

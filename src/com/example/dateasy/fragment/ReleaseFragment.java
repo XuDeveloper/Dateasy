@@ -14,7 +14,6 @@ import com.example.dateasy.adapter.ManagementReleaseListViewAdapter;
 import com.example.dateasy.adapter.MyListViewAdapter;
 import com.example.dateasy.consts.Const;
 import com.example.dateasy.model.Event;
-import com.example.dateasy.model.ManageEvent;
 import com.example.dateasy.net.EventCallback;
 import com.example.dateasy.util.NetworkUtils;
 import com.example.dateasy.util.Utils;
