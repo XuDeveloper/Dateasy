@@ -79,6 +79,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 			break;
 			
 		case R.id.login_back_ib:
+			Utils.toAnotherActivity(LoginActivity.this, MainActivity.class);
 			finish();
 			break;
 		}
@@ -91,7 +92,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 	private boolean isToMain() {
 		Bundle bundle = getIntent().getExtras();
 		if (bundle != null) {
-			return bundle.getBoolean("MANAGEMENT");
+			return bundle.getBoolean("RETURN_TO_MAIN");
 		}
 		return false;
 	}

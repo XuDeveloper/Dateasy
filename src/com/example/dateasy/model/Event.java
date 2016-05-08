@@ -77,11 +77,12 @@ public class Event implements Serializable {
 	 * 活动参与的人数
 	 */
 	private int mCount;
+	
 	/**
 	 * 活动封面
 	 */
 	private Bitmap mEventCover;
-
+	
 	public Bitmap getmEventCover() {
 		return mEventCover;
 	}

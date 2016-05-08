@@ -20,7 +20,6 @@ import com.example.dateasy.util.Utils;
 public class RegisterActivity extends Activity implements OnClickListener {
 
 	private ImageButton mBackImageButton;
-	private Button mLoginButton;
 	private Button mRegisterAndLoginButton;
 	private EditText mUserAccountEditText;
 	private EditText mUserPasswordEditText;
@@ -39,7 +38,6 @@ public class RegisterActivity extends Activity implements OnClickListener {
 	private void initViews() {
 		// TODO Auto-generated method stub
 		mBackImageButton = (ImageButton) findViewById(R.id.register_back_ib);
-		mLoginButton = (Button) findViewById(R.id.register_login_bt);
 		mRegisterAndLoginButton = (Button) findViewById(R.id.register_and_login_bt);
 		mUserAccountEditText = (EditText) findViewById(R.id.register_account);
 		mUserPasswordEditText = (EditText) findViewById(R.id.register_password);
@@ -47,7 +45,6 @@ public class RegisterActivity extends Activity implements OnClickListener {
 		mVertificationCodeEditText = (EditText) findViewById(R.id.register_vertification_code);
 		mCheck = new CheckUtils(this);
 		mBackImageButton.setOnClickListener(this);
-		mLoginButton.setOnClickListener(this);
 		mRegisterAndLoginButton.setOnClickListener(this);
 	}
 
@@ -75,10 +72,6 @@ public class RegisterActivity extends Activity implements OnClickListener {
 		switch (v.getId()) {
 		case R.id.register_back_ib:
 			finish();
-			break;
-
-		case R.id.register_login_bt:
-			Utils.toAnotherActivity(RegisterActivity.this, LoginActivity.class);
 			break;
 
 		case R.id.register_and_login_bt:

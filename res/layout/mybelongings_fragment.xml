@@ -128,6 +128,7 @@
         android:textSize="12sp" />
 
     <Button
+        android:id="@+id/mybelongings_signup_proof_bt"
         android:layout_width="match_parent"
         android:layout_height="32dp"
         android:layout_gravity="center_horizontal"
@@ -151,6 +152,7 @@
         android:textSize="12sp" />
 
     <Button
+        android:id="@+id/mybelongings_user_follow_bt"
         android:layout_width="match_parent"
         android:layout_height="32dp"
         android:layout_gravity="center_horizontal"
@@ -165,6 +167,7 @@
         android:textSize="12sp" />
 
     <Button
+        android:id="@+id/mybelongings_user_friends_bt"
         android:layout_width="match_parent"
         android:layout_height="32dp"
         android:layout_gravity="center_horizontal"
@@ -192,6 +195,7 @@
             android:orientation="vertical" >
 
             <Button
+                android:id="@+id/mybelongings_message_bt"
                 android:layout_width="32dp"
                 android:layout_height="40dp"
                 android:background="@drawable/message_bt" />
@@ -205,6 +209,7 @@
             android:orientation="vertical" >
 
             <Button
+                android:id="@+id/mybelongings_settings_bt"
                 android:layout_width="32dp"
                 android:layout_height="42dp"
                 android:background="@drawable/settings_bt" />
@@ -218,6 +223,7 @@
             android:orientation="vertical" >
 
             <Button
+                android:id="@+id/mybelongings_respond_bt"
                 android:layout_width="40dp"
                 android:layout_height="42dp"
                 android:background="@drawable/respond_bt" />

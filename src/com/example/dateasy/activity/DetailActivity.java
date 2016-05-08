@@ -1,13 +1,20 @@
 package com.example.dateasy.activity;
 
+import okhttp3.Call;
+
 import com.example.dateasy.R;
+import com.example.dateasy.consts.Const;
 import com.example.dateasy.model.Event;
 import com.example.dateasy.model.User;
+import com.example.dateasy.util.NetworkUtils;
 import com.example.dateasy.util.Utils;
+import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -34,7 +41,8 @@ public class DetailActivity extends Activity implements OnClickListener {
 	private TextView mIfRecommendTextView;
 	private Button mAnnounceButton;
 	private String mTitle;
-
+	private boolean mIsSuccess;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -51,7 +59,7 @@ public class DetailActivity extends Activity implements OnClickListener {
 	}
 
 	/**
-	 * 将数据包装
+	 * 将数据包装并发送到服务器
 	 */
 	private void setDataAndSendToServer() {
 		// TODO Auto-generated method stub
@@ -75,6 +83,28 @@ public class DetailActivity extends Activity implements OnClickListener {
 		event.setmRegisterUsers(null);
 		User user = Utils.getmCurrentUser();
 		event.setmReleaseUser(user);
+
+		mIsSuccess = false;
+		
+		NetworkUtils.postData(Const.NEW_EVENT_URL, event, new StringCallback() {
+
+			@Override
+			public void onResponse(String arg0) {
+				// TODO Auto-generated method stub
+				if (arg0.equals("true")) {
+					mIsSuccess = true;
+				} else {
+					mIsSuccess = false;
+				}
+			}
+
+			@Override
+			public void onError(Call arg0, Exception arg1) {
+				// TODO Auto-generated method stub
+				Log.i("tag", arg1.toString());
+				mIsSuccess = false;
+			}
+		});
 	}
 
 	private void initViews() {
@@ -101,7 +131,7 @@ public class DetailActivity extends Activity implements OnClickListener {
 			break;
 
 		case R.id.announce_bt:
-			if (isComplete()) {
+			if (isComplete() && mIsSuccess) {
 				if (!Utils.isLogin()) {
 					saveData();
 					Utils.toAnotherActivity(DetailActivity.this,
@@ -112,8 +142,11 @@ public class DetailActivity extends Activity implements OnClickListener {
 							AnnounceSuccessActivity.class);
 				}
 				finish();
-			} else {
+			} else if (!isComplete()) {
 				Toast.makeText(DetailActivity.this, "填写信息不完整！",
+						Toast.LENGTH_LONG).show();
+			} else {
+				Toast.makeText(DetailActivity.this, "发布失败，请重试！",
 						Toast.LENGTH_LONG).show();
 			}
 			break;

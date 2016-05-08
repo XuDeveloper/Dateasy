@@ -134,7 +134,7 @@ public class FindActivity extends Activity implements OnClickListener,
 		mScreenWidth = mWindowManager.getDefaultDisplay().getWidth();
 		mScreenHeight = mWindowManager.getDefaultDisplay().getHeight();
 		mTimeWheelPicker = new PopupWindow(mTimeWheelPickerView, mScreenWidth,
-				350, true);
+				500, true);
 		mTimeWheelPicker.setAnimationStyle(R.style.anim_sharemenu_inandout);
 		mTimeWheelPicker.setBackgroundDrawable(new BitmapDrawable());
 		mTimeWheelPicker.setOnDismissListener(this);
@@ -332,6 +332,7 @@ public class FindActivity extends Activity implements OnClickListener,
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
 		case R.id.find_activity_back_ib:
+			Utils.toAnotherActivity(FindActivity.this, MainActivity.class);
 			finish();
 			break;
 
@@ -346,32 +347,33 @@ public class FindActivity extends Activity implements OnClickListener,
 		case R.id.find_activity_time:
 			setChecked(TIME_CHECKED);
 			break;
+			
 		case R.id.find_activity_time_5:
 			mTimeWheelPicker.showAtLocation(findViewById(R.id.find_activity),
 					Gravity.NO_GRAVITY, 0, mScreenHeight);
 			setBackgroundDark();
 			break;
-			
+
 		case R.id.find_activity_type_1:
 			loadDataFromServer(Const.OUTDOOR_ACTIVITIES);
 			break;
-			
+
 		case R.id.find_activity_type_2:
 			loadDataFromServer(Const.GATHERING);
 			break;
-			
+
 		case R.id.find_activity_type_3:
 			loadDataFromServer(Const.ENTERTAINMENT);
 			break;
-			
+
 		case R.id.find_activity_type_4:
 			loadDataFromServer(Const.MEETING);
 			break;
-			
+
 		case R.id.find_activity_type_5:
 			loadDataFromServer(Const.ACTIVITY_SIGNUP);
 			break;
-			
+
 		case R.id.find_activity_type_6:
 			loadDataFromServer(Const.OTHERS);
 			break;
@@ -397,29 +399,35 @@ public class FindActivity extends Activity implements OnClickListener,
 		case "户外活动":
 			url = Const.TYPE_OUTDOOR_URL;
 			break;
-			
+
 		case "组织聚会":
 			url = Const.TYPE_GATHERING_URL;
 			break;
-			
+
 		case "行业会议":
 			url = Const.TYPE_MEETING_URL;
 			break;
-			
+
 		case "活动报名":
 			url = Const.TYPE_ACTIVITY_SIGNUP_URL;
 			break;
-			
+
 		case "自定义活动":
 			url = Const.TYPE_OTHERS_URL;
 			break;
+
+		default:
+			url = Const.TYPE_OTHERS_URL;
+			break;
+
 		}
 		NetworkUtils.getData(url, new EventCallback() {
 
 			@Override
 			public void onResponse(final ArrayList<Event> arg0) {
 				// TODO Auto-generated method stub
-				mAdapter = new TypeAndFindActivityListViewAdapter(FindActivity.this, arg0, Utils.getCity());
+				mAdapter = new TypeAndFindActivityListViewAdapter(
+						FindActivity.this, arg0, Utils.getCity());
 				mListView.setAdapter(mAdapter);
 				mListView.setOnItemClickListener(new OnItemClickListener() {
 
@@ -431,8 +439,8 @@ public class FindActivity extends Activity implements OnClickListener,
 						Event event = arg0.get(position);
 						bundle.putSerializable("DATA", event);
 						Log.i("tag", event.getmEventName());
-//						Utils.toAnotherActivity(FindActivity.this,
-//								SignupActivity.class, bundle);
+						// Utils.toAnotherActivity(FindActivity.this,
+						// SignupActivity.class, bundle);
 					}
 				});
 			}

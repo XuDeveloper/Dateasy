@@ -11,11 +11,13 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class ManagementActivityRegisterListViewAdapter extends BaseAdapter{
+public class ManagementActivityRegisterListViewAdapter extends BaseAdapter {
 	private Context mContext;
-	public ManagementActivityRegisterListViewAdapter(Context mContext){
+
+	public ManagementActivityRegisterListViewAdapter(Context mContext) {
 		this.mContext = mContext;
 	}
+
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
@@ -39,7 +41,7 @@ public class ManagementActivityRegisterListViewAdapter extends BaseAdapter{
 		// TODO Auto-generated method stub
 		View view;
 		Viewholder viewholder;
-//		User user = mUser.get(position);
+		// User user = mUser.get(position);
 		if (convertView == null) {
 			view = LayoutInflater.from(mContext).inflate(
 					R.layout.management_activity_register_listview_item, null);
@@ -63,6 +65,7 @@ public class ManagementActivityRegisterListViewAdapter extends BaseAdapter{
 		}
 		return view;
 	}
+
 	class Viewholder {
 		/**
 		 * 用户头像
@@ -88,7 +91,7 @@ public class ManagementActivityRegisterListViewAdapter extends BaseAdapter{
 		 * 用户报名状态
 		 */
 		TextView mSignupStatusTextView;
-		
+
 		/**
 		 * 用户电话
 		 */

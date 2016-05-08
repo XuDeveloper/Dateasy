@@ -27,17 +27,6 @@
             android:textColor="#666666"
             android:textSize="20sp" />
 
-        <Button
-            android:id="@+id/register_login_bt"
-            android:layout_width="40dp"
-            android:layout_height="24dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="16dp"
-            android:background="@drawable/announce"
-            android:text="登录"
-            android:textColor="#ffffff"
-            android:textSize="14sp" />
     </RelativeLayout>
 
     <TextView

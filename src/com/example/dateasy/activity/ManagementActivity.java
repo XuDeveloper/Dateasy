@@ -59,10 +59,14 @@ public class ManagementActivity extends Activity implements
 		FragmentManager fm = getFragmentManager();
 		FragmentTransaction transaction = fm.beginTransaction();
 		hideAllFragment(transaction);
+		Bundle bundle = new Bundle();
 		switch (checkedId) {
 		case R.id.management_activity_manage:
 			if (mManagementFragment == null) {
+				bundle.putSerializable("DATA", getIntent().getExtras()
+						.getSerializable("DATA"));
 				mManagementFragment = new ManagementActivityManageFragment();
+				mManagementFragment.setArguments(bundle);
 				transaction.add(R.id.management_activity_container,
 						mManagementFragment);
 			} else {
@@ -101,7 +105,8 @@ public class ManagementActivity extends Activity implements
 		switch (v.getId()) {
 		case R.id.management_activity_back_ib:
 			bundle.putBoolean("RETURN_TO_MANAGEMENT", true);
-			Utils.toAnotherActivity(ManagementActivity.this, MainActivity.class, bundle);
+			Utils.toAnotherActivity(ManagementActivity.this,
+					MainActivity.class, bundle);
 			finish();
 			break;
 

@@ -46,6 +46,7 @@ public class CheckUtils {
 		User user = new User();
 		user.setNick_name(mUserAccount);
 		user.setPassword(mUserPassword);
+		user.setDescription("");
 		user.setSex("");
 		user.setTrue_name("");
 		user.setEmail("");
@@ -53,30 +54,28 @@ public class CheckUtils {
 		user.setmSignupEvents(null);
 		user.setmHead(null);
 		Utils.setmCurrentUser(user);
-		String content = new Gson().toJson(user);
-		OkHttpUtils.postString().url(Const.REGISTER_CHECK_URL).content(content)
-				.build().execute(new StringCallback() {
+		NetworkUtils.postData(Const.REGISTER_CHECK_URL, user, new StringCallback() {
 
-					@Override
-					public void onResponse(String arg0) {
-						// TODO Auto-generated method stub
-						if (arg0.equals("false")) {
-							Toast.makeText(mContext, Const.ERROR_MESSAGE,
-									Toast.LENGTH_LONG).show();
-							mRegisterIsSuccess = false;
-						} else {
-							mRegisterIsSuccess = true;
-						}
-					}
+			@Override
+			public void onResponse(String arg0) {
+				// TODO Auto-generated method stub
+				if (arg0.equals("false")) {
+					Toast.makeText(mContext, Const.ERROR_MESSAGE,
+							Toast.LENGTH_LONG).show();
+					mRegisterIsSuccess = false;
+				} else {
+					mRegisterIsSuccess = true;
+				}
+			}
 
-					@Override
-					public void onError(Call arg0, Exception arg1) {
-						// TODO Auto-generated method stub
-						Toast.makeText(mContext, Const.ERROR_MESSAGE,
-								Toast.LENGTH_LONG).show();
-						mRegisterIsSuccess = false;
-					}
-				});
+			@Override
+			public void onError(Call arg0, Exception arg1) {
+				// TODO Auto-generated method stub
+				Toast.makeText(mContext, Const.ERROR_MESSAGE, Toast.LENGTH_LONG)
+						.show();
+				mRegisterIsSuccess = false;
+			}
+		});
 		return mRegisterIsSuccess;
 	}
 
@@ -87,10 +86,8 @@ public class CheckUtils {
 				mLoginIsSuccess = true;
 			}
 		}
-		OkHttpUtils.post().url(Const.LOGIN_CHECK_URL)
-				.addParams("useraccount", mUserAccount)
-				.addParams("userpassword", mUserPassword).build()
-				.execute(new StringCallback() {
+		NetworkUtils.postData(Const.LOGIN_CHECK_URL, mUserAccount,
+				mUserPassword, new StringCallback() {
 
 					@Override
 					public void onResponse(String arg0) {
@@ -101,7 +98,6 @@ public class CheckUtils {
 							mLoginIsSuccess = false;
 						} else {
 							mLoginIsSuccess = true;
-							Log.i("tag", "data:" + arg0);
 							ArrayList<User> users = new Gson().fromJson(arg0,
 									new TypeToken<ArrayList<User>>() {
 									}.getType());

@@ -159,7 +159,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
 				}
 				mActionBarTextView.setText("管理");
 			} else {
-				bundle.putBoolean("MANAGEMENT", true);
+				bundle.putBoolean("RETURN_TO_MAIN", true);
 				Utils.toAnotherActivity(MainActivity.this, LoginActivity.class, bundle);
 			}
 			break;

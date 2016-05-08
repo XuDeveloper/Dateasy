@@ -40,7 +40,13 @@ public class Const {
 
 	public static String REGISTER_CHECK_URL = "http://192.168.203.193/dateasy/Home/enter/android_register";
 
-	public static String NEW_EVENT_URL = "";
+	public static String NEW_EVENT_URL = "http://192.168.203.193/dateasy/index.php/Home/release/android_release";
+	
+	public static String USER_RELEASE_EVENTS = "http://192.168.203.193/dateasy/index.php/Home/person/android_myActivity";
+	
+	public static String UPDATE_USER_DATA = "http://192.168.203.193/dateasy/index.php/Home/person/android_update_info";
+	
+	public static String SIGNUP_EVENT_URL = "";
 
 	public static int REFRESH_TIME = 1 * 60 * 1000;
 

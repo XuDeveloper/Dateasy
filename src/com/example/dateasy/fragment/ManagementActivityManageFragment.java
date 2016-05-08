@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.dateasy.R;
 import com.example.dateasy.activity.AddNewActivity;
 import com.example.dateasy.activity.SignupActivity;
+import com.example.dateasy.model.Event;
 import com.example.dateasy.util.Utils;
 
 public class ManagementActivityManageFragment extends SingleFragment implements
@@ -25,6 +26,8 @@ public class ManagementActivityManageFragment extends SingleFragment implements
 	private EditText mChangeEventNameEditText;
 	private Button mChangeEventNameButton;
 	private TextView mEventNameTextView;
+	private TextView mEventTypeTextView;
+	private TextView mEventCountTextView;
 	private ImageButton mAddNewImageButton;
 	private ImageButton mCheckActivityImageButton;
 
@@ -41,7 +44,20 @@ public class ManagementActivityManageFragment extends SingleFragment implements
 		// TODO Auto-generated method stub
 		initViews(view);
 
-		mEventName = mEventNameTextView.getText().toString();
+		setData();
+	}
+
+	private void setData() {
+		// TODO Auto-generated method stub
+		Event event = (Event) getArguments().getSerializable("DATA");
+		mEventNameTextView.setText(event.getmEventName());
+		mEventTypeTextView.setText(event.getmType());
+		mEventCountTextView.setText(event.getmCount() + "");
+		if (event.getmCost() == 0) {
+			changeCostStatus(NOCOST);
+		} else {
+			changeCostStatus(COST);
+		}
 	}
 
 	private void initViews(View view) {
@@ -56,6 +72,10 @@ public class ManagementActivityManageFragment extends SingleFragment implements
 				.findViewById(R.id.management_event_manage_change_eventname_bt);
 		mEventNameTextView = (TextView) view
 				.findViewById(R.id.management_event_manage_name_tv);
+		mEventTypeTextView = (TextView) view
+				.findViewById(R.id.management_event_manage_type_tv);
+		mEventCountTextView = (TextView) view
+				.findViewById(R.id.management_event_manage_count_tv);
 		mAddNewImageButton = (ImageButton) view
 				.findViewById(R.id.management_event_manage_addnew_ib);
 		mCheckActivityImageButton = (ImageButton) view

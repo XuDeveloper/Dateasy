@@ -91,11 +91,13 @@
             android:src="@drawable/arrow_right" />
 
         <EditText
+            android:id="@+id/mybelongings_edit_user_name_et"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="40dp"
+            android:layout_toRightOf="@+id/textView1"
             android:background="@null"
             android:text="华南师范大学心理发展协会"
             android:textColor="#999999"
@@ -129,11 +131,13 @@
             android:src="@drawable/arrow_right" />
 
         <EditText
+            android:id="@+id/mybelongings_edit_user_description_et"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="40dp"
+            android:layout_toRightOf="@+id/textView1"
             android:background="@null"
             android:text="华南师范大学"
             android:textColor="#999999"
@@ -167,11 +171,13 @@
             android:src="@drawable/arrow_right" />
 
         <EditText
+            android:id="@+id/mybelongings_edit_user_sex_et"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="40dp"
+            android:layout_toRightOf="@+id/textView1"
             android:background="@null"
             android:text="女"
             android:textColor="#999999"
@@ -205,12 +211,15 @@
             android:src="@drawable/arrow_right" />
 
         <EditText
+            android:id="@+id/mybelongings_edit_user_phone_et"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="40dp"
+            android:layout_toRightOf="@+id/textView1"
             android:background="@null"
+            android:inputType="phone"
             android:text="110"
             android:textColor="#999999"
             android:textSize="12sp" />
@@ -243,12 +252,15 @@
             android:src="@drawable/arrow_right" />
 
         <EditText
+            android:id="@+id/mybelongings_edit_user_email_et"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="40dp"
+            android:layout_toRightOf="@+id/textView1"
             android:background="@null"
+            android:inputType="textEmailAddress"
             android:text="110@foxmail.com"
             android:textColor="#999999"
             android:textSize="12sp" />

@@ -97,6 +97,15 @@ public class TypeActivity extends Activity {
 		case "自定义活动":
 			url = Const.TYPE_OTHERS_URL;
 			break;
+			
+		case "愉约周边":
+			url = Const.TYPE_OTHERS_URL;
+			break;
+			
+		case "周末去哪":
+			url = Const.TYPE_OTHERS_URL;
+			break;
+			
 		}
 		NetworkUtils.getData(url, new EventCallback() {
 

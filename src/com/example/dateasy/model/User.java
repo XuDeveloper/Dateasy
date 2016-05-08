@@ -24,6 +24,11 @@ public class User implements Serializable {
 	private String password;
 
 	/**
+	 * 用户简介
+	 */
+	private String description;
+
+	/**
 	 * 用户性别
 	 */
 	private String sex;
@@ -132,6 +137,14 @@ public class User implements Serializable {
 
 	public void setmHead(Bitmap mHead) {
 		this.mHead = mHead;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }

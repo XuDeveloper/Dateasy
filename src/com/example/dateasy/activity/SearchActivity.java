@@ -57,6 +57,7 @@ public class SearchActivity extends Activity implements OnClickListener {
 		Bundle bundle = new Bundle();
 		switch (v.getId()) {
 		case R.id.search_back:
+			Utils.toAnotherActivity(SearchActivity.this, MainActivity.class);
 			finish();
 			break;
 
