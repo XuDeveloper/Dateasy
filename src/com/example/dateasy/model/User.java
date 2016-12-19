@@ -61,7 +61,7 @@ public class User implements Serializable {
 	/**
 	 * 用户头像
 	 */
-	private Bitmap mHead;
+	private String mHead;
 
 	public User() {
 
@@ -131,11 +131,11 @@ public class User implements Serializable {
 		this.mSignupEvents = mSignupEvents;
 	}
 
-	public Bitmap getmHead() {
+	public String getmHead() {
 		return mHead;
 	}
 
-	public void setmHead(Bitmap mHead) {
+	public void setmHead(String mHead) {
 		this.mHead = mHead;
 	}
 

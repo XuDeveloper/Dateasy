@@ -81,13 +81,13 @@ public class Event implements Serializable {
 	/**
 	 * 活动封面
 	 */
-	private Bitmap mEventCover;
+	private String mEventCover;
 	
-	public Bitmap getmEventCover() {
+	public String getmEventCover() {
 		return mEventCover;
 	}
 
-	public void setmEventCover(Bitmap mEventCover) {
+	public void setmEventCover(String mEventCover) {
 		this.mEventCover = mEventCover;
 	}
 

@@ -11,6 +11,7 @@ import com.example.dateasy.R;
 import com.example.dateasy.activity.LoginActivity;
 import com.example.dateasy.activity.MyBelongingsEditActivity;
 import com.example.dateasy.util.Utils;
+import com.xu.ximageloader.core.XImageLoader;
 
 /**
  * 我的界面Fragment
@@ -43,8 +44,9 @@ public class MyBelongingsFragment extends SingleFragment implements
 		if (Utils.getmCurrentUser() != null) {
 			mUserHeadImageView
 					.setBackgroundResource(R.drawable.management_head);
+			XImageLoader.build(getActivity()).imageview(mUserHeadImageView).load(Utils.getmCurrentUser().getmHead());
 			mUserNameTextView.setText(Utils.getmCurrentUser().getNick_name());
-		}
+		} 
 	}
 
 	private void initViews(View view) {

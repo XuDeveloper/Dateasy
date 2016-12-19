@@ -18,7 +18,8 @@ import android.widget.TextView;
 public class Utils {
 
 	private static String mCity;
-	private static User mCurrentUser = null;
+//	private static User mCurrentUser = null;
+	private static User mCurrentUser = new User();
 	private static boolean mIsLogin;
 	private static Event mCurrentReleaseEvent = null;
 
@@ -70,6 +71,14 @@ public class Utils {
 	}
 
 	public static User getmCurrentUser() {
+		mCurrentUser.setTrue_name("");
+		mCurrentUser.setNick_name("xu");
+		mCurrentUser.setPassword("123");
+		mCurrentUser.setTelephone("110");
+		mCurrentUser.setEmail("110@foxmail.com");
+		mCurrentUser.setSex("男");
+		mCurrentUser.setmReleaseEvents(null);
+		mCurrentUser.setmSignupEvents(null);
 		return mCurrentUser;
 	}
 

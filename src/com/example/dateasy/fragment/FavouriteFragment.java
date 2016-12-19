@@ -30,6 +30,7 @@ import com.example.dateasy.R;
 import com.example.dateasy.activity.SignupActivity;
 import com.example.dateasy.adapter.FavouriteAdvViewPagerAdapter;
 import com.example.dateasy.adapter.MyListViewAdapter;
+import com.example.dateasy.application.MyApplication;
 import com.example.dateasy.consts.Const;
 import com.example.dateasy.model.Event;
 import com.example.dateasy.net.EventCallback;
@@ -140,7 +141,7 @@ public class FavouriteFragment extends SingleFragment {
 					@Override
 					public void onError(Call arg0, Exception arg1) {
 						// TODO Auto-generated method stub
-						Toast.makeText(getActivity(), Const.ERROR_MESSAGE,
+						Toast.makeText(MyApplication.getInstance(), Const.ERROR_MESSAGE,
 								Toast.LENGTH_LONG).show();
 					}
 				});

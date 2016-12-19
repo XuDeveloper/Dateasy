@@ -60,8 +60,8 @@ public class CheckUtils {
 			public void onResponse(String arg0) {
 				// TODO Auto-generated method stub
 				if (arg0.equals("false")) {
-					Toast.makeText(mContext, Const.ERROR_MESSAGE,
-							Toast.LENGTH_LONG).show();
+//					Toast.makeText(mContext, Const.ERROR_MESSAGE,
+//							Toast.LENGTH_LONG).show();
 					mRegisterIsSuccess = false;
 				} else {
 					mRegisterIsSuccess = true;
@@ -76,6 +76,9 @@ public class CheckUtils {
 				mRegisterIsSuccess = false;
 			}
 		});
+		if (!mRegisterIsSuccess) {
+			Utils.setmCurrentUser(null);
+		}
 		return mRegisterIsSuccess;
 	}
 

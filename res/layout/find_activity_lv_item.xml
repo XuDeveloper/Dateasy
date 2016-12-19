@@ -16,6 +16,7 @@
         android:layout_height="wrap_content" >
 
         <ImageView
+            android:id="@+id/find_activity_event_cover_iv"
             android:layout_width="96dp"
             android:layout_height="96dp"
             android:layout_marginLeft="16dp"

@@ -23,6 +23,7 @@ import com.example.dateasy.consts.Const;
 import com.example.dateasy.model.Event;
 import com.example.dateasy.util.NetworkUtils;
 import com.example.dateasy.util.Utils;
+import com.xu.ximageloader.core.XImageLoader;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 /**
@@ -75,6 +76,7 @@ public class SignupActivity extends Activity implements OnClickListener,
 		mLocationTextView.setText(mEvent.getmLocation());
 		mCountTextView.setText("已有" + mEvent.getmCount() + "人报名");
 		mDescriptionTextView.setText(mEvent.getmDescription());
+		XImageLoader.build(this).imageview(true, mDescriptionImageView).load(mEvent.getmEventCover());
 	}
 
 	private void initViews() {
@@ -85,8 +87,7 @@ public class SignupActivity extends Activity implements OnClickListener,
 		mTimeTextView = (TextView) findViewById(R.id.signup_event_time_tv);
 		mLocationTextView = (TextView) findViewById(R.id.signup_event_location_tv);
 		mCountTextView = (TextView) findViewById(R.id.signup_event_count_tv);
-		// mDescriptionImageView = (ImageView)
-		// findViewById(R.id.signup_event_description_iv);
+		mDescriptionImageView = (ImageView) findViewById(R.id.signup_event_description_iv);
 		mSignupShareButton = (ImageButton) findViewById(R.id.signup_share_ib);
 		mDescriptionTextView = (TextView) findViewById(R.id.signup_event_description_tv);
 		mSignupButton = (Button) findViewById(R.id.signup_event_bt);
@@ -150,6 +151,15 @@ public class SignupActivity extends Activity implements OnClickListener,
 								popupWindow.dismiss();
 							}
 						});
+				Toast.makeText(SignupActivity.this, "报名成功！", Toast.LENGTH_LONG).show();
+				runOnUiThread(new Runnable() {
+					
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						mSignupButton.setText("已报名");
+					}
+				});
 				String content = "username:"
 						+ Utils.getmCurrentUser().getNick_name()
 						+ "apply_name:" + mRegisterName + "apply_phone:"

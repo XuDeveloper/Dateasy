@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.dateasy.R;
 import com.example.dateasy.model.Event;
+import com.xu.ximageloader.core.XImageLoader;
 
 /**
  * 精选页面和发现页面中ListView的Adapter
@@ -28,13 +29,13 @@ public class MyListViewAdapter extends BaseAdapter {
 	public MyListViewAdapter(Context context, ArrayList<Event> mEvents,
 			String city) {
 		mContext = context;
-//		mContent = new ArrayList<>();
-//
-//		for (Event item: mEvents) {
-//			if (item.getmLocation().substring(0, 2).equals(city)) {
-//				mContent.add(item);
-//			}
-//		}
+		// mContent = new ArrayList<>();
+		//
+		// for (Event item: mEvents) {
+		// if (item.getmLocation().substring(0, 2).equals(city)) {
+		// mContent.add(item);
+		// }
+		// }
 		mContent = mEvents;
 	}
 
@@ -74,12 +75,15 @@ public class MyListViewAdapter extends BaseAdapter {
 					.findViewById(R.id.favourite_event_location_tv);
 			viewholder.mCountTextView = (TextView) view
 					.findViewById(R.id.favourite_event_count_tv);
+			viewholder.mImageView = (ImageView) view
+					.findViewById(R.id.favourite_event_image_iv);
 			view.setTag(viewholder);
 		} else {
 			view = convertView;
 			viewholder = (Viewholder) view.getTag();
 		}
-		// viewholder.mImageView.setImageBitmap(mEvent.getmEventCover());
+		XImageLoader.build(mContext).imageview(viewholder.mImageView)
+				.load(mEvent.getmEventCover());
 		viewholder.mEventNameTextView.setText(mEvent.getmEventName());
 		viewholder.mTimeTextView.setText(mEvent.getmStartTime());
 		viewholder.mCountTextView.setText(mEvent.getmCount() + "报名");

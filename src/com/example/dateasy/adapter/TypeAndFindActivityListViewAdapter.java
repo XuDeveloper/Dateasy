@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.example.dateasy.R;
 import com.example.dateasy.model.Event;
+import com.xu.ximageloader.core.XImageLoader;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -15,23 +16,25 @@ import android.widget.TextView;
 
 /**
  * FindActivity中ListView的Adapter
+ * 
  * @author Xu
- *
+ * 
  */
 public class TypeAndFindActivityListViewAdapter extends BaseAdapter {
 
 	private Context mContext;
 	private ArrayList<Event> mContent;
 
-	public TypeAndFindActivityListViewAdapter(Context context, ArrayList<Event> mEvents, String city) {
+	public TypeAndFindActivityListViewAdapter(Context context,
+			ArrayList<Event> mEvents, String city) {
 		mContext = context;
-//		mContent = new ArrayList<>();
-//		
-//		for (Event item : mEvents) {
-//			if (item.getmLocation().substring(0, 2).equals(city)) {
-//				mContent.add(item);
-//			}
-//		}
+		// mContent = new ArrayList<>();
+		//
+		// for (Event item : mEvents) {
+		// if (item.getmLocation().substring(0, 2).equals(city)) {
+		// mContent.add(item);
+		// }
+		// }
 		mContent = mEvents;
 	}
 
@@ -63,52 +66,59 @@ public class TypeAndFindActivityListViewAdapter extends BaseAdapter {
 			view = LayoutInflater.from(mContext).inflate(
 					R.layout.find_activity_lv_item, null);
 			viewholder = new Viewholder();
-			viewholder.mEventNameTextView = (TextView) view.findViewById(R.id.find_activity_event_name_tv);
-			viewholder.mTimeTextView = (TextView) view.findViewById(R.id.find_activity_event_time_tv);
-			viewholder.mLocationTextView = (TextView) view.findViewById(R.id.find_activity_event_location_tv);
+			viewholder.mEventNameTextView = (TextView) view
+					.findViewById(R.id.find_activity_event_name_tv);
+			viewholder.mTimeTextView = (TextView) view
+					.findViewById(R.id.find_activity_event_time_tv);
+			viewholder.mLocationTextView = (TextView) view
+					.findViewById(R.id.find_activity_event_location_tv);
 			viewholder.mReleaseUserTextView = (TextView) view
 					.findViewById(R.id.find_activity_event_releaseuser_tv);
-			viewholder.mCountTextView = (TextView) view.findViewById(R.id.find_activity_event_count_tv);
+			viewholder.mCountTextView = (TextView) view
+					.findViewById(R.id.find_activity_event_count_tv);
+			viewholder.mImageView = (ImageView) view
+					.findViewById(R.id.find_activity_event_cover_iv);
 			view.setTag(viewholder);
-		}else {
+		} else {
 			view = convertView;
 			viewholder = (Viewholder) view.getTag();
 		}
 		viewholder.mEventNameTextView.setText(event.getmEventName());
 		viewholder.mTimeTextView.setText(event.getmStartTime());
 		viewholder.mLocationTextView.setText(event.getmLocation());
-		viewholder.mReleaseUserTextView.setText(event.getmReleaseUser().getNick_name());
+		viewholder.mReleaseUserTextView.setText(event.getmReleaseUser()
+				.getNick_name());
 		viewholder.mCountTextView.setText(event.getmCount() + "报名");
-		
+		XImageLoader.build(mContext).imageview(viewholder.mImageView).load(event.getmEventCover());
 		return view;
 	}
-	
+
 	class Viewholder {
 		/**
 		 * 封面图片
 		 */
 		ImageView mImageView;
-		
+
 		/**
 		 * 活动标题
 		 */
 		TextView mEventNameTextView;
-		
+
 		/**
 		 * 活动时间
 		 */
 		TextView mTimeTextView;
-		
+
 		/**
 		 * 活动地点
 		 */
 		TextView mLocationTextView;
-		
+
 		/**
 		 * 活动发起人
 		 */
 		TextView mReleaseUserTextView;
-		
+
 		/**
 		 * 报名人数
 		 */

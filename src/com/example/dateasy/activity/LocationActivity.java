@@ -264,6 +264,7 @@ public class LocationActivity extends Activity implements OnClickListener,
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
 		case R.id.location_back_ib:
+			Utils.toAnotherActivity(LocationActivity.this, MainActivity.class);
 			finish();
 		}
 	}

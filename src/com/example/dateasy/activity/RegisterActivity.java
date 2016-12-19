@@ -78,6 +78,8 @@ public class RegisterActivity extends Activity implements OnClickListener {
 			if (registerCheck()) {
 				Utils.toAnotherActivity(RegisterActivity.this,
 						DetailActivity.class);
+			} else {
+				Utils.toAnotherActivity(RegisterActivity.this, MainActivity.class);
 			}
 			break;
 		}

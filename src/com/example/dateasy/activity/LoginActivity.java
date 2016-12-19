@@ -57,7 +57,8 @@ public class LoginActivity extends Activity implements OnClickListener {
 			mUserAccountEditText.setText("");
 			mUserPasswordEditText.setText("");
 		}
-		return result;
+//		return result;
+		return true;
 	}
 
 	@Override

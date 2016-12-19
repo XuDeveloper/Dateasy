@@ -17,7 +17,7 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="8dp"
-            android:src="@drawable/management_head" />
+            android:src="@drawable/mybelonging_head_null" />
 
         <TextView
             android:id="@+id/management_user_name"
