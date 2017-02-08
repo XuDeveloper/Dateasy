@@ -25,6 +25,7 @@ import com.example.dateasy.adapter.MyListViewAdapter;
 import com.example.dateasy.application.MyApplication;
 import com.example.dateasy.consts.Const;
 import com.example.dateasy.model.Event;
+import com.example.dateasy.util.LazyLoadFragment;
 import com.example.dateasy.util.NetworkUtils;
 import com.example.dateasy.net.EventCallback;
 import com.example.dateasy.util.Utils;
@@ -35,7 +36,7 @@ import com.example.dateasy.util.Utils;
  * @author Xu
  * 
  */
-public class ViewFragment extends SingleFragment implements OnClickListener {
+public class ViewFragment extends LazyLoadFragment implements OnClickListener {
 
 	private ListView mListView;
 	private MyListViewAdapter mAdapter;
@@ -46,45 +47,6 @@ public class ViewFragment extends SingleFragment implements OnClickListener {
 	private ImageView mActiviySignUpImageView;
 	private ImageButton mSurroundingsImageButton;
 	private ImageButton mWeekendImageButton;
-
-	@Override
-	protected int getLayoutId() {
-		// TODO Auto-generated method stub
-		return R.layout.view_fragment;
-	}
-
-	@Override
-	protected void createView(View view) {
-		// TODO Auto-generated method stub
-		initViews(view);
-		mListView = (ListView) view.findViewById(R.id.view_lv);
-		// 读取数据
-		loadDataFromServer();
-
-	}
-
-	private void initViews(View view) {
-		// TODO Auto-generated method st
-		mOutDoorActivitiesImageView = (ImageView) view
-				.findViewById(R.id.outdooractivities);
-		mGatheringImageView = (ImageView) view.findViewById(R.id.gathering);
-		mMeetingImageView = (ImageView) view.findViewById(R.id.meeting);
-		mEntertainmentImageView = (ImageView) view
-				.findViewById(R.id.entertainment);
-		mActiviySignUpImageView = (ImageView) view
-				.findViewById(R.id.activities_signup);
-		mSurroundingsImageButton = (ImageButton) view
-				.findViewById(R.id.surroundings_ib);
-		mWeekendImageButton = (ImageButton) view.findViewById(R.id.weekend_ib);
-		mOutDoorActivitiesImageView.setOnClickListener(this);
-		mGatheringImageView.setOnClickListener(this);
-		mMeetingImageView.setOnClickListener(this);
-		mEntertainmentImageView.setOnClickListener(this);
-		mActiviySignUpImageView.setOnClickListener(this);
-		mOutDoorActivitiesImageView.setOnClickListener(this);
-		mSurroundingsImageButton.setOnClickListener(this);
-		mWeekendImageButton.setOnClickListener(this);
-	}
 
 	/**
 	 * 从服务器端加载数据
@@ -124,8 +86,8 @@ public class ViewFragment extends SingleFragment implements OnClickListener {
 					@Override
 					public void onError(Call arg0, Exception arg1) {
 						// TODO Auto-generated method stub
-						Toast.makeText(MyApplication.getInstance(), Const.ERROR_MESSAGE,
-								Toast.LENGTH_LONG).show();
+						Toast.makeText(MyApplication.getInstance(),
+								Const.ERROR_MESSAGE, Toast.LENGTH_LONG).show();
 					}
 				});
 			}
@@ -176,6 +138,40 @@ public class ViewFragment extends SingleFragment implements OnClickListener {
 			break;
 
 		}
+	}
+
+	@Override
+	protected int setContentView() {
+		// TODO Auto-generated method stub
+		return R.layout.view_fragment;
+	}
+
+	@Override
+	protected void lazyLoad() {
+		// TODO Auto-generated method stub
+		// 读取数据
+		loadDataFromServer();
+	}
+
+	@Override
+	protected void initViews() {
+		// TODO Auto-generated method stub
+		mOutDoorActivitiesImageView = findViewById(R.id.outdooractivities);
+		mGatheringImageView = findViewById(R.id.gathering);
+		mMeetingImageView = findViewById(R.id.meeting);
+		mEntertainmentImageView = findViewById(R.id.entertainment);
+		mActiviySignUpImageView = findViewById(R.id.activities_signup);
+		mSurroundingsImageButton = findViewById(R.id.surroundings_ib);
+		mWeekendImageButton = findViewById(R.id.weekend_ib);
+		mOutDoorActivitiesImageView.setOnClickListener(this);
+		mGatheringImageView.setOnClickListener(this);
+		mMeetingImageView.setOnClickListener(this);
+		mEntertainmentImageView.setOnClickListener(this);
+		mActiviySignUpImageView.setOnClickListener(this);
+		mOutDoorActivitiesImageView.setOnClickListener(this);
+		mSurroundingsImageButton.setOnClickListener(this);
+		mWeekendImageButton.setOnClickListener(this);
+		mListView = findViewById(R.id.view_lv);
 	}
 
 }

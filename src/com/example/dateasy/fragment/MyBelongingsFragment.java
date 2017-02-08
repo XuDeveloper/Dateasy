@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.example.dateasy.R;
 import com.example.dateasy.activity.LoginActivity;
 import com.example.dateasy.activity.MyBelongingsEditActivity;
+import com.example.dateasy.util.LazyLoadFragment;
 import com.example.dateasy.util.Utils;
 import com.xu.ximageloader.core.XImageLoader;
 
@@ -19,7 +20,7 @@ import com.xu.ximageloader.core.XImageLoader;
  * @author Xu
  * 
  */
-public class MyBelongingsFragment extends SingleFragment implements
+public class MyBelongingsFragment extends LazyLoadFragment implements
 		OnClickListener {
 
 	private ImageView mUserHeadImageView;
@@ -30,51 +31,6 @@ public class MyBelongingsFragment extends SingleFragment implements
 	private Button mMessageButton;
 	private Button mSettingsButton;
 	private Button mRespondButton;
-
-	@Override
-	protected int getLayoutId() {
-		// TODO Auto-generated method stub
-		return R.layout.mybelongings_fragment;
-	}
-
-	@Override
-	protected void createView(View view) {
-		// TODO Auto-generated method stub
-		initViews(view);
-		if (Utils.getmCurrentUser() != null) {
-			mUserHeadImageView
-					.setBackgroundResource(R.drawable.management_head);
-			XImageLoader.build(getActivity()).imageview(mUserHeadImageView).load(Utils.getmCurrentUser().getmHead());
-			mUserNameTextView.setText(Utils.getmCurrentUser().getNick_name());
-		} 
-	}
-
-	private void initViews(View view) {
-		// TODO Auto-generated method stub
-		mUserHeadImageView = (ImageView) view
-				.findViewById(R.id.mybelongings_user_head);
-		mUserNameTextView = (TextView) view
-				.findViewById(R.id.mybelongings_user_name);
-		mSignupProofButton = (Button) view
-				.findViewById(R.id.mybelongings_signup_proof_bt);
-		mUserFollowButton = (Button) view
-				.findViewById(R.id.mybelongings_user_follow_bt);
-		mUserFriendsButton = (Button) view
-				.findViewById(R.id.mybelongings_user_friends_bt);
-		mMessageButton = (Button) view
-				.findViewById(R.id.mybelongings_message_bt);
-		mSettingsButton = (Button) view
-				.findViewById(R.id.mybelongings_settings_bt);
-		mRespondButton = (Button) view
-				.findViewById(R.id.mybelongings_respond_bt);
-		mSignupProofButton.setOnClickListener(this);
-		mUserFollowButton.setOnClickListener(this);
-		mUserFriendsButton.setOnClickListener(this);
-		mMessageButton.setOnClickListener(this);
-		mSettingsButton.setOnClickListener(this);
-		mRespondButton.setOnClickListener(this);
-		mUserHeadImageView.setOnClickListener(this);
-	}
 
 	@Override
 	public void onClick(View v) {
@@ -145,5 +101,42 @@ public class MyBelongingsFragment extends SingleFragment implements
 			}
 			break;
 		}
+	}
+
+	@Override
+	protected int setContentView() {
+		// TODO Auto-generated method stub
+		return R.layout.mybelongings_fragment;
+	}
+
+	@Override
+	protected void lazyLoad() {
+		// TODO Auto-generated method stub
+		if (Utils.getmCurrentUser() != null) {
+			mUserHeadImageView
+					.setBackgroundResource(R.drawable.management_head);
+			XImageLoader.build(getActivity()).imageview(mUserHeadImageView).load(Utils.getmCurrentUser().getmHead());
+			mUserNameTextView.setText(Utils.getmCurrentUser().getNick_name());
+		} 
+	}
+
+	@Override
+	protected void initViews() {
+		// TODO Auto-generated method stub
+		mUserHeadImageView = findViewById(R.id.mybelongings_user_head);
+		mUserNameTextView = findViewById(R.id.mybelongings_user_name);
+		mSignupProofButton = findViewById(R.id.mybelongings_signup_proof_bt);
+		mUserFollowButton = findViewById(R.id.mybelongings_user_follow_bt);
+		mUserFriendsButton = findViewById(R.id.mybelongings_user_friends_bt);
+		mMessageButton = findViewById(R.id.mybelongings_message_bt);
+		mSettingsButton = findViewById(R.id.mybelongings_settings_bt);
+		mRespondButton = findViewById(R.id.mybelongings_respond_bt);
+		mSignupProofButton.setOnClickListener(this);
+		mUserFollowButton.setOnClickListener(this);
+		mUserFriendsButton.setOnClickListener(this);
+		mMessageButton.setOnClickListener(this);
+		mSettingsButton.setOnClickListener(this);
+		mRespondButton.setOnClickListener(this);
+		mUserHeadImageView.setOnClickListener(this);
 	}
 }

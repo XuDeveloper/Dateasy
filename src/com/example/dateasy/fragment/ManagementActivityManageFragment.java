@@ -13,9 +13,10 @@ import com.example.dateasy.R;
 import com.example.dateasy.activity.AddNewActivity;
 import com.example.dateasy.activity.SignupActivity;
 import com.example.dateasy.model.Event;
+import com.example.dateasy.util.LazyLoadFragment;
 import com.example.dateasy.util.Utils;
 
-public class ManagementActivityManageFragment extends SingleFragment implements
+public class ManagementActivityManageFragment extends LazyLoadFragment implements
 		OnClickListener {
 
 	public static final int COST = 0;
@@ -33,20 +34,6 @@ public class ManagementActivityManageFragment extends SingleFragment implements
 
 	private String mEventName;
 
-	@Override
-	protected int getLayoutId() {
-		// TODO Auto-generated method stub
-		return R.layout.management_activity_manage_fragment;
-	}
-
-	@Override
-	protected void createView(View view) {
-		// TODO Auto-generated method stub
-		initViews(view);
-
-		setData();
-	}
-
 	private void setData() {
 		// TODO Auto-generated method stub
 		Event event = (Event) getArguments().getSerializable("DATA");
@@ -58,33 +45,6 @@ public class ManagementActivityManageFragment extends SingleFragment implements
 		} else {
 			changeCostStatus(COST);
 		}
-	}
-
-	private void initViews(View view) {
-		// TODO Auto-generated method stub
-		mCostFrameLayout = (FrameLayout) view
-				.findViewById(R.id.management_event_manage_cost_fl);
-		mNoCostFrameLayout = (FrameLayout) view
-				.findViewById(R.id.management_event_manage_nocost_fl);
-		mChangeEventNameEditText = (EditText) view
-				.findViewById(R.id.management_event_manage_change_eventname_et);
-		mChangeEventNameButton = (Button) view
-				.findViewById(R.id.management_event_manage_change_eventname_bt);
-		mEventNameTextView = (TextView) view
-				.findViewById(R.id.management_event_manage_name_tv);
-		mEventTypeTextView = (TextView) view
-				.findViewById(R.id.management_event_manage_type_tv);
-		mEventCountTextView = (TextView) view
-				.findViewById(R.id.management_event_manage_count_tv);
-		mAddNewImageButton = (ImageButton) view
-				.findViewById(R.id.management_event_manage_addnew_ib);
-		mCheckActivityImageButton = (ImageButton) view
-				.findViewById(R.id.management_event_manage_checkactivity_ib);
-		mCostFrameLayout.setOnClickListener(this);
-		mNoCostFrameLayout.setOnClickListener(this);
-		mChangeEventNameButton.setOnClickListener(this);
-		mAddNewImageButton.setOnClickListener(this);
-		mCheckActivityImageButton.setOnClickListener(this);
 	}
 
 	@Override
@@ -133,6 +93,37 @@ public class ManagementActivityManageFragment extends SingleFragment implements
 			mCostFrameLayout.setVisibility(View.GONE);
 			mNoCostFrameLayout.setVisibility(View.VISIBLE);
 		}
+	}
+
+	@Override
+	protected int setContentView() {
+		// TODO Auto-generated method stub
+		return R.layout.management_activity_manage_fragment;
+	}
+
+	@Override
+	protected void lazyLoad() {
+		// TODO Auto-generated method stub
+		setData();
+	}
+
+	@Override
+	protected void initViews() {
+		// TODO Auto-generated method stub
+		mCostFrameLayout = findViewById(R.id.management_event_manage_cost_fl);
+		mNoCostFrameLayout = findViewById(R.id.management_event_manage_nocost_fl);
+		mChangeEventNameEditText = findViewById(R.id.management_event_manage_change_eventname_et);
+		mChangeEventNameButton = findViewById(R.id.management_event_manage_change_eventname_bt);
+		mEventNameTextView = findViewById(R.id.management_event_manage_name_tv);
+		mEventTypeTextView = findViewById(R.id.management_event_manage_type_tv);
+		mEventCountTextView = findViewById(R.id.management_event_manage_count_tv);
+		mAddNewImageButton = findViewById(R.id.management_event_manage_addnew_ib);
+		mCheckActivityImageButton = findViewById(R.id.management_event_manage_checkactivity_ib);
+		mCostFrameLayout.setOnClickListener(this);
+		mNoCostFrameLayout.setOnClickListener(this);
+		mChangeEventNameButton.setOnClickListener(this);
+		mAddNewImageButton.setOnClickListener(this);
+		mCheckActivityImageButton.setOnClickListener(this);
 	}
 
 }

@@ -35,46 +35,18 @@ import com.example.dateasy.consts.Const;
 import com.example.dateasy.model.Event;
 import com.example.dateasy.net.EventCallback;
 import com.example.dateasy.ui.AutoScrollViewPager;
+import com.example.dateasy.util.LazyLoadFragment;
 import com.example.dateasy.util.NetworkUtils;
 import com.example.dateasy.util.Utils;
 import com.example.dateasy.ui.CirclePoint;
 
-public class FavouriteFragment extends SingleFragment {
+public class FavouriteFragment extends LazyLoadFragment {
 	private LinearLayout mViewPagerContent;
 	private AutoScrollViewPager mAutoScrollViewPager;
 	private List<Integer> mImageList = new ArrayList<>();
 	private CirclePoint mCirclePoint;
 	private ListView mListView;
 	private MyListViewAdapter mAdapter;
-
-	@Override
-	protected int getLayoutId() {
-		// TODO Auto-generated method stub
-		return R.layout.favourite_fragment;
-	}
-
-	@Override
-	protected void createView(View view) {
-		// TODO Auto-generated method stub
-		mViewPagerContent = (LinearLayout) view
-				.findViewById(R.id.favourite_viewpager_content);
-		mCirclePoint = (CirclePoint) view
-				.findViewById(R.id.favourite_circlepoint_group);
-		mListView = (ListView) view.findViewById(R.id.favourite_lv);
-		initViewPager();
-		// 获取数据
-		loadDataFromServer();
-		mListView.setOnItemClickListener(new OnItemClickListener() {
-
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				// TODO Auto-generated method stub
-				Utils.toAnotherActivity(getActivity(), SignupActivity.class);
-			}
-		});
-
-	}
 
 	private void initViewPager() {
 		mAutoScrollViewPager = new AutoScrollViewPager(getActivity());
@@ -141,11 +113,42 @@ public class FavouriteFragment extends SingleFragment {
 					@Override
 					public void onError(Call arg0, Exception arg1) {
 						// TODO Auto-generated method stub
-						Toast.makeText(MyApplication.getInstance(), Const.ERROR_MESSAGE,
-								Toast.LENGTH_LONG).show();
+						Toast.makeText(MyApplication.getInstance(),
+								Const.ERROR_MESSAGE, Toast.LENGTH_LONG).show();
 					}
 				});
 			}
 		}, Const.START_TIME, Const.REFRESH_TIME);
+	}
+
+	@Override
+	protected int setContentView() {
+		// TODO Auto-generated method stub
+		return R.layout.favourite_fragment;
+	}
+
+	@Override
+	protected void lazyLoad() {
+		// TODO Auto-generated method stub
+		// 获取数据
+		loadDataFromServer();
+		mListView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				// TODO Auto-generated method stub
+				Utils.toAnotherActivity(getActivity(), SignupActivity.class);
+			}
+		});
+	}
+
+	@Override
+	protected void initViews() {
+		// TODO Auto-generated method stub
+		mViewPagerContent = findViewById(R.id.favourite_viewpager_content);
+		mCirclePoint = findViewById(R.id.favourite_circlepoint_group);
+		mListView = findViewById(R.id.favourite_lv);
+		initViewPager();
 	}
 }

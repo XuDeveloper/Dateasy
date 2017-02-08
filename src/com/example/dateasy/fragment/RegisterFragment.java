@@ -13,6 +13,7 @@ import com.example.dateasy.R;
 import com.example.dateasy.activity.SignupUserDetailActivity;
 import com.example.dateasy.adapter.ManagementRegisterListViewAdapter;
 import com.example.dateasy.model.User;
+import com.example.dateasy.util.LazyLoadFragment;
 import com.example.dateasy.util.Utils;
 
 /**
@@ -21,24 +22,22 @@ import com.example.dateasy.util.Utils;
  * @author Xu
  * 
  */
-public class RegisterFragment extends SingleFragment {
+public class RegisterFragment extends LazyLoadFragment {
 	private ListView mListView;
 	private List<User> mSignupUsers= new ArrayList<User>();;
 
 	@Override
-	protected int getLayoutId() {
+	protected int setContentView() {
 		// TODO Auto-generated method stub
 		return R.layout.management_register_fragment;
 	}
 
 	@Override
-	protected void createView(View view) {
+	protected void lazyLoad() {
 		// TODO Auto-generated method stub
-		mListView = (ListView) view.findViewById(R.id.management_register_lv);
 		mListView.setAdapter(new ManagementRegisterListViewAdapter(
 				getActivity(), mSignupUsers));
 		mListView.setOnItemClickListener(new OnItemClickListener() {
-
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
@@ -51,6 +50,12 @@ public class RegisterFragment extends SingleFragment {
 				Utils.toAnotherActivity(getActivity(), SignupUserDetailActivity.class);
 			}
 		});
+	}
+
+	@Override
+	protected void initViews() {
+		// TODO Auto-generated method stub
+		mListView = findViewById(R.id.management_register_lv);
 	}
 
 }

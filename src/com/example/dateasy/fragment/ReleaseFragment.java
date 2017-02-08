@@ -15,6 +15,7 @@ import com.example.dateasy.adapter.MyListViewAdapter;
 import com.example.dateasy.consts.Const;
 import com.example.dateasy.model.Event;
 import com.example.dateasy.net.EventCallback;
+import com.example.dateasy.util.LazyLoadFragment;
 import com.example.dateasy.util.NetworkUtils;
 import com.example.dateasy.util.Utils;
 
@@ -32,25 +33,10 @@ import android.widget.ListView;
  * @author Xu
  * 
  */
-public class ReleaseFragment extends SingleFragment {
+public class ReleaseFragment extends LazyLoadFragment {
 	private ListView mListView;
 	private ManagementReleaseListViewAdapter mAdapter;
 	private TextView mReleaseEventNumbersTextView;
-
-	@Override
-	protected int getLayoutId() {
-		// TODO Auto-generated method stub
-		return R.layout.management_release_fragment;
-	}
-
-	@Override
-	protected void createView(View view) {
-		// TODO Auto-generated method stub
-		loadDataFromServer();
-		mListView = (ListView) view.findViewById(R.id.management_release_lv);
-		mReleaseEventNumbersTextView = (TextView) view
-				.findViewById(R.id.management_tv_number);
-	}
 
 	private void loadDataFromServer() {
 		// TODO Auto-generated method stub
@@ -100,6 +86,25 @@ public class ReleaseFragment extends SingleFragment {
 				});
 			}
 		}, Const.START_TIME, Const.REFRESH_TIME);
+	}
+
+	@Override
+	protected int setContentView() {
+		// TODO Auto-generated method stub
+		return R.layout.management_release_fragment;
+	}
+
+	@Override
+	protected void lazyLoad() {
+		// TODO Auto-generated method stub
+		loadDataFromServer();
+	}
+
+	@Override
+	protected void initViews() {
+		// TODO Auto-generated method stub
+		mListView = findViewById(R.id.management_release_lv);
+		mReleaseEventNumbersTextView = findViewById(R.id.management_tv_number);
 	}
 
 }

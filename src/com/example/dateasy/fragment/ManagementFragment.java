@@ -2,10 +2,11 @@ package com.example.dateasy.fragment;
 
 import com.example.dateasy.R;
 import com.example.dateasy.adapter.ManagementReleaseListViewAdapter;
+import com.example.dateasy.util.LazyLoadFragment;
 import com.example.dateasy.util.Utils;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
@@ -20,7 +21,7 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
  * @author Xu
  * 
  */
-public class ManagementFragment extends SingleFragment implements
+public class ManagementFragment extends LazyLoadFragment implements
 		OnCheckedChangeListener {
 	private RadioGroup mRadioGroup;
 	private RadioButton mRadioButton;
@@ -28,35 +29,6 @@ public class ManagementFragment extends SingleFragment implements
 	private RegisterFragment mRegisterFragment;
 	private TextView mUserNameTextView;
 
-	@Override
-	protected int getLayoutId() {
-		// TODO Auto-generated method stub
-		return R.layout.management_fragment;
-	}
-
-	@Override
-	protected void createView(View view) {
-		// TODO Auto-generated method stub
-		initViews(view);
-		// FragmentManager fm = getChildFragmentManager();
-		// FragmentTransaction transaction = fm.beginTransaction();
-		// transaction.add(R.id.management_fragment_container, new
-		// ReleaseFragment());
-		// transaction.add(R.id.management_fragment_container, new
-		// RegisterFragment());
-		// transaction.commit();
-	}
-
-	private void initViews(View view) {
-		// TODO Auto-generated method stub
-		mRadioGroup = (RadioGroup) view
-				.findViewById(R.id.management_navigation);
-		mRadioButton = (RadioButton) view.findViewById(R.id.management_release);
-		mUserNameTextView = (TextView) view.findViewById(R.id.management_user_name);
-		mUserNameTextView.setText(Utils.getmCurrentUser().getNick_name());
-		mRadioGroup.setOnCheckedChangeListener(this);
-		mRadioButton.setChecked(true);
-	}
 
 	@Override
 	public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -97,6 +69,28 @@ public class ManagementFragment extends SingleFragment implements
 		if (mRegisterFragment != null) {
 			transaction.hide(mRegisterFragment);
 		}
+	}
+
+	@Override
+	protected int setContentView() {
+		// TODO Auto-generated method stub
+		return R.layout.management_fragment;
+	}
+
+	@Override
+	protected void lazyLoad() {
+		// TODO Auto-generated method stub
+		mUserNameTextView.setText(Utils.getmCurrentUser().getNick_name());
+		mRadioGroup.setOnCheckedChangeListener(this);
+		mRadioButton.setChecked(true);
+	}
+
+	@Override
+	protected void initViews() {
+		// TODO Auto-generated method stub
+		mRadioGroup = findViewById(R.id.management_navigation);
+		mRadioButton = findViewById(R.id.management_release);
+		mUserNameTextView = findViewById(R.id.management_user_name);	
 	}
 
 }
